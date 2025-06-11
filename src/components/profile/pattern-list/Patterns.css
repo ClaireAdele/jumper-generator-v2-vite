@@ -1,0 +1,48 @@
+#pattern-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 100%;
+}
+
+.pattern-tile {
+    background-image: url("../profile-assets/fabric-2892492_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 4 / 5;
+        /* Maintain width:height ratio */
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-left: 1%;
+    margin-bottom: 2%; 
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px 1px #d6d1d1;
+}
+
+
+.pattern-link {
+    background-color: #A2C685;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    text-align: center;
+    white-space: normal;
+    padding: 7%;
+    color: white; 
+    margin-top: auto;
+}
+
+#create-new-pattern {
+    background-color: rgb(155, 114, 162) !important;
+}
+
+#create-new-pattern:hover {
+    background-color: rgb(126, 70, 136) !important;
+}
+
+.pattern-link:hover {
+    background-color: #75905f;
+}
