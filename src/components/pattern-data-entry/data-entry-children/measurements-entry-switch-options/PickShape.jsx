@@ -24,7 +24,7 @@ const PickShape = ({ setToggleComponent }) => {
     }
 
     setFinalJumperData((prevData) => ({ ...prevData, jumperShape, necklineShape }));
-    setToggleComponent("measurements-entry");
+    setToggleComponent("pick-fit");
   };
 
   // Configurations for buttons

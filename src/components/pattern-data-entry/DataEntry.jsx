@@ -3,7 +3,7 @@ import "./DataEntry.css";
 
 import MeasurementsEntry from "./data-entry-children/MeasurementsEntry";
 import HowToTakeMeasurements from "./data-entry-children/HowToTakeMeasurements";
-import DesiredFit from "./data-entry-children/DesiredFit";
+import JumperSelectionCanvas from "./data-entry-children/JumperSelectionCanvas";
 import { FinalJumperDataContextProvider } from "../../contexts/FinalJumperDataContext";
 
 const DataEntry = () => {
@@ -15,7 +15,7 @@ const DataEntry = () => {
           <div id="data-entry-page">
             <div id="data-entry-container">
               <MeasurementsEntry />
-              <DesiredFit />
+              <JumperSelectionCanvas />
             </div>
             <button className="main-button-style">Generate Pattern</button>
             <h2>How to take your measurements</h2>

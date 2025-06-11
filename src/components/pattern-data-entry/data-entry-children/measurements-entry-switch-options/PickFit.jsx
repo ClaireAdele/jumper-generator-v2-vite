@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { FinalJumperDataContext } from "../../../contexts/FinalJumperDataContext";
-import DesiredFitButton from "./desired-fit-children/DesiredFitButton";
-import "../../../App.css";
-import "../DataEntry.css";
+import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
+import PickFitButton from "./PickFitButton";
+import "../../../../App.css";
+import "../../DataEntry.css";
 
-const DesiredFit = () => {
+const PickFit = () => {
   const [easeAmount, setEaseAmount] = useState(null);
   const { finalJumperData, setFinalJumperData } = useContext(
       FinalJumperDataContext
@@ -37,7 +37,7 @@ const DesiredFit = () => {
       <div id="ease-buttons-list">
         {easeAmountOptions.map((easeAmountOption) => {
           return (
-            <DesiredFitButton
+            <PickFitButton
               key={easeAmountOption.ease}
               easeAmountOption={easeAmountOption}
               setEaseAmount={setEaseAmount}
@@ -53,4 +53,4 @@ const DesiredFit = () => {
   );
 };
 
-export default DesiredFit;
+export default PickFit;

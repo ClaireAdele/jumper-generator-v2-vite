@@ -1,4 +1,4 @@
-const DesiredFitButton = ({
+const PickFitButton = ({
   easeAmountOption,
   setEaseAmount,
   finalJumperData,
@@ -28,4 +28,4 @@ const DesiredFitButton = ({
   );
 };
 
-export default DesiredFitButton;
+export default PickFitButton;
