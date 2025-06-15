@@ -1,178 +1,126 @@
-import raglanJumperBody from "./jumper-selection-img-layers/raglan_jumper_body.png";
-import raglanJumperRoundNeck from "./jumper-selection-img-layers/raglan_round_neckline (1).png";
-import raglanJumperVNeck from "./jumper-selection-img-layers/raglan_v_neck (1).png";
-import raglanJumperBoatNeckline from "./jumper-selection-img-layers/raglan_boat_neckline (1).png";
-import dropShoulderBody from "./jumper-selection-img-layers/drop_shoulder_body.png";
-import dropShoulderRoundNeckline from "./jumper-selection-img-layers/drop_shoulder_round_neckline.png";
-import dropShoulderVNeck from "./jumper-selection-img-layers/drop_shoulder_v_neck.png";
-import dropShoulderBoatNeckline from "./jumper-selection-img-layers/drop_shoulder_boat_neckline.png";
+import { useRef, useState, useEffect, useContext } from "react";
 import { Stage, Layer, Image } from "react-konva";
 import useImage from "use-image";
-import { useRef, useState, useEffect, useContext } from "react";
 import { FinalJumperDataContext } from "../../../contexts/FinalJumperDataContext";
 
-const URLImage = ({ src, ...rest }) => {
+// Image imports
+import raglanBody from "./jumper-selection-img-layers/raglan_jumper_body.png";
+import raglanRound from "./jumper-selection-img-layers/raglan_round_neckline (1).png";
+import raglanV from "./jumper-selection-img-layers/raglan_v_neck (1).png";
+import raglanBoat from "./jumper-selection-img-layers/raglan_boat_neckline (1).png";
+import dropShoulderBody from "./jumper-selection-img-layers/drop_shoulder_body.png";
+import dropShoulderRound from "./jumper-selection-img-layers/drop_shoulder_round_neckline.png";
+import dropShoulderV from "./jumper-selection-img-layers/drop_shoulder_v_neck.png";
+import dropShoulderBoat from "./jumper-selection-img-layers/drop_shoulder_boat_neckline.png";
+
+const URLImage = ({ src, ...props }) => {
   const [image] = useImage(src, "anonymous");
-  return <Image image={image} {...rest} />;
+  return <Image image={image} {...props} />;
+};
+
+const IMAGE_MAP = {
+  "top-down-raglan": {
+    body: raglanBody,
+    neckline: {
+      "round-neck": raglanRound,
+      "folded-neckline": raglanRound,
+      "v-shape": raglanV,
+      "boat-neck": raglanBoat,
+    },
+    defaultNeckline: raglanRound,
+  },
+  "bottom-up": {
+    body: raglanBody,
+    neckline: {
+      "round-neck": raglanRound,
+      "folded-neckline": raglanRound,
+      "v-shape": raglanV,
+      "boat-neck": raglanBoat,
+    },
+    defaultNeckline: raglanRound,
+  },
+  "drop-shoulder": {
+    body: dropShoulderBody,
+    neckline: {
+      "round-neck": dropShoulderRound,
+      "folded-neckline": dropShoulderRound,
+      "v-shape": dropShoulderV,
+      "boat-neck": dropShoulderBoat,
+    },
+    defaultNeckline: dropShoulderRound,
+  },
 };
 
 const JumperSelectionCanvas = () => {
-  const jumperSelectionCanvasRef = useRef();
+  const canvasRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const { finalJumperData, setFinalJumperData } = useContext(
-    FinalJumperDataContext
-  );
-  const [imageNode, setImageNode] = useState([]);
+  const [layers, setLayers] = useState([]);
+  const { finalJumperData } = useContext(FinalJumperDataContext);
 
   useEffect(() => {
     const resize = () => {
-      if (jumperSelectionCanvasRef.current) {
+      if (canvasRef.current) {
         setDimensions({
-          width: jumperSelectionCanvasRef.current.offsetWidth,
-          height: jumperSelectionCanvasRef.current.offsetHeight,
+          width: canvasRef.current.offsetWidth,
+          height: canvasRef.current.offsetHeight,
         });
       }
     };
-
-    resize(); // Initial size
-    window.addEventListener('resize', resize); // Resize on window change
-    return () => {
-      window.removeEventListener('resize', resize)
-    }
-  }, [jumperSelectionCanvasRef.current]);
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
 
 
   useEffect(() => {
-    const jumperLayers = [];
-    let jumperShape = finalJumperData.jumperShape; 
-    let necklineShape = finalJumperData.necklineShape; 
+    let { jumperShape, necklineShape } = finalJumperData;
 
-    console.log(finalJumperData);
-    console.log(jumperLayers);
-
-    if (!necklineShape && !jumperShape) { 
-      jumperShape = "top-down-raglan"
-      necklineShape = "round-neck"
+    if (!jumperShape && !necklineShape) {
+      jumperShape = "top-down-raglan";
+      necklineShape = "round-neck";
     }
 
+    const shapeConfig = IMAGE_MAP[jumperShape];
+    console.log(shape)
+    const jumperImgLayers = [];
 
-    if (jumperShape === "top-down-raglan" || jumperShape === "bottom-up") {
-      jumperLayers.push(<URLImage
-      key="raglanBody"
-      src={raglanJumperBody}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height}
-    />)
-    }
-
-    if (jumperShape === "drop-shoulder") {
-      jumperLayers.push(<URLImage
-      key="dropShoulderBody"
-      src={dropShoulderBody}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height}
-    />)
-    }
-
-    if (jumperShape === "drop-shoulder" && !necklineShape) {
-        jumperLayers.push(<URLImage
-          key="dropShoulderRoundNeckline"
-          src={dropShoulderRoundNeckline}
+    if (shapeConfig.body) {
+      jumperImgLayers.push(
+        <URLImage
+          key="body"
+          src={shapeConfig.body}
           x={0}
           width={dimensions.width}
           height={dimensions.height}
-        />)
+        />
+      );
     }
 
-    if ((jumperShape === "bottom-up" || jumperShape === "top-down-raglan") && !necklineShape) {
-      jumperLayers.push(<URLImage
-        key="raglanJumperDefaultNeckline"
-        src={raglanJumperRoundNeck}
-        x={0}
-        width={dimensions.width}
-        height={dimensions.height}
-      />)
-  }
-    
-    if ((necklineShape === "round-neck" || necklineShape === "folded-neckline") && (jumperShape === "bottom-up" || jumperShape === "top-down-raglan")) {
-      jumperLayers.push(<URLImage
-      key="raglanRoundNeck" src={raglanJumperRoundNeck}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height} />)
-    }
+    const necklineImage =
+      shapeConfig.neckline[necklineShape] || shapeConfig.defaultNeckline;
 
-    if (necklineShape === "boat-neck" && (jumperShape === "bottom-up" || jumperShape === "top-down-raglan")) {
-      jumperLayers.push(<URLImage
-      key="raglanBoatNeck" src={raglanJumperBoatNeckline}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height} />)
-    }
-
-    if (necklineShape === "v-shape" && (jumperShape === "bottom-up" || jumperShape === "top-down-raglan")) {
-      jumperLayers.push(
+    if (necklineImage) {
+      jumperImgLayers.push(
         <URLImage
-          key="raglanVNeck" src={raglanJumperVNeck}
+          key="neckline"
+          src={necklineImage}
           x={0}
           width={dimensions.width}
-          height={dimensions.height} />
-      )
+          height={dimensions.height}
+        />
+      );
     }
 
-    if ((necklineShape === "round-neck" || necklineShape === "folded-neckline") && jumperShape === "drop-shoulder") {
-      jumperLayers.push(<URLImage
-      key="dropShoulderRoundNeckline" src={dropShoulderRoundNeckline}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height} />)
-    }
-
-    console.log(necklineShape)
-    console.log(jumperShape)
-
-    if (necklineShape === "boat-neck" && jumperShape === "drop-shoulder") {
-      jumperLayers.push(<URLImage
-      key="dropShoulderBoatNeckline" src={dropShoulderBoatNeckline}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height} />)
-    }
-
-    if (necklineShape === "v-shape" && jumperShape === "drop-shoulder") {
-      jumperLayers.push(<URLImage
-      key="dropShoulderVNeck" src={dropShoulderVNeck}
-      x={0}
-      width={dimensions.width}
-      height={dimensions.height} />)
-    }
-
-
-    console.log(jumperLayers);
-   
-    setImageNode(jumperLayers);
-  
-
+    setLayers(jumperImgLayers);
   }, [finalJumperData, dimensions]);
 
-  console.log(imageNode);
-
   return (
-    <div ref={jumperSelectionCanvasRef} id="jumper-selection-canvas" >
+    <div ref={canvasRef} id="jumper-selection-canvas">
       <Stage width={dimensions.width} height={dimensions.height}>
-        <Layer>
-          {imageNode}
-        </Layer>
+        <Layer>{layers}</Layer>
       </Stage>
-      </div>
-    );
-}
+    </div>
+  );
+};
 
 export default JumperSelectionCanvas;
-
-// [
-//   <URLImage key="body" src={raglanJumperBody} x={0} width={dimensions.width} height={dimensions.height} />,
-//   <URLImage key="neck" src={raglanJumperRoundNeck} x={0} width={dimensions.width} height={dimensions.height} />
-// ]
