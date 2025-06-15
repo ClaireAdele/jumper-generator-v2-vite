@@ -12,20 +12,19 @@ const URLImage = ({ src, ...rest }) => {
 };
 
 const JumperSelectionCanvas = () => {
-  const containerRef = useRef(null);
+  const jumperSelectionCanvasRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { finalJumperData, setFinalJumperData } = useContext(
     FinalJumperDataContext
   );
   const [imageNode, setImageNode] = useState([]);
 
-
   useEffect(() => {
     const resize = () => {
-      if (containerRef.current) {
+      if (jumperSelectionCanvasRef.current) {
         setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight,
+          width: jumperSelectionCanvasRef.current.offsetWidth,
+          height: jumperSelectionCanvasRef.current.offsetHeight,
         });
       }
     };
@@ -35,7 +34,8 @@ const JumperSelectionCanvas = () => {
     return () => {
       window.removeEventListener('resize', resize)
     }
-  }, []);
+  }, [jumperSelectionCanvasRef.current]);
+
 
   useEffect(() => {
     const jumperLayers = [];
@@ -94,7 +94,7 @@ const JumperSelectionCanvas = () => {
 
 
   return (
-    <div ref={containerRef} id="jumper-selection-canvas" >
+    <div ref={jumperSelectionCanvasRef} id="jumper-selection-canvas" >
       <Stage width={dimensions.width} height={dimensions.height}>
         <Layer>
           {imageNode}
