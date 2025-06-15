@@ -4,26 +4,23 @@ import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataCont
 
 const PickShape = ({ setToggleComponent }) => {
   const [errorMessage, setErrorMessage] = useState(null);
-  const [jumperData, setJumperData] = useState({});
-  const { setFinalJumperData } = useContext(FinalJumperDataContext);
+  const { setFinalJumperData, finalJumperData } = useContext(FinalJumperDataContext);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
-    setJumperData((prevData) => ({ ...prevData, [name]: value }));
+    setFinalJumperData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleClickPickDifferentUnit = () => setToggleComponent("pick-unit");
 
-
   const submitJumperAndNeckShape = () => {
-    const { jumperShape, necklineShape } = jumperData;
+    const { jumperShape, necklineShape } = finalJumperData;
 
     if (!jumperShape || !necklineShape) {
       setErrorMessage("You must pick a jumper and neckline shape");
       return;
     }
 
-    setFinalJumperData((prevData) => ({ ...prevData, jumperShape, necklineShape }));
     setToggleComponent("pick-fit");
   };
 
@@ -51,7 +48,7 @@ const PickShape = ({ setToggleComponent }) => {
             onClick={handleInput}
             name="jumperShape"
             className={
-              jumperData.jumperShape === value
+              finalJumperData.jumperShape === value
                 ? "pick-jumper-button-selected"
                 : "pick-jumper-button"
             }
@@ -70,7 +67,7 @@ const PickShape = ({ setToggleComponent }) => {
             onClick={handleInput}
             name="necklineShape"
             className={
-              jumperData.necklineShape === value
+              finalJumperData.necklineShape === value
                 ? "pick-jumper-button-selected"
                 : "pick-jumper-button"
             }
@@ -82,7 +79,7 @@ const PickShape = ({ setToggleComponent }) => {
 
       <button className="main-button-style" onClick={handleClickPickDifferentUnit}>Pick a different unit</button>
 
-      {jumperData.necklineShape && jumperData.jumperShape && (
+      {finalJumperData.necklineShape && finalJumperData.jumperShape && (
         <button
           className="main-button-style"
           onClick={submitJumperAndNeckShape}
