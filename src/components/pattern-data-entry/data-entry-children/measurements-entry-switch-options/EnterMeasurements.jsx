@@ -61,14 +61,16 @@ const EnterMeasurements = ({ setToggleComponent }) => {
   const currentShape = finalJumperData.jumperShape;
   const fields = shapeFields[currentShape]; 
   const formattedShapeName = formatShapeName(currentShape);
-  
 
-  if (!fields) return null; // Handle case where jumperShape is invalid
+  if (!currentShape) { 
+    return (<div className="measurements-entry-tile"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
+  }
 
   return (
     <div className="measurements-entry-tile">
       <h3>{formattedShapeName}</h3>
 
+      {!currentShape}
       {fields.map((field) => (
         <InputMeasurement
           key={field.name}
