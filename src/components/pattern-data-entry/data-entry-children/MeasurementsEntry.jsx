@@ -5,9 +5,8 @@ import ReviewData from "./measurements-entry-switch-options/ReviewData";
 import PickUnit from "./measurements-entry-switch-options/PickUnit";
 import PickFit from "./measurements-entry-switch-options/PickFit";
 
-const MeasurementsEntry = ({
+const MeasurementsEntry = ({ toggleComponent, setToggleComponent
 }) => {
-  const [toggleComponent, setToggleComponent] = useState("pick-unit");
 
    if (toggleComponent === "pick-unit") {
      return <PickUnit setToggleComponent={setToggleComponent} />;
