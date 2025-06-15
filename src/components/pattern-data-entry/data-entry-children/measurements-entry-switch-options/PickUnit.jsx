@@ -12,7 +12,7 @@ const PickUnit = ({ setToggleComponent }) => {
     setSelectedUnit(value);
   };
 
-  const submitJumperAndNeckShape = () => {
+  const submitUnit = () => {
     if (!selectedUnit) {
       setErrorMessage("You must pick a unit");
       return;
@@ -50,7 +50,7 @@ const PickUnit = ({ setToggleComponent }) => {
       {selectedUnit &&  (
         <button
           className="main-button-style"
-          onClick={submitJumperAndNeckShape}
+          onClick={submitUnit}
         >
           Validate Selection
         </button>

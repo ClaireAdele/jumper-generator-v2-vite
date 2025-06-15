@@ -3,6 +3,7 @@ import PickShape from "./measurements-entry-switch-options/PickShape";
 import EnterMeasurements from "./measurements-entry-switch-options/EnterMeasurements";
 import ReviewData from "./measurements-entry-switch-options/ReviewData";
 import PickUnit from "./measurements-entry-switch-options/PickUnit";
+import PickFit from "./measurements-entry-switch-options/PickFit";
 
 const MeasurementsEntry = ({
 }) => {
@@ -14,6 +15,10 @@ const MeasurementsEntry = ({
 
   if (toggleComponent === "pick-shape") {
     return <PickShape setToggleComponent={setToggleComponent} />;
+  }
+
+  if (toggleComponent === "pick-fit") {
+    return <PickFit setToggleComponent={setToggleComponent} />;
   }
 
   if (toggleComponent === "measurements-entry") {

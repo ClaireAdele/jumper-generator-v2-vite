@@ -1,15 +1,22 @@
 #data-entry-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 100%;
     margin-bottom: 5%;
+    border: 2px solid red;
+    height: 50vh; 
+}
+
+#jumper-selection-canvas {
+    border: 2px solid purple;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 #data-entry-page {
     display: flex;
     flex-direction: column;
     text-align: center;
-    
 }
 
 #ease-selection-container {                                                           
