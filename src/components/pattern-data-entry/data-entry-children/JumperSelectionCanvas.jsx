@@ -81,7 +81,6 @@ const JumperSelectionCanvas = () => {
     }
 
     const shapeConfig = IMAGE_MAP[jumperShape];
-    console.log(shape)
     const jumperImgLayers = [];
 
     if (shapeConfig.body) {
