@@ -14,7 +14,7 @@ const ReviewData = ({ setToggleComponent }) => {
         setToggleComponent("measurements-entry");
     };
     
-    return (<div>
+    return (<div className="jumper-selection-form-section">
         <h3>Review Selection</h3>
         <button onClick={handleClickAmendMeasurements}>Amend measurements</button>
     </div>);

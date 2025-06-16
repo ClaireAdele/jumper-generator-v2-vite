@@ -6,7 +6,7 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
     }
 
     return (
-        <nav aria-label="jumper-data-form-navigation-tabs">
+        <nav aria-label="jumper-data-form-navigation-tabs" id="jumper-data-form-navigation-tabs">
             <div role="tablist">
                 <button role="tab" aria-selected={ toggleComponent === "pick-unit" ? true : false } onClick={handleClickTab} name="pick-unit">Pick Unit</button>
                 <button role="tab" aria-selected={ toggleComponent === "pick-shape" ? true : false }  onClick={handleClickTab} name="pick-shape">Pick Shape</button>

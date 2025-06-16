@@ -27,7 +27,7 @@ const PickUnit = ({ setToggleComponent }) => {
   const units = ["centimetres", "inches"];
 
   return (
-    <div id="pick-shape-container">
+    <div className="jumper-selection-form-section">
       <h3>Pick Unit</h3>
       {units.map((unit) => (
         <div>

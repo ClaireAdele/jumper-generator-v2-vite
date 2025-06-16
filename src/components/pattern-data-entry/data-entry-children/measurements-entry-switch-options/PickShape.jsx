@@ -38,7 +38,7 @@ const PickShape = ({ setToggleComponent }) => {
   ];
 
   return (
-    <div id="pick-shape-container">
+    <div className="jumper-selection-form-section">
       <h3>Pick a Jumper Shape</h3>
       {jumperShapes.map(({ value, label }) => (
         <div>

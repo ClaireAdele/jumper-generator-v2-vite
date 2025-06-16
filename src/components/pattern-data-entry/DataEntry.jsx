@@ -17,8 +17,8 @@ const DataEntry = () => {
       <div className="pageBackground">
         <div className="pageShaper">
           <div id="data-entry-page">
-          <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
             <div id="data-entry-container">
+              <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
               <MeasurementsEntry toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
               <JumperSelectionCanvas />
             </div>

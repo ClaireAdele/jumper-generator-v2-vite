@@ -19,6 +19,7 @@ body {
 .App {
   height: 100%;
   margin: 0;
+  color: rgb(73, 67, 62);
 }
 
 .pageBackground {

@@ -31,7 +31,7 @@ const PickFit = () => {
   ];
 
   return (
-    <div id="ease-selection-container">
+    <div className="jumper-selection-form-section">
       <h3>Desired Fit</h3>
       <h4>Pick a standard amount of ease:</h4>
       <div id="ease-buttons-list">

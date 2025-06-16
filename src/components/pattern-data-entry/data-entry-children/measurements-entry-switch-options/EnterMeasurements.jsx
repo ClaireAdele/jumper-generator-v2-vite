@@ -63,11 +63,11 @@ const EnterMeasurements = ({ setToggleComponent }) => {
   const formattedShapeName = formatShapeName(currentShape);
 
   if (!currentShape) { 
-    return (<div className="measurements-entry-tile"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
+    return (<div className="jumper-selection-form-section"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
   }
 
   return (
-    <div className="measurements-entry-tile">
+    <div className="jumper-selection-form-section">
       <h3>{formattedShapeName}</h3>
 
       {!currentShape}
