@@ -7,10 +7,13 @@
 #data-entry-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 15% 85%;
     margin-bottom: 5%;
     min-height: 50vh; 
     margin-top: 5%;
+}
+
+#data-entry-form-and-nav-container {
+    min-height: 50vh;
 }
 
 .jumper-selection-form-section {
@@ -20,6 +23,29 @@
     box-shadow: 0px 0px 5px 1px #d6d1d1;
     margin-left: 5%;
     margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.pick-jumper-button-selected {
+    text-align: left;
+    margin: 2% 5% 2% 5%;
+    padding: 2% 2% 2% 2%;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(126, 70, 136);
+    color: white;
+}
+
+.pick-jumper-button {
+    text-align: left;
+    margin: 2% 5% 2% 5%;
+    padding: 2% 2% 2% 2%;
+    border-radius: 8px;
+    border: none;
+    background-color: #f5f5f5;
 }
 
 #jumper-data-form-navigation-tabs {
@@ -127,3 +153,4 @@
     display: flex;
     justify-content: center;
 }
+

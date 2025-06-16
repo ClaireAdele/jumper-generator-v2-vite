@@ -13,18 +13,16 @@ const PickFitButton = ({
   };
 
   return (
-    <div>
       <button
         className={
           finalJumperData.easeAmount === easeAmountOption.ease
-            ? "ease-selector-button-selected"
-            : "ease-selector-button"
+            ? "pick-jumper-button-selected"
+            : "pick-jumper-button"
         }
         onClick={handleClick}
       >
         {easeAmountOption.text}
       </button>
-    </div>
   );
 };
 

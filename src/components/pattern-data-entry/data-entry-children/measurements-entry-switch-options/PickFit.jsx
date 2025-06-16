@@ -32,9 +32,7 @@ const PickFit = () => {
 
   return (
     <div className="jumper-selection-form-section">
-      <h3>Desired Fit</h3>
       <h4>Pick a standard amount of ease:</h4>
-      <div id="ease-buttons-list">
         {easeAmountOptions.map((easeAmountOption) => {
           return (
             <PickFitButton
@@ -46,7 +44,6 @@ const PickFit = () => {
             />
           );
         })}
-      </div>
       <h4>Or add a custom amount:</h4>
       <input type="number" className="fit-and-measurements-input" onChange={handleEaseInput}></input>
     </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
+import rightArrow from "../../data-entry-assets/right-arrow.svg";
 
 
 const PickUnit = ({ setToggleComponent }) => {
@@ -17,10 +18,8 @@ const PickUnit = ({ setToggleComponent }) => {
       setErrorMessage("You must pick a unit");
       return;
     }
-    console.log(selectedUnit)
 
     setFinalJumperData({ selectedUnit });
-    console.log(FinalJumperDataContext)
     setToggleComponent("pick-shape");
   };
 
@@ -28,9 +27,7 @@ const PickUnit = ({ setToggleComponent }) => {
 
   return (
     <div className="jumper-selection-form-section">
-      <h3>Pick Unit</h3>
       {units.map((unit) => (
-        <div>
           <button
             key={unit}
             value={unit}
@@ -44,16 +41,15 @@ const PickUnit = ({ setToggleComponent }) => {
           >
             {unit.charAt(0).toUpperCase() + unit.slice(1)}
           </button>
-        </div>
       ))}
-
+      
       {selectedUnit &&  (
-        <button
-          className="main-button-style"
+        <img
+          src={rightArrow}
           onClick={submitUnit}
+          style={{ maxWidth: "10%" }}
         >
-          Validate Selection
-        </button>
+        </img>
       )}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

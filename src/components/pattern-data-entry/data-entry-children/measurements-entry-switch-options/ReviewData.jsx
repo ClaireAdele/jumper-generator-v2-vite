@@ -6,7 +6,6 @@ const ReviewData = ({ setToggleComponent }) => {
        FinalJumperDataContext
      );
     
-    console.log(finalJumperData)
     
     const handleClickAmendMeasurements = (event) => {
         event.preventDefault();
@@ -15,7 +14,6 @@ const ReviewData = ({ setToggleComponent }) => {
     };
     
     return (<div className="jumper-selection-form-section">
-        <h3>Review Selection</h3>
         <button onClick={handleClickAmendMeasurements}>Amend measurements</button>
     </div>);
 };

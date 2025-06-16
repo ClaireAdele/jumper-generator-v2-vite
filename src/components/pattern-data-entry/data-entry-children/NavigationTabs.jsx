@@ -14,8 +14,6 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
         setToggleComponent(selectedTab);
     }
 
-    console.log(tabref)
-
     const checkIfButtonIsSelected = (toggledComponent) => {
         return toggleComponent === toggledComponent;
     }

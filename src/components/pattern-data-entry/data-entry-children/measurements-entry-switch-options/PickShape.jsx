@@ -41,7 +41,6 @@ const PickShape = ({ setToggleComponent }) => {
     <div className="jumper-selection-form-section">
       <h3>Pick a Jumper Shape</h3>
       {jumperShapes.map(({ value, label }) => (
-        <div>
           <button
             key={value}
             value={value}
@@ -55,12 +54,10 @@ const PickShape = ({ setToggleComponent }) => {
           >
             {label}
           </button>
-        </div>
       ))}
 
       <h3>Pick a Neckline Shape</h3>
       {necklineShapes.map(({ value, label }) => (
-        <div>
           <button
             key={value}
             value={value}
@@ -74,7 +71,6 @@ const PickShape = ({ setToggleComponent }) => {
           >
             {label}
           </button>
-        </div>
       ))}
 
       <button className="main-button-style" onClick={handleClickPickDifferentUnit}>Pick a different unit</button>
