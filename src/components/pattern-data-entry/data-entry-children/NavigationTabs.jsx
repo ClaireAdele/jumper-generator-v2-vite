@@ -1,11 +1,22 @@
+import { useRef } from "react";
 
 const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
+    const tabref = useRef();
     
     const handleClickTab = (event) => {
-        setToggleComponent(event.target.name);
+        const selectedTab = event.target.name;
+        tabref.current = event.target
+        tabref.current.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+        });
+        setToggleComponent(selectedTab);
     }
 
-    const checkIfButtonIsSelected = (toggledComponent) => { 
+    console.log(tabref)
+
+    const checkIfButtonIsSelected = (toggledComponent) => {
         return toggleComponent === toggledComponent;
     }
 
@@ -36,8 +47,8 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
     return (
         <nav aria-label="jumper-data-form-navigation-tabs" id="jumper-data-form-navigation-tabs">
             <div role="tablist">
-                {toggleOptions.map((option) => { 
-                    return <button role="tab" aria-selected={checkIfButtonIsSelected(option.toggleOption)} onClick={handleClickTab} name={option.toggleOption} className={checkIfButtonIsSelected(option.toggleOption) ? "selected-nav-tab" : "nav-tab" }>{option.buttonText}</button>
+                {toggleOptions.map(({toggleOption, buttonText}) => { 
+                    return <button key={toggleOption} ref={tabref} role="tab" aria-selected={checkIfButtonIsSelected(toggleOption)} onClick={handleClickTab} name={toggleOption} className={checkIfButtonIsSelected(toggleOption) ? "selected-nav-tab" : "nav-tab" }>{buttonText}</button>
                 })}
             </div>
         </nav>

@@ -7,7 +7,7 @@
 #data-entry-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 15% 85%;
     margin-bottom: 5%;
     min-height: 50vh; 
     margin-top: 5%;
@@ -25,13 +25,13 @@
 #jumper-data-form-navigation-tabs {
     grid-column: 1;
     grid-row: 1;
-    border: 2px solid pink;
     overflow: auto;
     white-space: nowrap;
     -ms-overflow-style: none;
     scrollbar-width: none; 
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 3%;
 }
 
 #jumper-data-form-navigation-tabs::-webkit-scrollbar {
@@ -79,28 +79,25 @@
     margin-right: 5%;
 }
 
-.pick-jumper-button, .ease-selector-button {
+.selected-nav-tab {
     background-color: rgb(126, 70, 136);;
-    padding: 1% 2% 1% 2%;
+    padding: 3% 3% 3% 2%;
     color: white;
     text-decoration: none;
     border-radius: 12px;
     border: 0px;
-    margin-bottom: 1%;
+    font-size: medium;
 }
 
-.pick-jumper-button:hover, .ease-selector-button:hover {
-    background-color: rgb(126, 70, 136);
-}
-
-.pick-jumper-button-selected, .ease-selector-button-selected {
+.nav-tab {
     background-color: white;
-    border: 2px solid rgb(126, 70, 136);;
+    border: none;
     padding: 1% 2% 1% 2%;
     border-radius: 12px;
     color: rgb(126, 70, 136);
     text-decoration: none;
     margin-bottom: 1%;
+    font-size: medium;
 }
 
 .fit-and-measurements-input {
