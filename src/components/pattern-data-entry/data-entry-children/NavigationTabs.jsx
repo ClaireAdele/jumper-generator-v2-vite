@@ -5,14 +5,40 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
         setToggleComponent(event.target.name);
     }
 
+    const checkIfButtonIsSelected = (toggledComponent) => { 
+        return toggleComponent === toggledComponent;
+    }
+
+    const toggleOptions = [
+        {
+            toggleOption: "pick-unit",
+            buttonText: "Pick Unit"
+        },
+        {
+            toggleOption: "pick-shape",
+            buttonText: "Pick Shape"
+        },
+        {
+            toggleOption: "pick-fit",
+            buttonText: "Pick Desired Fit"
+        },
+        {
+            toggleOption: "measurements-entry",
+            buttonText: "Enter Measurements"
+        },
+        {
+            toggleOption: "review-data",
+            buttonText: "Review Selection"
+        }
+    ];
+
+
     return (
         <nav aria-label="jumper-data-form-navigation-tabs" id="jumper-data-form-navigation-tabs">
             <div role="tablist">
-                <button role="tab" aria-selected={ toggleComponent === "pick-unit" ? true : false } onClick={handleClickTab} name="pick-unit">Pick Unit</button>
-                <button role="tab" aria-selected={ toggleComponent === "pick-shape" ? true : false }  onClick={handleClickTab} name="pick-shape">Pick Shape</button>
-                <button role="tab" aria-selected={ toggleComponent === "pick-fit" ? true : false } onClick={handleClickTab} name="pick-fit">Pick Desired Fit</button>
-                <button role="tab" aria-selected={ toggleComponent === "measurements-entry" ? true : false } onClick={handleClickTab} name="measurements-entry">Enter Measurements</button>
-                <button role="tab" aria-selected={ toggleComponent === "review-data" ? true : false } onClick={handleClickTab} name="review-data">Review Selection</button>
+                {toggleOptions.map((option) => { 
+                    return <button role="tab" aria-selected={checkIfButtonIsSelected(option.toggleOption)} onClick={handleClickTab} name={option.toggleOption} className={checkIfButtonIsSelected(option.toggleOption) ? "selected-nav-tab" : "nav-tab" }>{option.buttonText}</button>
+                })}
             </div>
         </nav>
     );

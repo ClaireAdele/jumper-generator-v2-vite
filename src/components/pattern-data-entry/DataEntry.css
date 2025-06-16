@@ -9,18 +9,33 @@
     grid-template-columns: 50% 50%;
     grid-template-rows: 10% 90%;
     margin-bottom: 5%;
-    height: 50vh; 
+    min-height: 50vh; 
+    margin-top: 5%;
 }
 
 .jumper-selection-form-section {
     grid-column: 1;
     grid-row: 2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #d6d1d1;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #jumper-data-form-navigation-tabs {
     grid-column: 1;
     grid-row: 1;
     border: 2px solid pink;
+    overflow: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#jumper-data-form-navigation-tabs::-webkit-scrollbar {
+    display: none; 
 }
 
 #jumper-selection-canvas {
@@ -29,6 +44,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .data-collection-schema {
