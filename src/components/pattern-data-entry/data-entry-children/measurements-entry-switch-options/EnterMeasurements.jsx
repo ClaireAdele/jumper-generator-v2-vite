@@ -1,36 +1,8 @@
 import { useState, useContext } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
-import { validateData, formatShapeName } from "../../../../services-and-util-functions/utils";
+import { checkAllMeasurementsEntered } from "../../../../services-and-util-functions/utils";
 import InputMeasurement from "./InputMeasurement";
-
-const EnterMeasurements = ({ setToggleComponent }) => {
-  const [jumperData, setJumperData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const { finalJumperData, setFinalJumperData } = useContext(
-    FinalJumperDataContext
-  );
-
-  const handleClickPickDifferentShape = () => setToggleComponent("pick-shape");
-
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    setJumperData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSubmitData = () => {
-    if (errorMessage) {
-      setErrorMessage(null);
-    }
-
-    if (!validateData(finalJumperData, jumperData)) {
-      setErrorMessage("You must enter the relevant data");
-    } else {
-      const updatedFinalJumperData = { ...finalJumperData, ...jumperData };
-      setFinalJumperData(updatedFinalJumperData);
-      setToggleComponent("review-data");
-    }
-  };
+import NavigationArrows from "./NavigationArrows";
 
   // Define shapes and corresponding fields
   const shapeFields = {
@@ -58,27 +30,51 @@ const EnterMeasurements = ({ setToggleComponent }) => {
     ],
   };
 
+const EnterMeasurements = ({ setToggleComponent }) => {
+  const [errorMessage, setErrorMessage] = useState(null)
+
+  const { finalJumperData, setFinalJumperData } = useContext(
+    FinalJumperDataContext
+  );
+
+  const handleClickPickDifferentFit = () => setToggleComponent("pick-fit");
+
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFinalJumperData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmitData = () => {
+    if (errorMessage)
+      setErrorMessage(null);
+    
+    if (!checkAllMeasurementsEntered(finalJumperData, shapeFields)) { 
+      setErrorMessage("You must fill all the measurement information to progress.");
+      return;
+    }
+
+    setToggleComponent("review-data");
+  };
+
   const currentShape = finalJumperData.jumperShape;
   const fields = shapeFields[currentShape];
-  const formattedShapeName = formatShapeName(currentShape);
-
-  if (!currentShape) {
-    return (<div className="measurements-entry-tile"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
-  }
 
   return (
     <div className="jumper-selection-form-section">
       <div id="enter-measurements-section">
         {!currentShape}
         {fields.map((field) => (
-          <InputMeasurement
+           <InputMeasurement
             key={field.name}
             label={field.label}
             name={field.name}
             handleInput={handleInput}
+            value={finalJumperData[field.name] ? finalJumperData[field.name] : "" }
           />
         ))}
+        {errorMessage && <p style={{color:"rgb(126, 70, 136)", fontSize:"small"}}>{errorMessage}</p>}
       </div>
+      <NavigationArrows handleClickLeftArrow={handleClickPickDifferentFit} handleClickRightArrow={handleSubmitData}/>
     </div>
   );
 };

@@ -53,7 +53,6 @@ const IMAGE_MAP = {
 
 const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
   const canvasRef = useRef();
-  console.log(canvasRef);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [layers, setLayers] = useState([]);
   const { finalJumperData } = useContext(FinalJumperDataContext);
@@ -63,11 +62,11 @@ const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
       if (canvasRef.current) {
         setDimensions({
           width: canvasRef.current.offsetWidth,
-          height: parentDivCanvasRef.current.offsetHeight,
+          height: canvasRef.current.offsetHeight,
         });
       }
     };
-    console.log(parentDivCanvasRef.current.offsetHeight);
+
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
@@ -76,13 +75,15 @@ const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
 
   useEffect(() => {
     let { jumperShape, necklineShape } = finalJumperData;
-    console.log(jumperShape, necklineShape)
 
     if (!jumperShape && !necklineShape) {
       jumperShape = "top-down-raglan";
       necklineShape = "round-neck";
+    } else if (!jumperShape) {
+      jumperShape = "top-down-raglan";
+    } else if (!necklineShape) {
+      necklineShape = "round-neck";
     }
-    console.log(jumperShape, necklineShape)
 
     const shapeConfig = IMAGE_MAP[jumperShape];
     const jumperImgLayers = [];
@@ -114,7 +115,7 @@ const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
       );
     }
 
-    setLayers(jumperImgLayers);
+      setLayers(jumperImgLayers);
   }, [finalJumperData, dimensions]);
 
   

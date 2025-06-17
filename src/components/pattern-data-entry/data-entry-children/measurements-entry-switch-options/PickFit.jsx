@@ -5,11 +5,19 @@ import NavigationArrows from "./NavigationArrows";
 import "../../../../App.css";
 import "../../DataEntry.css";
 
-const PickFit = () => {
+const easeAmountOptions = [
+  { ease: 0, text: "Fitted - 0 cm ease" },
+  { ease: 7, text: "Standard - 7 cm ease" },
+  { ease: 12, text: "Loose - 12cm ease" },
+  { ease: 20, text: "Oversized - 20cm ease" },
+];
+
+const PickFit = ({setToggleComponent}) => {
   const [easeAmount, setEaseAmount] = useState(null);
   const { finalJumperData, setFinalJumperData } = useContext(
       FinalJumperDataContext
   );
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (easeAmount === "") {
@@ -18,18 +26,25 @@ const PickFit = () => {
   }, [easeAmount]);
 
   const handleEaseInput = (event) => {
-    setEaseAmount(event.target.value);
-    const updatedFinalJumperData = finalJumperData;
-    updatedFinalJumperData.easeAmount = easeAmount;
-    setFinalJumperData(updatedFinalJumperData);
+    const value = event.target.value;
+    setEaseAmount(value);
+
+    setFinalJumperData((prev) => ({
+      ...prev,
+      easeAmount: value,
+    }));
   };
 
-  const easeAmountOptions = [
-      { ease: 0, text: "Fitted - 0 cm ease" },
-      { ease: 7, text: "Standard - 7 cm ease" },
-      { ease: 12, text: "Loose - 12cm ease" },
-      { ease: 20, text: "Oversized - 20cm ease" },
-  ];
+  const submitEase = () => { 
+    if (!finalJumperData.easeAmount) { 
+      setError("You must set an ease amount");
+      return;
+    }
+
+    setToggleComponent("measurements-entry")
+  }
+
+  console.log(finalJumperData)
 
   return (
     <div className="jumper-selection-form-section">
@@ -49,6 +64,7 @@ const PickFit = () => {
       <h4>Or add a custom amount:</h4>
       <input type="number" className="fit-and-measurements-input" onChange={handleEaseInput}></input>
       </div>
+      <NavigationArrows handleClickLeftArrow={() => { setToggleComponent("pick-neckline-shape")}} handleClickRightArrow={submitEase}/>
     </div>
   );
 };

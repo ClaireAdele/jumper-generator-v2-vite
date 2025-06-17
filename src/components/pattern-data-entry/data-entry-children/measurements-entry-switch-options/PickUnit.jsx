@@ -5,22 +5,14 @@ import NavigationArrows from "./NavigationArrows";
 
 
 const PickUnit = ({ setToggleComponent }) => {
-  const [errorMessage, setErrorMessage] = useState(null);
   const { setFinalJumperData, finalJumperData } = useContext(FinalJumperDataContext);
 
   const handleInput = (event) => {
     const { value } = event.target;
-    setFinalJumperData({ selectedUnit: value });
+    setFinalJumperData((prevData) => ({ ...prevData, selectedUnit: value }));
   };
 
   const submitUnit = () => {
-    const { selectedUnit } = finalJumperData;
-
-    if (!selectedUnit) {
-      setErrorMessage("You must pick a unit");
-      return;
-    }
-
     setToggleComponent("pick-jumper-shape");
   };
 
@@ -47,7 +39,6 @@ const PickUnit = ({ setToggleComponent }) => {
       </div>
 
       <NavigationArrows handleClickRightArrow={submitUnit}/>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };

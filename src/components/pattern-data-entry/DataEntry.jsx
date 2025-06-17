@@ -18,11 +18,11 @@ const DataEntry = () => {
         <div className="pageShaper">
           <div id="data-entry-page">
             <div id="data-entry-container">
-              <div id="data-entry-form-and-nav-container" ref={parentDivCanvasRef}>
-                <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
+              <div id="data-entry-form-and-nav-container" >
+                <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
                 <MeasurementsEntry toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
               </div>
-              <JumperSelectionCanvas toggleComponent={toggleComponent} parentDivCanvasRef={parentDivCanvasRef} />
+              <JumperSelectionCanvas />
             </div>
             <button className="main-button-style">Generate Pattern</button>
             <h2>How to take your measurements</h2>

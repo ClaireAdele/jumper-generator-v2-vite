@@ -9,7 +9,6 @@ const jumperShapes = [
 ];
 
 const PickShape = ({ setToggleComponent }) => {
-  const [errorMessage, setErrorMessage] = useState(null);
   const { setFinalJumperData, finalJumperData } = useContext(FinalJumperDataContext);
 
   const handleInput = (event) => {
@@ -20,20 +19,12 @@ const PickShape = ({ setToggleComponent }) => {
   const handleClickPickDifferentUnit = () => setToggleComponent("pick-unit");
 
   const submitJumperShape = () => {
-    const { jumperShape } = finalJumperData;
-
-    if (!jumperShape || !necklineShape) {
-      setErrorMessage("You must pick a jumper and neckline shape");
-      return;
-    }
-
-    setToggleComponent("pick-fit");
+    setToggleComponent("pick-neckline-shape");
   };
 
   return (
     <div className="jumper-selection-form-section">
       <div className="jumper-selection-form-buttons-collection">
-        <h3>Pick a Jumper Shape</h3>
         {jumperShapes.map(({ value, label }) => (
           <button
             key={value}
@@ -49,7 +40,6 @@ const PickShape = ({ setToggleComponent }) => {
             {label}
           </button>
         ))}
-         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
       
       <NavigationArrows handleClickLeftArrow={handleClickPickDifferentUnit} handleClickRightArrow={submitJumperShape} />
