@@ -6,22 +6,22 @@ import NavigationArrows from "./NavigationArrows";
 
 const PickUnit = ({ setToggleComponent }) => {
   const [errorMessage, setErrorMessage] = useState(null);
-  const [selectedUnit, setSelectedUnit] = useState(null);
-  const { setFinalJumperData } = useContext(FinalJumperDataContext);
+  const { setFinalJumperData, finalJumperData } = useContext(FinalJumperDataContext);
 
   const handleInput = (event) => {
     const { value } = event.target;
-    setSelectedUnit(value);
+    setFinalJumperData({ selectedUnit: value });
   };
 
   const submitUnit = () => {
+    const { selectedUnit } = finalJumperData;
+
     if (!selectedUnit) {
       setErrorMessage("You must pick a unit");
       return;
     }
 
-    setFinalJumperData({ selectedUnit });
-    setToggleComponent("pick-shape");
+    setToggleComponent("pick-jumper-shape");
   };
 
   const units = ["centimetres", "inches"];
@@ -36,7 +36,7 @@ const PickUnit = ({ setToggleComponent }) => {
             onClick={handleInput}
             name="unit"
             className={
-              selectedUnit === unit
+              finalJumperData.selectedUnit === unit
                 ? "pick-jumper-button-selected"
                 : "pick-jumper-button"
             }

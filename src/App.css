@@ -24,7 +24,7 @@ body {
 
 .pageBackground {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 15% 70% 15%;
   min-height: 100%;
   background-color: #e3d9cf;
   color: rgb(73, 67, 62);

@@ -59,41 +59,26 @@ const EnterMeasurements = ({ setToggleComponent }) => {
   };
 
   const currentShape = finalJumperData.jumperShape;
-  const fields = shapeFields[currentShape]; 
+  const fields = shapeFields[currentShape];
   const formattedShapeName = formatShapeName(currentShape);
 
-  if (!currentShape) { 
-    return (<div className="jumper-selection-form-section"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
+  if (!currentShape) {
+    return (<div className="measurements-entry-tile"><h3>Pick a shape first.</h3><p>Different jumper shapes require different measurements - go back and pick a shape and then you will be able to enter your measurements.</p></div>)
   }
 
   return (
     <div className="jumper-selection-form-section">
-      <h3>{formattedShapeName}</h3>
-
-      {!currentShape}
-      {fields.map((field) => (
-        <InputMeasurement
-          key={field.name}
-          label={field.label}
-          name={field.name}
-          handleInput={handleInput}
-        />
-      ))}
-
-      <div className="buttons-section">
-        <button
-          className="pick-jumper-button"
-          id="pick-different-shape"
-          onClick={handleClickPickDifferentShape}
-        >
-          Pick different shape
-        </button>
-        <button className="main-button-style" onClick={handleSubmitData}>
-          Submit data
-        </button>
+      <div id="enter-measurements-section">
+        {!currentShape}
+        {fields.map((field) => (
+          <InputMeasurement
+            key={field.name}
+            label={field.label}
+            name={field.name}
+            handleInput={handleInput}
+          />
+        ))}
       </div>
-
-      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 };

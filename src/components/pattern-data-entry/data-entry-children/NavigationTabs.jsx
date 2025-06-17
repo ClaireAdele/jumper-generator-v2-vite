@@ -1,12 +1,35 @@
-import { useRef } from "react";
+const toggleOptions = [
+    {
+        toggleOption: "pick-unit",
+        buttonText: "Unit"
+    },
+    {
+        toggleOption: "pick-jumper-shape",
+        buttonText: "Contruction"
+    },
+    {
+        toggleOption: "pick-neckline-shape",
+        buttonText: "Neckline"
+    },
+    {
+        toggleOption: "pick-fit",
+        buttonText: "Desired Fit"
+    },
+    {
+        toggleOption: "measurements-entry",
+        buttonText: "Enter Measurements"
+    },
+    {
+        toggleOption: "review-data",
+        buttonText: "Review Selection"
+    }
+];
 
 const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
-    const tabref = useRef();
     
     const handleClickTab = (event) => {
         const selectedTab = event.target.name;
-        tabref.current = event.target
-        tabref.current.scrollIntoView({
+        event.target.scrollIntoView({
             behavior: "smooth",
             inline: "center",
             block: "nearest",
@@ -18,35 +41,11 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
         return toggleComponent === toggledComponent;
     }
 
-    const toggleOptions = [
-        {
-            toggleOption: "pick-unit",
-            buttonText: "Pick Unit"
-        },
-        {
-            toggleOption: "pick-shape",
-            buttonText: "Pick Shape"
-        },
-        {
-            toggleOption: "pick-fit",
-            buttonText: "Pick Desired Fit"
-        },
-        {
-            toggleOption: "measurements-entry",
-            buttonText: "Enter Measurements"
-        },
-        {
-            toggleOption: "review-data",
-            buttonText: "Review Selection"
-        }
-    ];
-
-
     return (
         <nav aria-label="jumper-data-form-navigation-tabs" id="jumper-data-form-navigation-tabs">
             <div role="tablist">
                 {toggleOptions.map(({toggleOption, buttonText}) => { 
-                    return <button key={toggleOption} ref={tabref} role="tab" aria-selected={checkIfButtonIsSelected(toggleOption)} onClick={handleClickTab} name={toggleOption} className={checkIfButtonIsSelected(toggleOption) ? "selected-nav-tab" : "nav-tab" }>{buttonText}</button>
+                    return <button key={toggleOption} role="tab" aria-selected={checkIfButtonIsSelected(toggleOption)} onClick={handleClickTab} name={toggleOption} className={checkIfButtonIsSelected(toggleOption) ? "selected-nav-tab" : "nav-tab" }>{buttonText}</button>
                 })}
             </div>
         </nav>

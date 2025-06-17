@@ -2,6 +2,11 @@ import React, { useContext, useState } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";import NavigationArrows from "./NavigationArrows";
 ;
 
+const jumperShapes = [
+  { value: "top-down-raglan", label: "Top-down Raglan Jumper" },
+  { value: "drop-shoulder", label: "Drop-shoulder Seamed Jumper" },
+  { value: "bottom-up", label: "Bottom-up Raglan Jumper" },
+];
 
 const PickShape = ({ setToggleComponent }) => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -14,8 +19,8 @@ const PickShape = ({ setToggleComponent }) => {
 
   const handleClickPickDifferentUnit = () => setToggleComponent("pick-unit");
 
-  const submitJumperAndNeckShape = () => {
-    const { jumperShape, necklineShape } = finalJumperData;
+  const submitJumperShape = () => {
+    const { jumperShape } = finalJumperData;
 
     if (!jumperShape || !necklineShape) {
       setErrorMessage("You must pick a jumper and neckline shape");
@@ -24,19 +29,6 @@ const PickShape = ({ setToggleComponent }) => {
 
     setToggleComponent("pick-fit");
   };
-
-  // Configurations for buttons
-  const jumperShapes = [
-    { value: "top-down-raglan", label: "Top-down Raglan Jumper" },
-    { value: "drop-shoulder", label: "Drop-shoulder Seamed Jumper" },
-    { value: "bottom-up", label: "Bottom-up Raglan Jumper" },
-  ];
-  const necklineShapes = [
-    { value: "folded-neckline", label: "Folded Round Neckline" },
-    { value: "v-shape", label: "V-Shape Neckline" },
-    { value: "boat-neck", label: "Boat Neckline" },
-    { value: "round-neck", label: "Round Neckline" },
-  ];
 
   return (
     <div className="jumper-selection-form-section">
@@ -57,29 +49,10 @@ const PickShape = ({ setToggleComponent }) => {
             {label}
           </button>
         ))}
-
-
-        <h3>Pick a Neckline Shape</h3>
-        {necklineShapes.map(({ value, label }) => (
-          <button
-            key={value}
-            value={value}
-            onClick={handleInput}
-            name="necklineShape"
-            className={
-              finalJumperData.necklineShape === value
-                ? "pick-jumper-button-selected"
-                : "pick-jumper-button"
-            }
-          >
-            {label}
-          </button>
-        ))}
+         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
       
-      <NavigationArrows handleClickLeftArrow={handleClickPickDifferentUnit} handleClickRightArrow={submitJumperAndNeckShape} />
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <NavigationArrows handleClickLeftArrow={handleClickPickDifferentUnit} handleClickRightArrow={submitJumperShape} />
     </div>
   );
 };
