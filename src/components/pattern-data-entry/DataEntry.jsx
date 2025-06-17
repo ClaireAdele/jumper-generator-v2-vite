@@ -19,7 +19,7 @@ const DataEntry = () => {
           <div id="data-entry-page">
             <div id="data-entry-container">
               <div id="data-entry-form-and-nav-container" ref={parentDivCanvasRef}>
-            <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
+                <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
                 <MeasurementsEntry toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
               </div>
               <JumperSelectionCanvas toggleComponent={toggleComponent} parentDivCanvasRef={parentDivCanvasRef} />

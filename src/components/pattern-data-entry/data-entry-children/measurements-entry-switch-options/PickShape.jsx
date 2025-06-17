@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";;
+import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";import NavigationArrows from "./NavigationArrows";
+;
 
 
 const PickShape = ({ setToggleComponent }) => {
@@ -39,8 +40,9 @@ const PickShape = ({ setToggleComponent }) => {
 
   return (
     <div className="jumper-selection-form-section">
-      <h3>Pick a Jumper Shape</h3>
-      {jumperShapes.map(({ value, label }) => (
+      <div className="jumper-selection-form-buttons-collection">
+        <h3>Pick a Jumper Shape</h3>
+        {jumperShapes.map(({ value, label }) => (
           <button
             key={value}
             value={value}
@@ -54,10 +56,11 @@ const PickShape = ({ setToggleComponent }) => {
           >
             {label}
           </button>
-      ))}
+        ))}
 
-      <h3>Pick a Neckline Shape</h3>
-      {necklineShapes.map(({ value, label }) => (
+
+        <h3>Pick a Neckline Shape</h3>
+        {necklineShapes.map(({ value, label }) => (
           <button
             key={value}
             value={value}
@@ -71,18 +74,10 @@ const PickShape = ({ setToggleComponent }) => {
           >
             {label}
           </button>
-      ))}
-
-      <button className="main-button-style" onClick={handleClickPickDifferentUnit}>Pick a different unit</button>
-
-      {finalJumperData.necklineShape && finalJumperData.jumperShape && (
-        <button
-          className="main-button-style"
-          onClick={submitJumperAndNeckShape}
-        >
-          Validate Selection
-        </button>
-      )}
+        ))}
+      </div>
+      
+      <NavigationArrows handleClickLeftArrow={handleClickPickDifferentUnit} handleClickRightArrow={submitJumperAndNeckShape} />
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

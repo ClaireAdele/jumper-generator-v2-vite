@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
 import PickFitButton from "./PickFitButton";
+import NavigationArrows from "./NavigationArrows";
 import "../../../../App.css";
 import "../../DataEntry.css";
 
@@ -32,6 +33,7 @@ const PickFit = () => {
 
   return (
     <div className="jumper-selection-form-section">
+      <div className="jumper-selection-form-buttons-collection">
       <h4>Pick a standard amount of ease:</h4>
         {easeAmountOptions.map((easeAmountOption) => {
           return (
@@ -46,6 +48,8 @@ const PickFit = () => {
         })}
       <h4>Or add a custom amount:</h4>
       <input type="number" className="fit-and-measurements-input" onChange={handleEaseInput}></input>
+      </div>
+      <NavigationArrows handleClickLeftArrow={handleClickPickDifferentUnit} handleClickRightArrow={submitJumperAndNeckShape} />
     </div>
   );
 };

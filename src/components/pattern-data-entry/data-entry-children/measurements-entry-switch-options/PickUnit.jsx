@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
 import rightArrow from "../../data-entry-assets/right-arrow.svg";
+import NavigationArrows from "./NavigationArrows";
 
 
 const PickUnit = ({ setToggleComponent }) => {
@@ -27,6 +28,7 @@ const PickUnit = ({ setToggleComponent }) => {
 
   return (
     <div className="jumper-selection-form-section">
+      <div className="jumper-selection-form-buttons-collection">
       {units.map((unit) => (
           <button
             key={unit}
@@ -42,15 +44,9 @@ const PickUnit = ({ setToggleComponent }) => {
             {unit.charAt(0).toUpperCase() + unit.slice(1)}
           </button>
       ))}
-      
-      {selectedUnit &&  (
-        <img
-          src={rightArrow}
-          onClick={submitUnit}
-          style={{ maxWidth: "10%" }}
-        >
-        </img>
-      )}
+      </div>
+
+      <NavigationArrows handleClickRightArrow={submitUnit}/>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
