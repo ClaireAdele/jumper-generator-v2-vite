@@ -37,7 +37,6 @@ const Profile = () => {
   
   const [measurementsList, setMeasurementsList] = useState(measurements);
   
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,12 +52,6 @@ const Profile = () => {
 
     verifyUserData();
   }, []);
-
-  useEffect(() => {
-    if (signedInUserData) {
-      setMeasurementsList(measurements);
-    }
-  }, [signedInUserData]);
 
   if (isLoading) {
     return (
