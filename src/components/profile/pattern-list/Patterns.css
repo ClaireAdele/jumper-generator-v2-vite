@@ -25,7 +25,7 @@
 
 
 .pattern-link {
-    background-color: #A2C685;
+    background-color: #42582fdc;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     text-align: center;
@@ -36,13 +36,13 @@
 }
 
 #create-new-pattern {
-    background-color: rgb(155, 114, 162) !important;
-}
-
-#create-new-pattern:hover {
     background-color: rgb(126, 70, 136) !important;
 }
 
+#create-new-pattern:hover {
+    background-color: rgb(110, 61, 119) !important;
+}
+
 .pattern-link:hover {
-    background-color: #75905f;
+    background-color: #42582f;
 }
