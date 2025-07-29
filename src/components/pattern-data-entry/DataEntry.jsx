@@ -24,7 +24,6 @@ const DataEntry = () => {
               </div>
               <JumperSelectionCanvas />
             </div>
-            <button className="main-button-style">Generate Pattern</button>
             <h2>How to take your measurements</h2>
             <HowToTakeMeasurements />
           </div>

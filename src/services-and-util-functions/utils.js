@@ -60,8 +60,6 @@ const checkAllFieldsSelected = (finalJumperData) => {
     const finalJumperDataFields = Object.keys(finalJumperData);
     const requiredFields = finalJumperNecessaryFields[shape];
 
-    console.log(finalJumperDataFields)
-
     for (const field of requiredFields) {
         console.log(field)
       if (!finalJumperDataFields.includes(field)) {
@@ -73,14 +71,13 @@ const checkAllFieldsSelected = (finalJumperData) => {
     return true;    
 }
 
-const formatShapeName = (currentShapeString) => {
-  const shapeMapping = {
-    "top-down-raglan": "Top-Down Raglan Jumper",
-    "drop-shoulder": "Drop-Shoulder Jumper",
-    "bottom-up": "Drop-Shoulder Jumper",
-  };
 
-  return shapeMapping[currentShapeString] || "Unknown Shape";
+const selectLabel = (shapeList, selectedShape, finalJumperData) => {
+  return shapeList.map((shape) => {
+    if (shape.value == finalJumperData[selectedShape]) {
+      return shape.label;
+    }
+  });
 };
 
-export { checkAllMeasurementsEntered, formatShapeName, checkAllFieldsSelected };
+export { checkAllMeasurementsEntered, checkAllFieldsSelected, selectLabel };

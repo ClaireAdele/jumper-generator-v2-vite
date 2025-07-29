@@ -9,7 +9,7 @@ const toggleOptions = [
     },
     {
         toggleOption: "pick-jumper-shape",
-        buttonText: "Contruction"
+        buttonText: "Construction"
     },
     {
         toggleOption: "pick-neckline-shape",
@@ -68,10 +68,5 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
         </nav>
     );
 };
-
-// {
-//     toggleOption: "review-data",
-//     buttonText: "Review Selection"
-// }
 
 export default NavigationTabs;

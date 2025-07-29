@@ -3,32 +3,7 @@ import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataCont
 import { checkAllMeasurementsEntered } from "../../../../services-and-util-functions/utils";
 import InputMeasurement from "./InputMeasurement";
 import NavigationArrows from "./NavigationArrows";
-
-  // Define shapes and corresponding fields
-  const shapeFields = {
-    "top-down-raglan": [
-      { label: "Knitting Gauge", name: "knittingGauge" },
-      { label: "Chest Circumference", name: "chestCircumference" },
-      { label: "Arm Length", name: "armLength" },
-      { label: "Body Length", name: "bodyLength" },
-    ],
-    "drop-shoulder": [
-      { label: "Knitting Gauge", name: "knittingGauge" },
-      { label: "Chest Circumference", name: "chestCircumference" },
-      { label: "Body Length", name: "bodyLength" },
-      { label: "Bottom of Neckline to Chest Line", name: "necklineToChest" },
-      { label: "Shoulder Width", name: "shoulderWidth" },
-      { label: "Arm Length", name: "armLength" },
-    ],
-    "bottom-up": [
-      { label: "Knitting Gauge", name: "knittingGauge" },
-      { label: "Chest Circumference", name: "chestCircumference" },
-      { label: "Body Length", name: "bodyLength" },
-      { label: "Bottom of Neckline to Chest Line", name: "necklineToChest" },
-      { label: "Shoulder Width", name: "shoulderWidth" },
-      { label: "Arm Length", name: "armLength" },
-    ],
-  };
+import { shapeFields } from "../utils/data_to_text_objects";
 
 const EnterMeasurements = ({ setToggleComponent }) => {
   const [errorMessage, setErrorMessage] = useState(null)
@@ -43,6 +18,7 @@ const EnterMeasurements = ({ setToggleComponent }) => {
     const { name, value } = event.target;
     setFinalJumperData((prevData) => ({ ...prevData, [name]: value }));
   };
+
 
   const handleSubmitData = () => {
     if (errorMessage)

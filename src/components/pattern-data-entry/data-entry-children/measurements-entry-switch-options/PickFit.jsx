@@ -2,15 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
 import PickFitButton from "./PickFitButton";
 import NavigationArrows from "./NavigationArrows";
+import { easeAmountOptions } from "../utils/data_to_text_objects";
 import "../../../../App.css";
 import "../../DataEntry.css";
 
-const easeAmountOptions = [
-  { ease: 0, text: "Fitted - 0 cm ease" },
-  { ease: 7, text: "Standard - 7 cm ease" },
-  { ease: 12, text: "Loose - 12cm ease" },
-  { ease: 20, text: "Oversized - 20cm ease" },
-];
 
 const PickFit = ({setToggleComponent}) => {
   const [easeAmount, setEaseAmount] = useState(null);
@@ -44,8 +39,6 @@ const PickFit = ({setToggleComponent}) => {
     setToggleComponent("measurements-entry")
   }
 
-  console.log(finalJumperData)
-
   return (
     <div className="jumper-selection-form-section">
       <div className="jumper-selection-form-buttons-collection">
@@ -53,7 +46,7 @@ const PickFit = ({setToggleComponent}) => {
         {easeAmountOptions.map((easeAmountOption) => {
           return (
             <PickFitButton
-              key={easeAmountOption.ease}
+              key={easeAmountOption.value}
               easeAmountOption={easeAmountOption}
               setEaseAmount={setEaseAmount}
               finalJumperData={finalJumperData}
