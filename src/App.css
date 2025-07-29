@@ -19,11 +19,12 @@ body {
 .App {
   height: 100%;
   margin: 0;
+  color: rgb(73, 67, 62);
 }
 
 .pageBackground {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 12.5% 75% 12.5%;
   min-height: 100%;
   background-color: #e3d9cf;
   color: rgb(73, 67, 62);
@@ -41,7 +42,7 @@ a {
 
 .main-button-style {
   background-color: #42582fdc;
-  padding: 1% 2% 1% 2%;
+  padding: 2% 3% 2% 3%;
   color: white;
   text-decoration: none;
   font-size: medium;

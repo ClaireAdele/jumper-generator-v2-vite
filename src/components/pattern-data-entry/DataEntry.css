@@ -1,28 +1,98 @@
-#data-entry-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 5%;
-    border: 2px solid red;
-    height: 50vh; 
-}
-
-#jumper-selection-canvas {
-    border: 2px solid purple;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
 #data-entry-page {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-#ease-selection-container {                                                           
+#data-entry-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 5%;
+    min-height: 70vh; 
+    margin-top: 5%;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+#data-entry-form-and-nav-container {
+    min-height: 60vh;
+}
+
+.jumper-selection-form-section {
+    grid-column: 1;
+    grid-row: 2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #d6d1d1;
+    margin-right: 5%;
+    display : grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100%;
+}
+
+.jumper-selection-form-buttons-collection {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    grid-row: 1;
     height: 100%;
+    margin-top: 5%;
+}
+
+.pick-jumper-button-selected {
+    text-align: left;
+    margin: 2% 5% 2% 5%;
+    padding: 2% 2% 2% 2%;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(126, 70, 136);
+    color: white;
+}
+
+.pick-jumper-button {
+    text-align: left;
+    margin: 2% 5% 2% 5%;
+    padding: 2% 2% 2% 2%;
+    border-radius: 8px;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+#jumper-data-form-navigation-tabs {
+    grid-column: 1;
+    grid-row: 1;
+    overflow: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+
+#jumper-data-form-navigation-tabs::-webkit-scrollbar {
+    display: none; 
+}
+
+.navigation-arrows-jumper-selection-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.arrow-imgs {
+    width: 2em;
+    margin-left: 4%;
+}
+
+#jumper-selection-canvas {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 70vh;
 }
 
 .data-collection-schema {
@@ -57,28 +127,25 @@
     margin-right: 5%;
 }
 
-.pick-jumper-button, .ease-selector-button {
+.selected-nav-tab {
     background-color: rgb(126, 70, 136);;
-    padding: 1% 2% 1% 2%;
+    padding: 3% 3% 3% 2%;
     color: white;
     text-decoration: none;
     border-radius: 12px;
     border: 0px;
-    margin-bottom: 1%;
+    font-size: medium;
 }
 
-.pick-jumper-button:hover, .ease-selector-button:hover {
-    background-color: rgb(126, 70, 136);
-}
-
-.pick-jumper-button-selected, .ease-selector-button-selected {
+.nav-tab {
     background-color: white;
-    border: 2px solid rgb(126, 70, 136);;
+    border: none;
     padding: 1% 2% 1% 2%;
     border-radius: 12px;
     color: rgb(126, 70, 136);
     text-decoration: none;
     margin-bottom: 1%;
+    font-size: medium;
 }
 
 .fit-and-measurements-input {
@@ -90,12 +157,25 @@
     align-self: center;
 }
 
+#enter-measurements-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .measurement-row {
     display: grid;
-    grid-template-columns: 70% 50%;
+    grid-template-columns: 60% 25% 15%;
     justify-items: left;
-    margin-left: 10%;
-    margin-right: 5%;
+    font-size: small;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    margin: 2% 0% 2% 0%;
+    padding-left: 5%;
+    color: black;
 }
 
 #pick-different-shape {
@@ -107,4 +187,31 @@
     margin-top: 5%;
     display: flex;
     justify-content: center;
+}
+
+.review-row {
+    display: grid;
+        grid-template-columns: 50% 50%;
+        justify-items: left;
+        font-size: small;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        margin-bottom: 2%;
+        margin: 2% 0% 2% 0%;
+        padding-left: 5%;
+        color: black;
+}
+
+#review-choices-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+}
+
+#generate-pattern-button {
+margin-top: auto;
+align-self: center;
 }

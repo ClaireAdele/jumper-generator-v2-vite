@@ -1,61 +1,44 @@
 import React, { useContext, useState } from "react";
 import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataContext";
+import rightArrow from "../../data-entry-assets/right-arrow.svg";
+import NavigationArrows from "./NavigationArrows";
 
 
 const PickUnit = ({ setToggleComponent }) => {
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [selectedUnit, setSelectedUnit] = useState(null);
-  const { setFinalJumperData } = useContext(FinalJumperDataContext);
+  const { setFinalJumperData, finalJumperData } = useContext(FinalJumperDataContext);
 
   const handleInput = (event) => {
     const { value } = event.target;
-    setSelectedUnit(value);
+    setFinalJumperData((prevData) => ({ ...prevData, selectedUnit: value }));
   };
 
   const submitUnit = () => {
-    if (!selectedUnit) {
-      setErrorMessage("You must pick a unit");
-      return;
-    }
-    console.log(selectedUnit)
-
-    setFinalJumperData({ selectedUnit });
-    console.log(FinalJumperDataContext)
-    setToggleComponent("pick-shape");
+    setToggleComponent("pick-jumper-shape");
   };
 
   const units = ["centimetres", "inches"];
 
   return (
-    <div id="pick-shape-container">
-      <h3>Pick Unit</h3>
+    <div className="jumper-selection-form-section">
+      <div className="jumper-selection-form-buttons-collection">
       {units.map((unit) => (
-        <div>
           <button
             key={unit}
             value={unit}
             onClick={handleInput}
             name="unit"
             className={
-              selectedUnit === unit
+              finalJumperData.selectedUnit === unit
                 ? "pick-jumper-button-selected"
                 : "pick-jumper-button"
             }
           >
             {unit.charAt(0).toUpperCase() + unit.slice(1)}
           </button>
-        </div>
       ))}
+      </div>
 
-      {selectedUnit &&  (
-        <button
-          className="main-button-style"
-          onClick={submitUnit}
-        >
-          Validate Selection
-        </button>
-      )}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <NavigationArrows handleClickRightArrow={submitUnit}/>
     </div>
   );
 };

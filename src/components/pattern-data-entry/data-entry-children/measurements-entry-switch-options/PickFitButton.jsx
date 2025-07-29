@@ -5,26 +5,24 @@ const PickFitButton = ({
   setFinalJumperData,
 }) => {
   const handleClick = () => {
-    setEaseAmount(easeAmountOption.ease);
+    setEaseAmount(easeAmountOption.value);
 
     const updatedFinalJumperData = finalJumperData;
-    updatedFinalJumperData.easeAmount = easeAmountOption.ease;
+    updatedFinalJumperData.easeAmount = easeAmountOption.value;
     setFinalJumperData(updatedFinalJumperData);
   };
 
   return (
-    <div>
       <button
         className={
-          finalJumperData.easeAmount === easeAmountOption.ease
-            ? "ease-selector-button-selected"
-            : "ease-selector-button"
+          finalJumperData.easeAmount === easeAmountOption.value
+            ? "pick-jumper-button-selected"
+            : "pick-jumper-button"
         }
         onClick={handleClick}
       >
-        {easeAmountOption.text}
+        {easeAmountOption.label}
       </button>
-    </div>
   );
 };
 

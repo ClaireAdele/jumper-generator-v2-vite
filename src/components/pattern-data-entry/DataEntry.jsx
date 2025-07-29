@@ -5,8 +5,12 @@ import MeasurementsEntry from "./data-entry-children/MeasurementsEntry";
 import HowToTakeMeasurements from "./data-entry-children/HowToTakeMeasurements";
 import JumperSelectionCanvas from "./data-entry-children/JumperSelectionCanvas";
 import { FinalJumperDataContextProvider } from "../../contexts/FinalJumperDataContext";
+import NavigationTabs from "./data-entry-children/NavigationTabs";
+import { useState, useRef } from "react";
 
 const DataEntry = () => {
+  const [toggleComponent, setToggleComponent] = useState("pick-unit");
+  const parentDivCanvasRef = useRef();
 
   return (
     <FinalJumperDataContextProvider value={{}}>
@@ -14,10 +18,12 @@ const DataEntry = () => {
         <div className="pageShaper">
           <div id="data-entry-page">
             <div id="data-entry-container">
-              <MeasurementsEntry />
+              <div id="data-entry-form-and-nav-container" >
+                <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
+                <MeasurementsEntry toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
+              </div>
               <JumperSelectionCanvas />
             </div>
-            <button className="main-button-style">Generate Pattern</button>
             <h2>How to take your measurements</h2>
             <HowToTakeMeasurements />
           </div>

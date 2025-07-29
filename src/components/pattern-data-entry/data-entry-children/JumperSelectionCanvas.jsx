@@ -51,7 +51,7 @@ const IMAGE_MAP = {
   },
 };
 
-const JumperSelectionCanvas = () => {
+const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
   const canvasRef = useRef();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [layers, setLayers] = useState([]);
@@ -66,6 +66,7 @@ const JumperSelectionCanvas = () => {
         });
       }
     };
+
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
@@ -77,6 +78,10 @@ const JumperSelectionCanvas = () => {
 
     if (!jumperShape && !necklineShape) {
       jumperShape = "top-down-raglan";
+      necklineShape = "round-neck";
+    } else if (!jumperShape) {
+      jumperShape = "top-down-raglan";
+    } else if (!necklineShape) {
       necklineShape = "round-neck";
     }
 
@@ -110,9 +115,10 @@ const JumperSelectionCanvas = () => {
       );
     }
 
-    setLayers(jumperImgLayers);
+      setLayers(jumperImgLayers);
   }, [finalJumperData, dimensions]);
 
+  
   return (
     <div ref={canvasRef} id="jumper-selection-canvas">
       <Stage width={dimensions.width} height={dimensions.height}>

@@ -6,7 +6,7 @@ const FinalJumperDataContext = createContext({
 });
 
 const FinalJumperDataContextProvider = ({ children }) => { 
-    const [finalJumperData, setFinalJumperData] = useState({});
+    const [finalJumperData, setFinalJumperData] = useState({selectedUnit: 'centimetres', easeAmount: 7, jumperShape: "top-down-raglan", necklineShape:"round-neck"});
 
     const contextValue = {
         finalJumperData,

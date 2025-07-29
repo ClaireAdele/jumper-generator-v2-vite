@@ -1,36 +1,83 @@
-const validateData = (finalJumperData, jumperData) => {
-    const keys = Object.keys(jumperData);
+const checkAllMeasurementsEntered = (finalJumperData, shapeFields) => {
+    const shape = finalJumperData.jumperShape;
+    const finalJumperDataFields = Object.keys(finalJumperData);
+    const requiredFields = shapeFields[shape];
 
-    if (!keys.includes("chestCircumference") || jumperData.chestCircumference === "")
+    if (!requiredFields) {
+        console.warn("Unknown shape type:", shape);
         return false;
-
-    if (!keys.includes("armLength") || jumperData.armLength === "")
-        return false;
-
-    if (!keys.includes("bodyLength") || jumperData.bodyLength === "")
-        return false;
-
-    if (finalJumperData.jumper === "top-down-raglan") { 
-        return true; 
     }
 
-    if (!keys.includes("necklineToChest") || jumperData.necklineToChest === "")
-        return false;
+    for (const field of requiredFields) {
+        if (!finalJumperDataFields.includes(field.name)) {
+            console.error(`Missing field: ${field.name}`);
+            return false;
+        }
+    }
 
-    if (!keys.includes("shoulderWidth") || jumperData.shoulderWidth === "")
-        return false;
-
-    return true; 
+    return true;
 };
 
-const formatShapeName = (currentShapeString) => {
-  const shapeMapping = {
-    "top-down-raglan": "Top-Down Raglan Jumper",
-    "drop-shoulder": "Drop-Shoulder Jumper",
-    "bottom-up": "Drop-Shoulder Jumper",
-  };
+const checkAllFieldsSelected = (finalJumperData) => {
+    const finalJumperNecessaryFields = {
+      "top-down-raglan": [
+        "knittingGauge",
+        "chestCircumference",
+        "armLength",
+        "bodyLength",
+        "selectedUnit",
+        "easeAmount",
+        "jumperShape",
+        "necklineShape",
+      ],
+      "drop-shoulder": [
+        "knittingGauge",
+        "chestCircumference",
+        "bodyLength",
+        "necklineToChest",
+        "shoulderWidth",
+        "armLength",
+        "selectedUnit",
+        "easeAmount",
+        "jumperShape",
+        "necklineShape",
+      ],
+      "bottom-up": [
+        "knittingGauge",
+        "chestCircumference",
+        "bodyLength",
+        "necklineToChest",
+        "shoulderWidth",
+        "armLength",
+        "selectedUnit",
+        "easeAmount",
+        "jumperShape",
+        "necklineShape",
+      ],
+    };
 
-  return shapeMapping[currentShapeString] || "Unknown Shape";
+    const shape = finalJumperData.jumperShape;
+    const finalJumperDataFields = Object.keys(finalJumperData);
+    const requiredFields = finalJumperNecessaryFields[shape];
+
+    for (const field of requiredFields) {
+        console.log(field)
+      if (!finalJumperDataFields.includes(field)) {
+        console.error(`Missing field: ${field.name}`);
+        return false;
+      }
+    }
+
+    return true;    
+}
+
+
+const selectLabel = (shapeList, selectedShape, finalJumperData) => {
+  return shapeList.map((shape) => {
+    if (shape.value == finalJumperData[selectedShape]) {
+      return shape.label;
+    }
+  });
 };
 
-export { validateData, formatShapeName };
+export { checkAllMeasurementsEntered, checkAllFieldsSelected, selectLabel };

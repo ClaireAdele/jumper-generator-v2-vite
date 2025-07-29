@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import PickShape from "./measurements-entry-switch-options/PickShape";
+import PickJumperShape from "./measurements-entry-switch-options/PickJumperShape";
+import PickNecklineShape from "./measurements-entry-switch-options/PickNecklineShape";
 import EnterMeasurements from "./measurements-entry-switch-options/EnterMeasurements";
 import ReviewData from "./measurements-entry-switch-options/ReviewData";
 import PickUnit from "./measurements-entry-switch-options/PickUnit";
 import PickFit from "./measurements-entry-switch-options/PickFit";
 
-const MeasurementsEntry = ({
+const MeasurementsEntry = ({ toggleComponent, setToggleComponent
 }) => {
-  const [toggleComponent, setToggleComponent] = useState("pick-unit");
 
    if (toggleComponent === "pick-unit") {
      return <PickUnit setToggleComponent={setToggleComponent} />;
    }
 
-  if (toggleComponent === "pick-shape") {
-    return <PickShape setToggleComponent={setToggleComponent} />;
+  if (toggleComponent === "pick-jumper-shape") {
+    return <PickJumperShape setToggleComponent={setToggleComponent} />;
+  }
+
+  if (toggleComponent === "pick-neckline-shape") {
+    return <PickNecklineShape setToggleComponent={setToggleComponent} />;
   }
 
   if (toggleComponent === "pick-fit") {
