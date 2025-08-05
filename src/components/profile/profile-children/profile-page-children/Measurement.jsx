@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { SignedInUserContext, SignedInUserContextProvider } from "../../../../contexts/SignedInUserContext";
 
 const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUserData }) => {
-  const [preferredUnit, setPreferredUnit] = useState("cm");
+  const [preferredUnit, setPreferredUnit] = useState("centimetres");
   const { signedInUserData, setSignedInUserData } = useContext(
        SignedInUserContext
      );
@@ -22,23 +22,23 @@ const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUs
 
   return isUserEditing ? (
     <div className="profile-row">
-      <p id="profile-label">
+      <p className="profile-label">
         <b>{measurement.label}</b>
       </p>
-      <input
+      <div className="profile-input-and-value"><input
         onChange={handleChangeUserMeasurement}
         name={measurement.label}
         type="number"
         className="fit-and-measurements-input"
       />
-      <p>{preferredUnit}</p>
+      <p>{preferredUnit}</p></div>
     </div>
   ) : (
     <div className="profile-row">
-      <p id="profile-label">
+      <p className="profile-label">
         <b>{measurement.label}</b>
       </p>
-      <p id="profile-value">{measurement.value + " " + preferredUnit}</p>
+      <p className="profile-value">{measurement.value + " " + preferredUnit}</p>
     </div>
   );
 };
