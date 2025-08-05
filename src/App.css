@@ -40,7 +40,7 @@ a {
 }
 
 .main-button-style {
-  background-color: #42582fdc;
+  background-color: #42582f;
   padding: 1% 2% 1% 2%;
   color: white;
   text-decoration: none;
@@ -50,7 +50,7 @@ a {
 }
 
 .main-button-style:hover {
-  background-color: #42582f;
+  background-color: #2e3d21;
 }
 
 .secondary-button-style {

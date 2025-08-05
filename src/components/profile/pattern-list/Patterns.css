@@ -25,7 +25,7 @@
 
 
 .pattern-link {
-    background-color: #42582fdc;
+    background-color: #42582f;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     text-align: center;
@@ -44,5 +44,5 @@
 }
 
 .pattern-link:hover {
-    background-color: #42582f;
+    background-color: #2e3d21;
 }

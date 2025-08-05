@@ -96,7 +96,7 @@
 }
 
 .data-collection-schema {
-    max-width: 35%;
+    max-width: 40%;
     border-radius: 10px
 }
 
@@ -104,6 +104,8 @@
     display: flex;
     margin-bottom: 2%;
     flex-direction: column;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .instructions-card-left,
