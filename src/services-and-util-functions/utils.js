@@ -61,7 +61,6 @@ const checkAllFieldsSelected = (finalJumperData) => {
     const requiredFields = finalJumperNecessaryFields[shape];
 
     for (const field of requiredFields) {
-        console.log(field)
       if (!finalJumperDataFields.includes(field)) {
         console.error(`Missing field: ${field.name}`);
         return false;
