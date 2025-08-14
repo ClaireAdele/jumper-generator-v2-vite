@@ -14,14 +14,10 @@ const DataEntry = () => {
   const [toggleComponent, setToggleComponent] = useState("pick-unit");
   const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
 
-  //TODO: add some kind of user data check - if there is a token valid, I will refresh the user data that's in the contex at this point.
-  //This is someplace where the user might press refresh and that would mess me up, so it's where context needs refreshing
-
   useEffect(() => { 
     const isUserLoggedIn = async () => {
       try {
         const signedInUser = await getSignedInUserData();
-        console.log(signedInUser)
         setSignedInUserData(signedInUser);
       } catch (error) { 
         console.log(error)

@@ -6,12 +6,12 @@ const SignedInUserContext = createContext({
 });
 
 const SignedInUserContextProvider = ({ children }) => {
-    const [signedInUserData, setSignedInUserData] = useState({});
+  const [signedInUserData, setSignedInUserData] = useState({});
     
-    const contextValue = {
-      signedInUserData,
-      setSignedInUserData,
-    };
+  const contextValue = {
+    signedInUserData,
+    setSignedInUserData,
+  };
 
   return (
     <SignedInUserContext.Provider value={contextValue}>

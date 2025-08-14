@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: < DataEntry />
   },
   {
-    path: "/yoke-pattern",
+    path: "/yoke-pattern/:pattern_id",
     element:< YokeJumperPattern />
   },
   {

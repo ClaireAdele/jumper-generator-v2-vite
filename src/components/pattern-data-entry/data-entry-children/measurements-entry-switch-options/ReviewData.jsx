@@ -32,12 +32,16 @@ const ReviewData = ({ setToggleComponent }) => {
      };
 
     const handleGeneratePattern = async (event) => {
-        event.preventDefault();
-
         //By that point, the data has been validated throughout the form and should be correct.
-        const generatedPattern = await postPattern(finalJumperData);
-        navigate("/yoke-pattern");
-    }
+        //TODO - implement the scenario where the user is not logged in.
+        try {
+            const generatedPattern = await postPattern(finalJumperData);
+            navigate(`/yoke-pattern/${generatedPattern.pattern._id}`);
+        } catch (error) {
+            //TODO - decide what to do if something goes wrong
+            console.log(error);
+        }
+    };
 
     const selectedJumperShape = selectLabel(jumperShapes, "jumperShape", finalJumperData);
     const selectedNecklineShape = selectLabel(necklineShapes, "necklineShape", finalJumperData);

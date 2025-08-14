@@ -14,7 +14,7 @@ const postPattern = async (finalJumperData) => {
 
         const data = await res.json();
 
-        return "This is all good"
+        return data;
 
     } catch (error) {
         throw error; 
