@@ -4,7 +4,7 @@ import { FinalJumperDataContext } from "../../../../contexts/FinalJumperDataCont
 import { SignedInUserContext } from "../../../../contexts/SignedInUserContext";
 import NavigationArrows from "./NavigationArrows";
 import { jumperShapes, easeAmountOptions, necklineShapes } from "../utils/data_to_text_objects";
-import { selectLabel } from "../../../../services-and-util-functions/utils";
+import { selectLabel, writeToSessionData } from "../../../../services-and-util-functions/utils";
 import { postPattern } from "../../../../services-and-util-functions/patterns-services";
 
 const ReviewData = ({ setToggleComponent }) => {
@@ -27,19 +27,27 @@ const ReviewData = ({ setToggleComponent }) => {
          //TODO: add validation for the pattername here
 
          const patternName = event.target.value;
-         console.log(patternName)
         setFinalJumperData((prevData) => ({ ...prevData, patternName }));
      };
 
     const handleGeneratePattern = async (event) => {
-        //By that point, the data has been validated throughout the form and should be correct.
-        //TODO - implement the scenario where the user is not logged in.
-        try {
-            const generatedPattern = await postPattern(finalJumperData);
-            navigate(`/yoke-pattern/${generatedPattern.pattern._id}`);
-        } catch (error) {
-            //TODO - decide what to do if something goes wrong
-            console.log(error);
+        if (signedInUserData.username) {
+            //If the user is logged in, save the pattern in the database and navigate to the pattern visualisation page 
+            //That page will get the pattern from the database based on its id
+            try {
+                //By that point, the data has been validated throughout the form and should be correct.
+                const generatedPattern = await postPattern(finalJumperData);
+                navigate(`/yoke-pattern/${generatedPattern.pattern._id}`);
+            } catch (error) {
+                //TODO - decide what to do if something goes wrong
+                console.log(error);
+            }
+            
+        } else {
+            //If the user is not logged in, navigate to the pattern page with the "unsaved-pattern" param.
+            //We save the data collected via the finalJumperContext in the session storage to avoid data loss if the user resfreshes the page
+            writeToSessionData(finalJumperData);
+            navigate("/yoke-pattern/unsaved-pattern");
         }
     };
 
@@ -77,7 +85,6 @@ const ReviewData = ({ setToggleComponent }) => {
                 <input onChange={handleEnterPatternName}></input>
                 </div>
             }
-            
         
             <button className="main-button-style" id="generate-pattern-button" onClick={handleGeneratePattern}>Generate pattern</button>
         </div>

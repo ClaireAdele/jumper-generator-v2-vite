@@ -20,7 +20,8 @@ const DataEntry = () => {
         const signedInUser = await getSignedInUserData();
         setSignedInUserData(signedInUser);
       } catch (error) { 
-        console.log(error)
+        //The user is not logged in, just making sure there's not data left over from expired sessions
+        setSignedInUserData(null);
       }
     };
 
