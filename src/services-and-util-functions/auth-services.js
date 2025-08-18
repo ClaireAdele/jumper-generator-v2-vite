@@ -1,5 +1,4 @@
 const signUpUser = async (username, email, password) => {
-
     try {
         const requestBody = { username, email, password };
 

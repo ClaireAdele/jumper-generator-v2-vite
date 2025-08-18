@@ -2,8 +2,26 @@ import "../../../App.css";
 import "../pattern-list/Patterns.css";
 import PatternTile from "./PatternTile";
 import { Link } from "react-router-dom";
+import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+import { useContext, useState, useEffect } from "react";
+import { getPatternByUser } from "../../../services-and-util-functions/patterns-services";
 
 const PatternList = () => {
+    const { signedInUserData, setSignedInUserData } =
+      useContext(SignedInUserContext);
+  
+  const [patternList, setPatternList] = useState([]);
+  
+  useEffect(() => {
+    const fetchPatternData = async () => {
+      const { patterns } = await getPatternByUser();
+      console.log(patterns)
+      setPatternList(patterns);
+    }
+
+    fetchPatternData();
+  }, []);
+  
   return (
     <div id="pattern-list-container">
       <div className="pattern-tile">
@@ -11,9 +29,9 @@ const PatternList = () => {
           Create new pattern
         </Link>
       </div>
-      <PatternTile />
-      <PatternTile />
-      <PatternTile />
+      {patternList.map((pattern) => {
+        return <PatternTile patternName={pattern.patternName} patternId={pattern._id} />
+      })}
     </div>
   );
 };

@@ -16,7 +16,7 @@ const EnterMeasurements = ({ setToggleComponent }) => {
 
   const handleInput = (event) => {
     const { name, value } = event.target;
-    setFinalJumperData((prevData) => ({ ...prevData, [name]: value }));
+    setFinalJumperData((prevData) => ({ ...prevData, [name]: Number(value) }));
   };
 
 

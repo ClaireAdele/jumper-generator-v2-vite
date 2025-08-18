@@ -1,9 +1,12 @@
 const getSignedInUserData = async () => {
-  try {
     const res = await fetch("/api/users/me", {
       method: "GET",
       credentials: "include",
     });
+
+    if (res.status === 401) {
+      return null;
+    }
 
     if (!res.ok) {
       const errorData = await res.json();
@@ -13,9 +16,6 @@ const getSignedInUserData = async () => {
     const { signedInUser } = await res.json();
 
     return signedInUser;
-  } catch (error) {
-    throw error;
-  }
 };
 
 const editUserDetails = async (updatedUserDetails) => {
