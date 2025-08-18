@@ -1,5 +1,4 @@
 const postPattern = async (finalJumperData) => {
-    try {
         const res = await fetch("/api/patterns", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -15,10 +14,21 @@ const postPattern = async (finalJumperData) => {
         const data = await res.json();
 
         return data;
-
-    } catch (error) {
-        throw error; 
-    }
 };
 
-export { postPattern }
+const getPatternByUser = async () => {
+    const res = await fetch("/api/patterns/my-patterns");
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(
+        errorData.message || "Error when getting user patterns - try again"
+      );
+    }
+
+    const data = await res.json();
+
+    return data;
+}
+
+export { postPattern, getPatternByUser }

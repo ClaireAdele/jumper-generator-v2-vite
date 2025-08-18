@@ -16,9 +16,12 @@ const UserData = ({ measurementsList }) => {
 
   const handleClickApplyChanges = async () => {
     const user = await editUserDetails(updatedUserData);
+    console.log("user", user);
     setSignedInUserData(user)
     setIsUserEditing(false);
   }
+
+  console.log("update", signedInUserData);
 
   return isUserEditing ? (
     <div id="profile-info-style">

@@ -12,7 +12,7 @@ const Profile = () => {
   const { signedInUserData, setSignedInUserData } =
     useContext(SignedInUserContext);
   
-  const measurements = [
+  const measurementsList = [
     {
       label: "Chest Circumference",
       name: "chestCircumference",
@@ -34,15 +34,14 @@ const Profile = () => {
       value: signedInUserData.armLength || 0,
     },
   ]
-  
-  const [measurementsList, setMeasurementsList] = useState(measurements);
-  
+    
   const navigate = useNavigate();
 
   useEffect(() => {
     const verifyUserData = async () => {
       try {
         const signedInUser = await getSignedInUserData();
+        console.log(signedInUser);
         setSignedInUserData(signedInUser); //check user is authenticated
         setIsLoading(false);
       } catch {
