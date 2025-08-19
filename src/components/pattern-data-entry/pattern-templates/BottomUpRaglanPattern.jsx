@@ -1,6 +1,6 @@
 import "../../../App.css";
 
-const YokeJumperPattern = () => {
+const TopDownRaglanPattern = () => {
   return (
     <div className="pageBackground">
       <div className="pageShaper">
@@ -17,4 +17,4 @@ const YokeJumperPattern = () => {
   );
 };
 
-export default YokeJumperPattern;
+export default TopDownRaglanPattern;
