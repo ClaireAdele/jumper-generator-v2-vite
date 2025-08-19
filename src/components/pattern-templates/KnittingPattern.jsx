@@ -1,10 +1,10 @@
-import "../../../App.css";
+import "../../App.css";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { SignedInUserContext } from "../../../contexts/SignedInUserContext"
-import { getSignedInUserData } from "../../../services-and-util-functions/user-services";
-import { getPatternById } from "../../../services-and-util-functions/patterns-services";
-import { getPatternDataFromSessionStorage } from "../../../services-and-util-functions/utils";
+import { SignedInUserContext } from "../../contexts/SignedInUserContext"
+import { getSignedInUserData } from "../../services-and-util-functions/user-services";
+import { getPatternById } from "../../services-and-util-functions/patterns-services";
+import { getPatternDataFromSessionStorage } from "../../services-and-util-functions/utils";
 import TopDownRaglanPattern from "./TopDownRaglanPattern"
 import DropShoulderSeamedPattern from "./DropShoulderSeamedPattern";
 import BottomUpRaglanPattern from "./BottomUpRaglanPattern";

@@ -4,7 +4,7 @@ import Homepage from './components/homepage/Homepage';
 import Profile from './components/profile/Profile';
 import DataEntry from './components/pattern-data-entry/DataEntry';
 import { Routes, Route } from "react-router-dom";
-import KnittingPattern from './components/pattern-data-entry/pattern-templates/KnittingPattern';
+import KnittingPattern from './components/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
 import JumperSelectionCanvas from "./components/pattern-data-entry/data-entry-children/JumperSelectionCanvas";
 

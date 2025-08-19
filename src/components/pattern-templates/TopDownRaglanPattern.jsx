@@ -1,4 +1,3 @@
-import "../../../App.css";
 import Supplies from "./pattern-sections/Supplies"
 
 // const patternSections = [

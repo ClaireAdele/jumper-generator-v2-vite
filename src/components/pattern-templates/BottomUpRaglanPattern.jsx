@@ -1,6 +1,4 @@
-import "../../../App.css";
-
-const DropShoulderSeamedPattern = () => {
+const BottomUpRaglanPattern = () => {
   return (
     <div className="pageBackground">
       <div className="pageShaper">
@@ -17,4 +15,4 @@ const DropShoulderSeamedPattern = () => {
   );
 };
 
-export default DropShoulderSeamedPattern;
+export default BottomUpRaglanPattern;
