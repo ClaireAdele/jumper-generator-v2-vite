@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: < DataEntry />
   },
   {
-    path: "/knitting-pattern/:pattern_id",
+    path: "/knitting-pattern/:patternId",
     element:<KnittingPattern />
   },
   {

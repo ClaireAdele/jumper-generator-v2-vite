@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PatternTile = ({patternName, patternId}) => {
   return (
     <div className="pattern-tile">
-      <Link className="pattern-link" to={`/yoke-pattern/${patternId}`}>
+      <Link className="pattern-link" to={`/knitting-pattern/${patternId}`}>
         {patternName}
       </Link>
     </div>

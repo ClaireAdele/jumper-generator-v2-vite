@@ -68,10 +68,7 @@ const KnittingPattern = () => {
     const [patternData, setPatternData] = useState(getPatternDataFromSessionStorage);
 
     const { patternId } = useParams();
-
-    console.log(patternId);
-    console.log(patternData)
-
+    
     useEffect(() => {
         if (patternData) {
             return null;
@@ -85,19 +82,19 @@ const KnittingPattern = () => {
                     //TODO: user not signed-in but on saved pattern page -> decide what to do. 
                 }
             
-                const patternData = await getPatternById(patternId);
+                const { pattern } = await getPatternById(patternId);
+                console.log(pattern);
 
-                if (!patternData) {
+                if (!pattern) {
                     //TODO: can't get pattern data
                 }
-                setPatternData({ ...patternData });
+                setPatternData({ ...pattern });
             } catch (error) {
                 //TODO - decide what to do if there is an error with the above. 
             }
         };
         fetchData();
     }, []);
-
 
   return (
     <div className="pageBackground">
