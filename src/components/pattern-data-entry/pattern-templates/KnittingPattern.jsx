@@ -47,8 +47,7 @@ const finalJumperFields = {
 };
 
 const KnittingPattern = () => {
-    const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
-    const [patternData, setPatternData] = useState(() => {
+    const getPatternDataFromSessionStorage = () => {
         const pattern = {};
         const jumperShape = sessionStorage.getItem("jumperShape");
         
@@ -58,12 +57,15 @@ const KnittingPattern = () => {
 
         pattern.jumperShape = jumperShape;
 
-        finalJumperFields[jumperShape].map((field) => {
+        finalJumperFields[jumperShape].forEach((field) => {
             pattern[field] = sessionStorage.getItem(field)
         });
         console.log(pattern);
         return pattern;
-    });
+    }
+
+    const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
+    const [patternData, setPatternData] = useState(getPatternDataFromSessionStorage);
 
     const { patternId } = useParams();
 
@@ -74,7 +76,26 @@ const KnittingPattern = () => {
         if (patternData) {
             return null;
         }
-        
+
+        const fetchData = async () => {
+            try {
+                const userData = await getSignedInUserData();
+
+                if (!userData) {
+                    //TODO: user not signed-in but on saved pattern page -> decide what to do. 
+                }
+            
+                const patternData = await getPatternById(patternId);
+
+                if (!patternData) {
+                    //TODO: can't get pattern data
+                }
+                setPatternData({ ...patternData });
+            } catch (error) {
+                //TODO - decide what to do if there is an error with the above. 
+            }
+        };
+        fetchData();
     }, []);
 
 
