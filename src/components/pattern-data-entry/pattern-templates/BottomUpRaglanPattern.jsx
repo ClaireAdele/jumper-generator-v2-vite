@@ -1,6 +1,6 @@
 import "../../../App.css";
 
-const TopDownRaglanPattern = () => {
+const BottomUpRaglanPattern = () => {
   return (
     <div className="pageBackground">
       <div className="pageShaper">
@@ -17,4 +17,4 @@ const TopDownRaglanPattern = () => {
   );
 };
 
-export default TopDownRaglanPattern;
+export default BottomUpRaglanPattern;
