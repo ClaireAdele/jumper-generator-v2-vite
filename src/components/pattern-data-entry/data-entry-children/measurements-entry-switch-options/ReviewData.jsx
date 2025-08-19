@@ -13,6 +13,7 @@ const ReviewData = ({ setToggleComponent }) => {
     );
 
     const { signedInUserData } = useContext(SignedInUserContext);
+    console.log(signedInUserData)
     
     const navigate = useNavigate();
     
@@ -31,13 +32,13 @@ const ReviewData = ({ setToggleComponent }) => {
      };
 
     const handleGeneratePattern = async (event) => {
-        if (signedInUserData.username) {
+        if (signedInUserData) {
             //If the user is logged in, save the pattern in the database and navigate to the pattern visualisation page 
             //That page will get the pattern from the database based on its id
             try {
                 //By that point, the data has been validated throughout the form and should be correct.
                 const generatedPattern = await postPattern(finalJumperData);
-                navigate(`/yoke-pattern/${generatedPattern.pattern._id}`);
+                navigate(`/knitting-pattern/${generatedPattern.pattern._id}`);
             } catch (error) {
                 //TODO - decide what to do if something goes wrong
                 console.log(error);
@@ -47,7 +48,7 @@ const ReviewData = ({ setToggleComponent }) => {
             //If the user is not logged in, navigate to the pattern page with the "unsaved-pattern" param.
             //We save the data collected via the finalJumperContext in the session storage to avoid data loss if the user resfreshes the page
             writeToSessionData(finalJumperData);
-            navigate("/yoke-pattern/unsaved-pattern");
+            navigate("/knitting-pattern/unsaved-pattern");
         }
     };
 
@@ -79,7 +80,7 @@ const ReviewData = ({ setToggleComponent }) => {
                 <p>{unit.charAt(0).toUpperCase() + unit.slice(1)}</p>
             </div>
             
-            { signedInUserData.username &&
+            { signedInUserData &&
                 <div className="review-row">
                 <p><strong>Pattern name</strong></p>
                 <input onChange={handleEnterPatternName}></input>

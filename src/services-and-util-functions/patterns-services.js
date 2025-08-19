@@ -16,7 +16,7 @@ const postPattern = async (finalJumperData) => {
         return data;
 };
 
-const getPatternByUser = async () => {
+const getPatternsByUser = async () => {
     const res = await fetch("/api/patterns/my-patterns");
 
     if (!res.ok) {
@@ -31,4 +31,8 @@ const getPatternByUser = async () => {
     return data;
 }
 
-export { postPattern, getPatternByUser }
+const getPatternById = async (patternId) => {
+
+}
+
+export { postPattern, getPatternsByUser, getPatternById }

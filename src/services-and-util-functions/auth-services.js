@@ -20,7 +20,6 @@ const signUpUser = async (username, email, password) => {
 }
 
 const signInUser = async (email, password) => { 
-    try {
         const requestBody = { email, password };
 
         const res = await fetch("/api/authentication", {
@@ -35,9 +34,6 @@ const signInUser = async (email, password) => {
         }
 
         return await res.json();
-    } catch(error) { 
-        throw error;
-    }
 }
 
 
