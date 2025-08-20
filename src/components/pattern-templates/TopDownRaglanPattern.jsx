@@ -18,11 +18,7 @@ const patternSections = [
   { sectionTitle: "Knitting the Sleeves", markdown: knittingTheSleevesMarkdown }
 ];
 
-//I think that I will handle each section in markdown, then show it in my component. 
-//I will use react-markdown
-//I can probably load each file dynamically in the children component, for example pulling the "neckline" text
-//from the relevant markdown file when I load a future Neckline component. 
-
+//Each pattern section is being rendered from the sectionTitle, the markdown above and the pattern data. 
 const TopDownRaglanPattern = ({ patternData }) => {
   console.log(patternData)
   return (
