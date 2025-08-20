@@ -1,4 +1,5 @@
 import "../../App.css";
+import "./patternTemplates.css";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { SignedInUserContext } from "../../contexts/SignedInUserContext"

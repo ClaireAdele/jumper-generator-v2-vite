@@ -41,14 +41,16 @@ const Profile = () => {
     const verifyUserData = async () => {
       try {
         const signedInUser = await getSignedInUserData();
+        console.log(signedInUser)
 
-        if (!signedInUserData.username) {
+        if (!signedInUser.username) {
           //TODO - add more gracious error handling
           throw Error("Problem with user data - try login-in again")
         }
         setSignedInUserData(signedInUser); //check user is authenticated
         setIsLoading(false);
-      } catch {
+      } catch(error) {
+        console.log(error)
         navigate("/");
       };
     };

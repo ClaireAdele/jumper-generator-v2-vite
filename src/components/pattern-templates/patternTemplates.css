@@ -1,0 +1,38 @@
+.pattern-template-container {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.pattern-section {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 4%;
+    text-align: justify;
+    color: rgb(73, 67, 62);
+    margin-top: 2%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px 2px #9c938890;
+    background-color: #ffffff;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.pattern-section-title {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pattern-section-text {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pattern-section-text-wrapper {
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    max-height: 0;
+}
