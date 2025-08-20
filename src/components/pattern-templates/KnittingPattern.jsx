@@ -6,9 +6,9 @@ import { SignedInUserContext } from "../../contexts/SignedInUserContext"
 import { getSignedInUserData } from "../../services-and-util-functions/user-services";
 import { getPatternById } from "../../services-and-util-functions/patterns-services";
 import { getPatternDataFromSessionStorage } from "../../services-and-util-functions/utils";
-import TopDownRaglanPattern from "./TopDownRaglanPattern"
-import DropShoulderSeamedPattern from "./DropShoulderSeamedPattern";
-import BottomUpRaglanPattern from "./BottomUpRaglanPattern";
+import patterSectionsLibrary from "./pattern-sections-data/pattern-sections-library";
+
+import PatternTemplate from "./PatternTemplate";
 
 /*This component handles a few different scenarios: 
     1) The user is not logged in and is generating a pattern that will not be saved on the back-end:
@@ -26,15 +26,15 @@ import BottomUpRaglanPattern from "./BottomUpRaglanPattern";
 const KnittingPattern = () => {
     const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
     const [patternData, setPatternData] = useState(getPatternDataFromSessionStorage);
+    const [patternSections, setPatternSections] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    console.log(patternData);
 
     const { patternId } = useParams();
 
     useEffect(() => {
         if (patternData) {
             setIsLoading(false);
+            setPatternSections(patterSectionsLibrary[patternData.jumperShape]);
             return;
         }
 
@@ -55,6 +55,7 @@ const KnittingPattern = () => {
                     //TODO: can't get pattern data
                 }
                 setPatternData({ ...pattern });
+                setPatternSections(patterSectionsLibrary[pattern.jumperShape]);
                 setIsLoading(false);
             } catch (error) {
                 console.log(error)
@@ -82,23 +83,10 @@ const KnittingPattern = () => {
             </div>
         )
     }
-
-    switch (patternData.jumperShape) {
-        case "top-down-raglan":
-            return <TopDownRaglanPattern patternData={patternData} id="top-down-raglan" />;
-        case "drop-shoulder":
-            return <DropShoulderSeamedPattern patternData={patternData} id="drop-shoulder" />;
-        case "bottom-up":
-            return <BottomUpRaglanPattern patternData={patternData} id="bottom-up" />;
-        default:
-            return (
-                <div className="pageBackground">
-                    <div className="pageShaper">
-                        <p>Unknown pattern type: {patternData.jumperShape}</p>
-                    </div>
-                </div>
-            );
-    }
+     
+    return (
+        <PatternTemplate patternData={patternData} id={patternData.jumperShape} patternSections={patternSections} />
+    );
 };
 
 export default KnittingPattern;
