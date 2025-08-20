@@ -1,0 +1,1 @@
+This section will explain how to do the raglan decreases + how to divide the sleeves. 

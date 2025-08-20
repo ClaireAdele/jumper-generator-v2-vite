@@ -1,0 +1,1 @@
+This section will give an overview of the pattern, including a schema with the finished dimensions. 

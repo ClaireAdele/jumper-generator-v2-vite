@@ -86,4 +86,58 @@ const writeToSessionData = (finalJumperData) => {
   });
 };
 
-export { checkAllMeasurementsEntered, checkAllFieldsSelected, selectLabel, writeToSessionData };
+const getPatternDataFromSessionStorage = () => {
+  const finalJumperFields = {
+    "top-down-raglan": [
+      "knittingGauge",
+      "chestCircumference",
+      "armLength",
+      "bodyLength",
+      "selectedUnit",
+      "easeAmount",
+      "jumperShape",
+      "necklineShape",
+    ],
+    "drop-shoulder": [
+      "knittingGauge",
+      "chestCircumference",
+      "bodyLength",
+      "necklineToChest",
+      "shoulderWidth",
+      "armLength",
+      "selectedUnit",
+      "easeAmount",
+      "jumperShape",
+      "necklineShape",
+    ],
+    "bottom-up": [
+      "knittingGauge",
+      "chestCircumference",
+      "bodyLength",
+      "necklineToChest",
+      "shoulderWidth",
+      "armLength",
+      "selectedUnit",
+      "easeAmount",
+      "jumperShape",
+      "necklineShape",
+    ],
+  };
+  
+  const pattern = {};
+  const jumperShape = sessionStorage.getItem("jumperShape");
+
+  if (!jumperShape) {
+    return null;
+  }
+
+  pattern.jumperShape = jumperShape;
+
+  finalJumperFields[jumperShape].forEach((field) => {
+    pattern[field] = sessionStorage.getItem(field);
+  });
+
+  return pattern;
+};
+
+export { checkAllMeasurementsEntered, checkAllFieldsSelected, selectLabel, writeToSessionData, getPatternDataFromSessionStorage };

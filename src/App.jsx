@@ -4,7 +4,7 @@ import Homepage from './components/homepage/Homepage';
 import Profile from './components/profile/Profile';
 import DataEntry from './components/pattern-data-entry/DataEntry';
 import { Routes, Route } from "react-router-dom";
-import YokeJumperPattern from './components/pattern-data-entry/pattern-templates/YokeJumperPattern';
+import KnittingPattern from './components/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
 import JumperSelectionCanvas from "./components/pattern-data-entry/data-entry-children/JumperSelectionCanvas";
 
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
     element: < DataEntry />
   },
   {
-    path: "/yoke-pattern/:pattern_id",
-    element:< YokeJumperPattern />
+    path: "/knitting-pattern/:patternId",
+    element:<KnittingPattern />
   },
   {
     path:"/canvas-test", element: <JumperSelectionCanvas />

@@ -1,0 +1,1 @@
+This section will explain how to knit the neckline shaping and collar. 

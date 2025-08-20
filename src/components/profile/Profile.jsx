@@ -16,22 +16,22 @@ const Profile = () => {
     {
       label: "Chest Circumference",
       name: "chestCircumference",
-      value: signedInUserData.chestCircumference || 0,
+      value: signedInUserData?.chestCircumference || 0,
     },
     {
       label: "Body Length",
       name: "bodyLength",
-      value: signedInUserData.bodyLength || 0,
+      value: signedInUserData?.bodyLength || 0,
     },
     {
       label: "Shoulder Width",
       name: "shoulderWidth",
-      value: signedInUserData.shoulderWidth || 0,
+      value: signedInUserData?.shoulderWidth || 0,
     },
     {
       label: "Arm Length",
       name: "armLength",
-      value: signedInUserData.armLength || 0,
+      value: signedInUserData?.armLength || 0,
     },
   ]
     
@@ -41,10 +41,16 @@ const Profile = () => {
     const verifyUserData = async () => {
       try {
         const signedInUser = await getSignedInUserData();
-        console.log(signedInUser);
+        console.log(signedInUser)
+
+        if (!signedInUser.username) {
+          //TODO - add more gracious error handling
+          throw Error("Problem with user data - try login-in again")
+        }
         setSignedInUserData(signedInUser); //check user is authenticated
         setIsLoading(false);
-      } catch {
+      } catch(error) {
+        console.log(error)
         navigate("/");
       };
     };

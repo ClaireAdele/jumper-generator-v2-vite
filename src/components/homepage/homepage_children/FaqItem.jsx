@@ -14,7 +14,7 @@ const FaqItem = ({ question, answer }) => {
       </div>
       <div
         ref={contentRef}
-        className={`faq-answer-wrapper ${isOpen ? "open" : ""}`}
+        className="faq-answer-wrapper"
         style={{
           maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px",
         }}

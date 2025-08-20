@@ -4,7 +4,7 @@ import PatternTile from "./PatternTile";
 import { Link } from "react-router-dom";
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
 import { useContext, useState, useEffect } from "react";
-import { getPatternByUser } from "../../../services-and-util-functions/patterns-services";
+import { getPatternsByUser } from "../../../services-and-util-functions/patterns-services";
 
 const PatternList = () => {
     const { signedInUserData, setSignedInUserData } =
@@ -14,7 +14,7 @@ const PatternList = () => {
   
   useEffect(() => {
     const fetchPatternData = async () => {
-      const { patterns } = await getPatternByUser();
+      const { patterns } = await getPatternsByUser();
       console.log(patterns)
       setPatternList(patterns);
     }
