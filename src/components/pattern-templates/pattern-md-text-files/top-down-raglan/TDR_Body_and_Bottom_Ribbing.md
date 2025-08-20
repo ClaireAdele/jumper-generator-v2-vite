@@ -1,0 +1,1 @@
+This section will explain how to knit the body of the jumper plus the bottom ribbing. 
