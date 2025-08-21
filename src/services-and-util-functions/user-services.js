@@ -21,7 +21,6 @@ const getSignedInUserData = async () => {
 const editUserDetails = async (updatedUserDetails) => {
   const reqBody = updatedUserDetails;
 
-  try {
     const res = await fetch("/api/users/me", {
       method: "PUT",
       credentials: "include",
@@ -38,9 +37,25 @@ const editUserDetails = async (updatedUserDetails) => {
 
     const data = await res.json();
     return data.updatedUser;
-  } catch (error) {
-    throw error;
-  }
 };
 
-export { getSignedInUserData, editUserDetails };
+const deleteUserData = async () => {
+  const res = await fetch("/api/users/me", {
+    method: "DELETE",
+    credentials: "include",
+  });
+  
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      errorData.message || "Could not delete user - try again"
+    );
+  }
+  
+  const data = await res.json();
+  console.log(data);
+
+  return true;
+};
+
+export { getSignedInUserData, editUserDetails, deleteUserData };

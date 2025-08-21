@@ -12,6 +12,26 @@
     box-shadow: 0px 0px 5px 1px #d6d1d1;
 }
 
+.edit-icon {
+    height: 4vh;
+    width: 3vw;
+}
+
+.edit-label {
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.6s ease, opacity 0.6s ease;
+}
+
+.edit-profile-button:hover .edit-label {
+    max-width: 150px;
+    /* adjust based on text length */
+    opacity: 1;
+}
+
 .profile-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -25,6 +45,20 @@
     padding-left: 5%;
     padding-right: 5%;
 }
+
+.edit-profile-button {           
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(126, 70, 136);
+    padding: 1% 2% 1% 2%;
+    color: white;
+    text-decoration: none;
+    font-size: medium;
+    border-radius: 12px;
+}
+
 
 .profile-label {
     grid-column: 1;

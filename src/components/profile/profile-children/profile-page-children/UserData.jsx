@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import Measurement from "./Measurement";
-import editSvgIcon from "../../profile-assets/pen-square-svgrepo-com.svg";
+import EditSvgIcon from "../../profile-assets/pen-square-svgrepo-com.svg?react";
+import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
 import { editUserDetails } from "../../../../services-and-util-functions/user-services";
 import { SignedInUserContext } from "../../../../contexts/SignedInUserContext";
 
@@ -20,8 +21,6 @@ const UserData = ({ measurementsList }) => {
     setSignedInUserData(user)
     setIsUserEditing(false);
   }
-
-  console.log("update", signedInUserData);
 
   return isUserEditing ? (
     <div id="profile-info-style">
@@ -49,6 +48,22 @@ const UserData = ({ measurementsList }) => {
     </div>
   ) : (
     <div id="profile-info-style">
+      <button
+        onClick={handleClickEditProfile}
+        className="edit-profile-button"
+        style={{ alignSelf: "flex-end", marginBottom: "1%", marginTop: "1%", marginRight: "2%" }}
+      >
+        <EditSvgIcon className="edit-icon"/>
+          <span className="edit-label" >Edit Profile</span>
+        </button>
+        <button
+        onClick={handleClickEditProfile}
+        className="edit-profile-button"
+        style={{ alignSelf: "flex-end", marginBottom: "1%", marginTop: "1%", marginRight: "2%", backgroundColor:"#A30000" }}
+      >
+        <BinSvgIcon className="edit-icon"/>
+          <span className="edit-label" >Delete Account</span>
+      </button>
       <div style={{ marginTop: "5%" }}>
         {measurementsList.map((measurement) => {
           return (
@@ -63,13 +78,6 @@ const UserData = ({ measurementsList }) => {
           );
         })}
       </div>
-      <button
-        onClick={handleClickEditProfile}
-        className="secondary-button-style"
-        style={{ alignSelf: "center", marginBottom: "3%", marginTop: "10%" }}
-      >
-        Edit Profile
-      </button>
     </div>
   );
 };
