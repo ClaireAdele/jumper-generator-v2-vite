@@ -38,11 +38,10 @@ body {
 a {
   text-decoration: none;
 }
+/*Styling buttons*/
 
 .main-button-style {
-  background-color: #42582f;
-  padding: 1% 2% 1% 2%;
-  color: white;
+  padding: 0.55em 0.55em 0.55em 0.55em;
   text-decoration: none;
   font-size: medium;
   border-radius: 12px;
@@ -50,21 +49,30 @@ a {
 }
 
 .main-button-style:hover {
+  cursor: pointer;
+}
+
+.button-style-green {
+  background-color: #42582f;
+  color: white;
+}
+
+.button-style-green:hover {
   background-color: #2e3d21;
 }
 
-.secondary-button-style {
+.button-style-purple {
   background-color: rgb(126, 70, 136);
-  padding: 1% 2% 1% 2%;
   color: white;
-  text-decoration: none;
-  font-size: medium;
-  border-radius: 12px;
-  border: 0px;
 }
 
-.secondary-button-style:hover {
+.button-style-purple:hover {
   background-color: rgb(110, 61, 119);
+}
+
+.button-style-red {
+  background-color: #A30000;
+  color: white;
 }
 
 input {
@@ -74,4 +82,29 @@ input {
 input:focus {
   outline: none;
   text-align: center;
+}
+
+.pop-up {
+  display: flex;
+  color: rgb(73, 67, 62);
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0px 0px 5px 1px #d6d1d1;
+  background-color: #ffffff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 2rem;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+.pop-up-overlay {
+  position: fixed;
+  inset: 0;
+  min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.84);
+  z-index: 1000;
 }

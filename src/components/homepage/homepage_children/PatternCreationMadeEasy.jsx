@@ -60,7 +60,7 @@ const PatternCreationMadeEasy = () => {
         </div>
 
         <Link
-          className="main-button-style"
+          className="main-button-style button-style-green"
           id="no-account-access-button"
           to="/data-entry"
         >

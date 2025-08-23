@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import KnittingPattern from './components/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
 import JumperSelectionCanvas from "./components/pattern-data-entry/data-entry-children/JumperSelectionCanvas";
+import DeleteProfilePopUp from './components/profile/profile-children/profile-page-children/DeleteProfilePopUp';
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   },
   {
     path:"/canvas-test", element: <JumperSelectionCanvas />
+  },
+  {
+    path: "test",
+    element:<DeleteProfilePopUp />
   }
 ]);
 

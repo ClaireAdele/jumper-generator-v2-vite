@@ -5,7 +5,7 @@ import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
 import { editUserDetails } from "../../../../services-and-util-functions/user-services";
 import { SignedInUserContext } from "../../../../contexts/SignedInUserContext";
 
-const UserData = ({ measurementsList }) => {
+const UserData = ({ measurementsList, setTogglePopUp }) => {
   const [isUserEditing, setIsUserEditing] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState({});
   const { signedInUserData, setSignedInUserData } =
@@ -15,6 +15,10 @@ const UserData = ({ measurementsList }) => {
     setIsUserEditing(true);
   };
 
+  const handleClickDeleteProfile = async () => {
+    setTogglePopUp(true);
+  }
+
   const handleClickApplyChanges = async () => {
     const user = await editUserDetails(updatedUserData);
     console.log("user", user);
@@ -22,48 +26,52 @@ const UserData = ({ measurementsList }) => {
     setIsUserEditing(false);
   }
 
-  return isUserEditing ? (
-    <div id="profile-info-style">
-      <div style={{ marginTop: "5%" }}>
-        {measurementsList.map((measurement) => {
-          return (
-            <Measurement
-              key={measurement.name}
-              measurement={measurement}
-              isUserEditing={isUserEditing}
-              setIsUserEditing={setIsUserEditing}
-              updatedUserData={updatedUserData}
-              setUpdatedUserData={setUpdatedUserData}
-            />
-          );
-        })}
+  if (isUserEditing) {
+    return (
+      <div id="profile-info-style">
+        <div style={{ marginTop: "5%" }}>
+          {measurementsList.map((measurement) => {
+            return (
+              <Measurement
+                key={measurement.name}
+                measurement={measurement}
+                isUserEditing={isUserEditing}
+                setIsUserEditing={setIsUserEditing}
+                updatedUserData={updatedUserData}
+                setUpdatedUserData={setUpdatedUserData}
+              />
+            );
+          })}
+        </div>
+        <button
+          onClick={handleClickApplyChanges}
+          className="main-button-style edit-profile-button  button-style-purple"
+        >
+          Apply Changes
+        </button>
       </div>
-      <button
-        onClick={handleClickApplyChanges}
-        className="secondary-button-style"
-        style={{ alignSelf: "center", marginBottom: "3%", marginTop: "10%" }}
-      >
-        Apply Changes
-      </button>
-    </div>
-  ) : (
+    );
+  } else {
+    return (
     <div id="profile-info-style">
-      <button
-        onClick={handleClickEditProfile}
-        className="edit-profile-button"
-        style={{ alignSelf: "flex-end", marginBottom: "1%", marginTop: "1%", marginRight: "2%" }}
-      >
-        <EditSvgIcon className="edit-icon"/>
+      <div id="edit-profile-button-section">
+        <button
+          onClick={handleClickEditProfile}
+          className="main-button-style edit-profile-button"
+          style={{ backgroundColor: "rgb(126, 70, 136)" }}
+        >
+          <EditSvgIcon className="edit-icon" />
           <span className="edit-label" >Edit Profile</span>
         </button>
         <button
-        onClick={handleClickEditProfile}
-        className="edit-profile-button"
-        style={{ alignSelf: "flex-end", marginBottom: "1%", marginTop: "1%", marginRight: "2%", backgroundColor:"#A30000" }}
-      >
-        <BinSvgIcon className="edit-icon"/>
+          onClick={handleClickDeleteProfile}
+          className="main-button-style edit-profile-button button-style-red"
+        >
+          <BinSvgIcon className="edit-icon" />
           <span className="edit-label" >Delete Account</span>
-      </button>
+        </button>
+      </div>
+      
       <div style={{ marginTop: "5%" }}>
         {measurementsList.map((measurement) => {
           return (
@@ -80,6 +88,7 @@ const UserData = ({ measurementsList }) => {
       </div>
     </div>
   );
+  }
 };
 
 export default UserData;

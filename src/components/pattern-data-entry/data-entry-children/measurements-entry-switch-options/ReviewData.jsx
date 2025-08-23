@@ -87,7 +87,7 @@ const ReviewData = ({ setToggleComponent }) => {
                 </div>
             }
         
-            <button className="main-button-style" id="generate-pattern-button" onClick={handleGeneratePattern}>Generate pattern</button>
+            <button className="main-button-style button-style-green" id="generate-pattern-button" onClick={handleGeneratePattern}>Generate pattern</button>
         </div>
         <NavigationArrows handleClickLeftArrow={handleClickAmendMeasurements}/>
     </div>);
