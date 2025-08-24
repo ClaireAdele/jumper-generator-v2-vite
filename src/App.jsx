@@ -26,13 +26,6 @@ const router = createBrowserRouter([
   {
     path: "/knitting-pattern/:patternId",
     element:<KnittingPattern />
-  },
-  {
-    path:"/canvas-test", element: <JumperSelectionCanvas />
-  },
-  {
-    path: "test",
-    element:<DeleteProfilePopUp />
   }
 ]);
 
