@@ -33,6 +33,7 @@ const DataEntry = () => {
       <div className="pageBackground">
         <div className="pageShaper">
           <div id="data-entry-page">
+            <h1>Generate your pattern</h1>
             <div id="data-entry-container">
               <div id="data-entry-form-and-nav-container" >
                 <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
