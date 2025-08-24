@@ -26,6 +26,7 @@ const ReviewData = ({ setToggleComponent }) => {
      const handleEnterPatternName = (event) => {
          event.preventDefault();
          //TODO: add validation for the pattername here
+         //it should be no longer than 50 char
 
          const patternName = event.target.value;
         setFinalJumperData((prevData) => ({ ...prevData, patternName }));
