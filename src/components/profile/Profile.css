@@ -1,9 +1,17 @@
+/*Styling of the profile page main structure*/
 #profile-page {
     display: flex;
     flex-direction: column;
     min-height: 100%;
 }
 
+#show-how-to-measurements {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+}
+
+/*Styling of the measurements list box*/
 #profile-info-style {
     margin: 5% 20% 5% 20%;
     display: flex;
@@ -26,6 +34,13 @@
     padding-right: 5%;
 }
 
+.profile-input-and-value {
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
 .profile-label {
     grid-column: 1;
 }
@@ -38,16 +53,67 @@
     grid-column: 2;
 }
 
-#show-how-to-measurements {
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 5%;
-}
-
-.profile-input-and-value {
-    grid-column: 2;
+/*Edit/Delete profile functionalities styling, buttons and pop-up*/
+#edit-profile-button-section {
     display: flex;
     justify-content: flex-end;
-    gap: 0.5rem;;
 }
 
+.edit-icon {
+    height: 1.25em;
+    width: 1.25em;
+}
+
+.edit-label {
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.6s ease, opacity 0.6s ease;
+}
+
+.edit-profile-button:hover .edit-label {
+    max-width: 150px;
+    /* adjust based on text length */
+    opacity: 1;
+    margin-left: 0.5em;
+}
+
+.edit-profile-button {           
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    align-self: flex-end;
+    margin-bottom: 1%; 
+    margin-top: 1%; 
+    margin-right: 2%;
+}
+
+#delete-profile-pop-up-icon {
+    height:30px;
+    width: 30px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 45%;
+    background-color: #A30000;
+}
+
+#delete-profile-pop-up-yes-delete {
+    background-color: #A30000;
+    padding: 1% 2% 1% 2%;
+    color: white;
+    text-decoration: none;
+    font-size: medium;
+    border-radius: 12px;
+    border: 0px;
+}
+
+#delete-profile-pop-up-no-cancel {
+    background-color: white;
+    padding: 1% 2% 1% 2%;
+    color: black;
+    text-decoration: none;
+    font-size: medium;
+    border-radius: 12px;
+}
