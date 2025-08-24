@@ -6,10 +6,10 @@
 
 #data-entry-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 55%;
     margin-bottom: 5%;
-    min-height: 70vh; 
-    margin-top: 5%;
+    min-height: 100vh; 
+    margin-top: 3%;
     margin-right: 3%;
     margin-left: 3%;
 }
@@ -92,7 +92,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
-    height: 70vh;
+    height: 90vh;
 }
 
 .data-collection-schema {
