@@ -1,11 +1,8 @@
 import dataCollectionSchema from "../data-entry-assets/sweater-6788998_1280.jpg";
 import { useRef, useState } from "react";
-import useInView from "../../../custom-hooks/useInView";
   
 const HowToTakeMeasurements = ({isVisible}) => {
   const measurementsTakingExplanationRef = useRef()
-
-  console.log(isVisible)
 
   return (
     <div ref={measurementsTakingExplanationRef} className="measurement-taking-explanation"
