@@ -6,6 +6,7 @@ import PatternList from "../pattern-list/PatternList";
 
 import React, { useState, useContext } from "react";
 import DeleteProfilePopUp from "./profile-page-children/DeleteProfilePopUp";
+import LogOutPopUp from "./profile-page-children/LogOutPopUp";
 import useInView from "../../../custom-hooks/useInView";
 
 const showHowToTakeMeasurementsButton = {
@@ -15,7 +16,8 @@ const showHowToTakeMeasurementsButton = {
 
 const ProfilePage = ({ measurementsList, username }) => {
   const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
-  const [togglePopUp, setTogglePopUp] = useState(false);
+  const [toggleDeletePopUp, setToggleDeletePopUp] = useState(false);
+  const [toggleLogOutPopUp, setToggleLogOutPopUp] = useState(false);
   const [profilePageTitleRef, isVisible] = useInView();
 
   const handleClickShowHowTo = () => {
@@ -31,7 +33,7 @@ const ProfilePage = ({ measurementsList, username }) => {
       <div className="pageShaper">
         <div id="profile-page">
           <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
-          <UserData measurementsList={measurementsList} setTogglePopUp={setTogglePopUp} />
+          <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
           <button
             className="main-button-style button-style-green"
             id="show-how-to-measurements"
@@ -41,7 +43,8 @@ const ProfilePage = ({ measurementsList, username }) => {
           </button>
           <HowToTakeMeasurements isVisible={showHowToTakeMeasurements} />
           <PatternList />
-          {togglePopUp && <DeleteProfilePopUp togglePopUp={togglePopUp} setTogglePopUp={setTogglePopUp} />}
+          {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
+          {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
         </div>
       </div>
     </div>

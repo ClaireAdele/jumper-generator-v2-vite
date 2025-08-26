@@ -101,29 +101,3 @@
     margin-right: 2%;
 }
 
-#delete-profile-pop-up-icon {
-    height:30px;
-    width: 30px;
-    padding: 10px 10px 10px 10px;
-    border-radius: 45%;
-    background-color: #A30000;
-}
-
-#delete-profile-pop-up-yes-delete {
-    background-color: #A30000;
-    padding: 1% 2% 1% 2%;
-    color: white;
-    text-decoration: none;
-    font-size: medium;
-    border-radius: 12px;
-    border: 0px;
-}
-
-#delete-profile-pop-up-no-cancel {
-    background-color: white;
-    padding: 1% 2% 1% 2%;
-    color: black;
-    text-decoration: none;
-    font-size: medium;
-    border-radius: 12px;
-}

@@ -1,27 +1,25 @@
-import { deleteUserData } from "../../../../services-and-util-functions/user-services";
-import { useState } from "react";
+import LogOutSvgIcon from "../../profile-assets/sign-out-svgrepo-com.svg?react";
+import { signOutUser } from "../../../../services-and-util-functions/auth-services";
 import { useNavigate } from "react-router-dom";
-import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
+import { useState } from "react";
 import useInView from "../../../../custom-hooks/useInView";
 
-const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
+const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
-    const [deleteProfilePopUpRef, isVisible] = useInView();
+    const [LogOutPopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
-
-    console.log(isVisible)
 
     const handleClickCancel = () => {
         setTogglePopUp(false);
     }
 
-    const handleClickDelete = async () => {
+    const handleClickLogOut = async () => {
         try {
-            await deleteUserData();
-            setSuccessMsg("User successfully deleted!")
+            await signOutUser();
+            setSuccessMsg("Successfully logged-out!")
         } catch (error) {
-            setErrorMsg("Account deletion failed, try again later");
+            setErrorMsg("Log-out failed, try again later!");
         }
     }
 
@@ -34,8 +32,8 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (errorMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`} >
-                    <BinSvgIcon className="pop-up-icon button-style-red" />
+                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`} >
+                    <LogOutSvgIcon className="pop-up-icon button-style-purple" />
                     <h3>{errorMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >Close</button>
@@ -48,8 +46,8 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (successMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                    <BinSvgIcon className="pop-up-icon button-style-red" />
+                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
+                    <LogOutSvgIcon className="pop-up-icon button-style-purple" />
                     <h3>{successMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickBackHomepage}>Go back to homepage</button>
@@ -61,16 +59,16 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
 
     return (
         <div className="pop-up-overlay">
-            <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                <BinSvgIcon className="pop-up-icon button-style-red" />
-                <h3>Are you sure you want to delete your account?</h3>
+            <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
+                <LogOutSvgIcon className="pop-up-icon button-style-purple" />
+                <h3>Are you sure you want to log-out?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>
-                    <button className="main-button-style button-style-red" onClick={handleClickDelete}>Yes, delete</button>
+                    <button className="main-button-style button-style-purple" onClick={handleClickLogOut}>Yes, log-out</button>
                 </div>
             </div>
         </div>
     );
-};
+}
 
-export default DeleteProfilePopUp;
+export default LogOutPopUp;

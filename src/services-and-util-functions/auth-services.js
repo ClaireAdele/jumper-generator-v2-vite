@@ -36,5 +36,19 @@ const signInUser = async (email, password) => {
         return await res.json();
 }
 
+const signOutUser = async () => {
+    const res = await fetch("/api/authentication/sign-out-user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+    });
 
-export { signUpUser, signInUser };
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Sign-out Failed - try again");
+    };
+
+    return await res.json();
+};
+
+
+export { signUpUser, signInUser, signOutUser };
