@@ -6,51 +6,46 @@ import PatternList from "../pattern-list/PatternList";
 
 import React, { useState, useContext } from "react";
 import DeleteProfilePopUp from "./profile-page-children/DeleteProfilePopUp";
+import useInView from "../../../custom-hooks/useInView";
+
+const showHowToTakeMeasurementsButton = {
+  "hide-measurements": "Hide How to Take Measurements",
+  "show-measurements": "Show How to Take Measurements"
+}
 
 const ProfilePage = ({ measurementsList, username }) => {
-  const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState(false);
+  const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
   const [togglePopUp, setTogglePopUp] = useState(false);
+  const [profilePageTitleRef, isVisible] = useInView();
 
-    const handleClickShowHowTo = () => {
-        if (showHowToTakeMeasurements === false) {
-            setShowHowtoTakeMeasurements(true);
-        } else {
-            setShowHowtoTakeMeasurements(false);
-        }
-    };
+  const handleClickShowHowTo = () => {
+    if (showHowToTakeMeasurements === "hide-measurements") {
+      setShowHowtoTakeMeasurements("show-measurements");
+    } else {
+      setShowHowtoTakeMeasurements("hide-measurements");
+    }
+  };
 
   return (
-      <div className="pageBackground">
-        <div className="pageShaper">
-          <div id="profile-page">
-            <h2 style={{ alignSelf: "center" }}>Welcome back, {username} !</h2>
-            <UserData measurementsList={measurementsList} setTogglePopUp={setTogglePopUp} />
-            {showHowToTakeMeasurements ? (
-              <>
-                <button
-                  className="main-button-style button-style-green"
-                  id="show-how-to-measurements"
-                  onClick={handleClickShowHowTo}
-                >
-                  Hide how to take measurements
-                </button>
-                <HowToTakeMeasurements />
-              </>
-            ) : (
-              <button
-                id="show-how-to-measurements"
-                className="main-button-style button-style-green"
-                onClick={handleClickShowHowTo}
-              >
-                Show how to take measurements
-              </button>
-            )}
-            <PatternList />
-            {togglePopUp && <DeleteProfilePopUp togglePopUp={togglePopUp} setTogglePopUp={setTogglePopUp} />}
-          </div>
+    <div className="pageBackground">
+      <div className="pageShaper">
+        <div id="profile-page">
+          <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
+          <UserData measurementsList={measurementsList} setTogglePopUp={setTogglePopUp} />
+          <button
+            className="main-button-style button-style-green"
+            id="show-how-to-measurements"
+            onClick={handleClickShowHowTo}
+          >
+            {showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}
+          </button>
+          <HowToTakeMeasurements isVisible={showHowToTakeMeasurements} />
+          <PatternList />
+          {togglePopUp && <DeleteProfilePopUp togglePopUp={togglePopUp} setTogglePopUp={setTogglePopUp} />}
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default ProfilePage;

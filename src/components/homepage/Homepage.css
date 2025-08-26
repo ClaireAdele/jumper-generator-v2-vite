@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-#imgContainer {
+.banner-img-container {
     height: 100vh;
     color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.074), rgba(0, 0, 0, 0.216)), url("./homepage_assets/yarn-2565067.jpg");
@@ -14,10 +14,18 @@
     flex-direction: row;
 }
 
-#websiteTitle {
+.banner-title {
+    opacity: 0;
     align-self: center;
     margin-left: 5%;
     font-size: 3.5em;
+    transform: translateX(40px);
+    transition: opacity 1.0s ease, transform 1.0s ease;
+}
+
+.banner-title.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #pattern-creation-container {
@@ -25,7 +33,12 @@
     background-color: white;
 }
 
-#pattern-creation {
+.columns-text {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pattern-creation {
     width: 67%;
     margin-left: 3%;
     margin-bottom: 3%;
@@ -33,6 +46,40 @@
     flex-direction: column;
     color: rgb(73, 67, 62);
 }
+
+.stagger-item {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.pattern-creation.visible +.auth-form {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s;
+}
+
+.pattern-creation.visible .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pattern-creation.visible .columns-text> :nth-child(1) {
+    transition-delay: 0s;
+}
+
+.pattern-creation.visible .columns-text> :nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.pattern-creation.visible .columns-text> :nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.pattern-creation.visible :nth-child(3) {
+    transition-delay: 0.9s;
+}
+
 
 .pattern-creation-card {
     display: flex;
@@ -47,11 +94,6 @@
 .svgImg {
     align-self: center;
     max-width: 40px;
-}
-
-#columns-text {
-    display: flex;
-    justify-content: space-around;
 }
 
 #no-account-access-button {
@@ -148,8 +190,8 @@
     padding-right: 5%;
 }
 
-#no-account-access-button {
-    text-align: center;
+.try-gen-with-no-account {
+    margin-top: 5%;
     align-self: center;
 }
 

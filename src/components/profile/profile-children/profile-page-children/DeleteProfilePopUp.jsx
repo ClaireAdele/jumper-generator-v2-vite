@@ -2,11 +2,15 @@ import { deleteUserData } from "../../../../services-and-util-functions/user-ser
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
+import useInView from "../../../../custom-hooks/useInView";
 
 const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
+    const [deleteProfilePopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
+
+    console.log(isVisible)
 
     const handleClickCancel = () => {
         setTogglePopUp(false);
@@ -30,7 +34,7 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (errorMsg) {
         return (
             <div className="pop-up-overlay">
-                <div className="pop-up">
+                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`} >
                     <BinSvgIcon id="delete-profile-pop-up-icon" />
                     <h3>{errorMsg}</h3>
                     <div>
@@ -44,7 +48,7 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (successMsg) {
         return (
             <div className="pop-up-overlay">
-                <div className="pop-up">
+                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
                     <BinSvgIcon id="delete-profile-pop-up-icon" />
                     <h3>{successMsg}</h3>
                     <div>
@@ -57,7 +61,7 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
 
     return (
         <div className="pop-up-overlay">
-            <div className="pop-up">
+            <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
                 <BinSvgIcon id="delete-profile-pop-up-icon" />
                 <h3>Are you sure you want to delete your account?</h3>
                 <div>
