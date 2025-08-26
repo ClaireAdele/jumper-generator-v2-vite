@@ -1,8 +1,18 @@
-import dataCollectionSchema from "../data-entry-assets/sweater-6788998_1280.jpg"
+import dataCollectionSchema from "../data-entry-assets/sweater-6788998_1280.jpg";
+import { useRef, useState } from "react";
+import useInView from "../../../custom-hooks/useInView";
   
-const HowToTakeMeasurements = () => {
+const HowToTakeMeasurements = ({isVisible}) => {
+  const measurementsTakingExplanationRef = useRef()
+
+  console.log(isVisible)
+
   return (
-    <div id="measurement-taking-explanation">
+    <div ref={measurementsTakingExplanationRef} className="measurement-taking-explanation"
+    style={{
+          maxHeight: isVisible === "hide-measurements" ? `${measurementsTakingExplanationRef.current?.scrollHeight}px` : "0px",
+      }}
+    >
       <div className="instructions-card-left">
         <img
           src={dataCollectionSchema}
