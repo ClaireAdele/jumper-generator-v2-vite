@@ -96,9 +96,16 @@ input:focus {
   top: 50%;
   left: 50%;
   padding: 2rem;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.9);
   z-index: 1000;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.pop-up.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .pop-up-overlay {
