@@ -34,8 +34,11 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (errorMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`} >
-                    <BinSvgIcon className="pop-up-icon button-style-red" />
+                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`} >
+                    <div className="pop-up-icon button-style-red">
+                        <BinSvgIcon className="pop-up-icon-inner" />
+                    </div>
+                    
                     <h3>{errorMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >Close</button>
@@ -48,8 +51,10 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     if (successMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                    <BinSvgIcon className="pop-up-icon button-style-red" />
+                <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+                    <div className="pop-up-icon button-style-red">
+                        <BinSvgIcon className="pop-up-icon-inner" />
+                    </div>
                     <h3>{successMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickBackHomepage}>Go back to homepage</button>
@@ -61,8 +66,10 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
 
     return (
         <div className="pop-up-overlay">
-            <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                <BinSvgIcon className="pop-up-icon button-style-red" />
+            <div ref={deleteProfilePopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+                <div className="pop-up-icon button-style-red">
+                    <BinSvgIcon className="pop-up-icon-inner"  />
+                </div>
                 <h3>Are you sure you want to delete your account?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>

@@ -31,14 +31,14 @@ const PatternList = () => {
   }, []);
   
   return (
-    <div id="pattern-list">
+    <div className="pattern-list">
       <h2 style={{marginBottom: "10%", marginTop: "5%"}}>Your Patterns:</h2>
-      <div id="pattern-list-container">
-        <div className="pattern-tile" onClick={handleClickCreateNewPattern} style={{ backgroundColor: "rgb(126, 70, 136)" }}>
+      <div className="pattern-list-container">
+        {/* <div className="pattern-tile" onClick={handleClickCreateNewPattern} style={{ backgroundColor: "rgb(126, 70, 136)" }}>
           <CreateNewPatternSvg className="pattern-tile-img" />
-        </div>
+        </div> */}
         {patternList.map((pattern) => {
-          return <PatternTile patternName={pattern.patternName} patternId={pattern._id} navigate={navigate} />
+          return <PatternTile pattern={pattern} navigate={navigate} />
         })}
       </div>
     </div>

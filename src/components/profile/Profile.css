@@ -12,7 +12,7 @@
 }
 
 /*Styling of the measurements list box*/
-#profile-info-style {
+.profile-info-style {
     margin: 5% 20% 5% 20%;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
 }
 
 /*Edit/Delete profile functionalities styling, buttons and pop-up*/
-#edit-profile-button-section {
+.edit-profile-button-section {
     display: flex;
     justify-content: flex-end;
 }

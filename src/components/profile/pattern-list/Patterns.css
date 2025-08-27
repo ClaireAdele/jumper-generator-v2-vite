@@ -1,26 +1,32 @@
-#pattern-list {
+.pattern-list {
     margin-left: 10%;
     margin-right: 10%;
 }
 
-#pattern-list-container {
+.pattern-list-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
     margin-bottom: 5%;
-    max-width: 100%;
+    width: 100%;
 }
 
 .pattern-tile {
-    aspect-ratio: 4 / 5;
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin-left: 1%;
-    margin-bottom: 5%; 
+    display: grid;
+    grid-template-columns: 35% 55% 9% 1%;
+    grid-template-rows: 25% 20% 45% 10%;
+    height: 40vh;
+    width: 100%;
+    margin-bottom: 2%;
     border-radius: 12px;
     box-shadow: 0px 0px 5px 1px #d6d1d1;
-    justify-content: center;
+    opacity: 0;
+    transform: translateY(4em);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.pattern-tile.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .pattern-tile:hover {
@@ -28,15 +34,11 @@
 }
 
 .pattern-tile-label {
-    padding: 7%;
+    grid-column: 2;
+    grid-row: 2;
     color: rgb(73, 67, 62);
-    margin-top: auto;
-    font-size: small;
-    height: 40%;
-        /* prevent overflow growth */
-        overflow: hidden;
-        /* cut off long text */
-        text-overflow: ellipsis;
+    font-size: medium;
+    align-self: start;
 }
 
 #create-new-pattern {
@@ -44,18 +46,34 @@
 }
 
 .pattern-tile-img {
+    grid-column: 1;
+    grid-row: 1/-1;
     border-radius: 12px;
-    width: 90%;
-    height: 50%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
+    height: 91%;
+    width: 91%;
+    object-fit: cover;
+    margin: 3%;
 }
 
-#create-new-pattern:hover {
-    background-color: rgb(110, 61, 119) !important;
+.pattern-tile-description {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    font-size: small;
 }
 
-.pattern-link:hover {
-    background-color: #2e3d21;
+.pattern-tile-description-row {
+    background-color: #f5f5f5;
+    font-size: small;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pattern-tile-button-section {
+    display: flex;
+    justify-content: flex-end;
+    grid-row: 1;
+    grid-column: 3/4;
+    align-self: flex-start;
+    margin-top: 5%;
 }

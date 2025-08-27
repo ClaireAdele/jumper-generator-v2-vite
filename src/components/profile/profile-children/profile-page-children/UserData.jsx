@@ -34,7 +34,7 @@ const UserData = ({ measurementsList, setToggleDeletePopUp, setToggleLogOutPopUp
 
   if (isUserEditing) {
     return (
-      <div id="profile-info-style">
+      <div className="profile-info-style">
         <div style={{ marginTop: "5%" }}>
           {measurementsList.map((measurement) => {
             return (
@@ -59,8 +59,8 @@ const UserData = ({ measurementsList, setToggleDeletePopUp, setToggleLogOutPopUp
     );
   } else {
     return (
-      <div id="profile-info-style">
-        <div id="edit-profile-button-section">
+      <div className="profile-info-style">
+        <div className="edit-profile-button-section">
           <button
             onClick={handleClickEditProfile}
             className="main-button-style edit-profile-button"

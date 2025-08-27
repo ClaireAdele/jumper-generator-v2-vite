@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useInView from "../../../../custom-hooks/useInView";
 
-const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
+const LogOutPopUp = ({ togglePopUp, setTogglePopUp }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [LogOutPopUpRef, isVisible] = useInView();
@@ -32,8 +32,10 @@ const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
     if (errorMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`} >
-                    <LogOutSvgIcon className="pop-up-icon button-style-purple" />
+                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`} >
+                    <div className="pop-up-icon button-style-purple">
+                        <LogOutSvgIcon className="pop-up-icon-inner" />
+                    </div>
                     <h3>{errorMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >Close</button>
@@ -46,8 +48,10 @@ const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
     if (successMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                    <LogOutSvgIcon className="pop-up-icon button-style-purple" />
+                <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+                    <div className="pop-up-icon button-style-purple">
+                        <LogOutSvgIcon className="pop-up-icon-inner" />
+                    </div>
                     <h3>{successMsg}</h3>
                     <div>
                         <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickBackHomepage}>Go back to homepage</button>
@@ -59,8 +63,10 @@ const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
 
     return (
         <div className="pop-up-overlay">
-            <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible": "" }`}>
-                <LogOutSvgIcon className="pop-up-icon button-style-purple" />
+            <div ref={LogOutPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+                <div className="pop-up-icon button-style-purple">
+                    <LogOutSvgIcon className="pop-up-icon-inner" />
+                </div>
                 <h3>Are you sure you want to log-out?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>
@@ -69,6 +75,6 @@ const LogOutPopUp = ({togglePopUp, setTogglePopUp}) => {
             </div>
         </div>
     );
-}
+};
 
 export default LogOutPopUp;
