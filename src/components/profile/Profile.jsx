@@ -1,7 +1,7 @@
 import "../../App.css"
 import "./Profile.css"
 import ProfilePage from "./profile-children/ProfilePage";
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getSignedInUserData } from "../../services-and-util-functions/user-services";
 import { getPatternsByUser } from "../../services-and-util-functions/patterns-services";
 import { SignedInUserContext } from "../../contexts/SignedInUserContext";

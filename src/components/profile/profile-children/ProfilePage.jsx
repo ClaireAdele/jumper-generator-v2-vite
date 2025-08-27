@@ -4,10 +4,7 @@ import UserData from "./profile-page-children/UserData";
 import HowToTakeMeasurements from "../../pattern-data-entry/data-entry-children/HowToTakeMeasurements";
 import PatternList from "../pattern-list/PatternList";
 
-import React, { useState, useContext } from "react";
-import DeleteProfilePopUp from "./profile-page-children/DeleteProfilePopUp";
-import LogOutPopUp from "./profile-page-children/LogOutPopUp";
-import DeletePatternPopUp from "../pattern-list/DeletePatternPopUp";
+import { useState } from "react";
 import useInView from "../../../custom-hooks/useInView";
 
 const showHowToTakeMeasurementsButton = {

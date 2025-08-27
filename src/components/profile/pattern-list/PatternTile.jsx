@@ -3,7 +3,6 @@ import "../pattern-list/Patterns.css"
 import patternTileImg from "../profile-assets/fabric-2892492_1280.jpg";
 import BinSvgIcon from "../profile-assets/trash-svgrepo-com.svg?react";
 import useInView from "../../../custom-hooks/useInView";
-import { useState } from "react";
 
 const jumperShapes = {
   "top-down-raglan": "Top-down Raglan",
