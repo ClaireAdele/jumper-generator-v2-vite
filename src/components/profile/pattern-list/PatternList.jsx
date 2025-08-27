@@ -8,27 +8,15 @@ import { useContext, useState, useEffect } from "react";
 import { getPatternsByUser } from "../../../services-and-util-functions/patterns-services";
 import CreateNewPatternSvg from "../profile-assets/circle-plus-svgrepo-com.svg?react";
 
-const PatternList = () => {
+const PatternList = ({setPatternToDeletePopUpData, patternList}) => {
   const { signedInUserData, setSignedInUserData } =
     useContext(SignedInUserContext);
   
   const navigate = useNavigate();
-  
-  const [patternList, setPatternList] = useState([]);
 
   const handleClickCreateNewPattern = () => {
     navigate("/data-entry");
   }
-  
-  useEffect(() => {
-    const fetchPatternData = async () => {
-      const { patterns } = await getPatternsByUser();
-      console.log(patterns)
-      setPatternList(patterns);
-    }
-
-    fetchPatternData();
-  }, []);
   
   return (
     <div className="pattern-list">
@@ -38,7 +26,7 @@ const PatternList = () => {
           <CreateNewPatternSvg className="pattern-tile-img" />
         </div> */}
         {patternList.map((pattern) => {
-          return <PatternTile pattern={pattern} navigate={navigate} />
+          return <PatternTile pattern={pattern} navigate={navigate} setPatternToDeletePopUpData={setPatternToDeletePopUpData} />
         })}
       </div>
     </div>

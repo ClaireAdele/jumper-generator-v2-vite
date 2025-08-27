@@ -7,6 +7,7 @@ import PatternList from "../pattern-list/PatternList";
 import React, { useState, useContext } from "react";
 import DeleteProfilePopUp from "./profile-page-children/DeleteProfilePopUp";
 import LogOutPopUp from "./profile-page-children/LogOutPopUp";
+import DeletePatternPopUp from "../pattern-list/DeletePatternPopUp";
 import useInView from "../../../custom-hooks/useInView";
 
 const showHowToTakeMeasurementsButton = {
@@ -14,10 +15,8 @@ const showHowToTakeMeasurementsButton = {
   "show-measurements": "Show How to Take Measurements"
 }
 
-const ProfilePage = ({ measurementsList, username }) => {
+const ProfilePage = ({ measurementsList, username, patternList, setPatternToDeletePopUpData, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
   const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
-  const [toggleDeletePopUp, setToggleDeletePopUp] = useState(false);
-  const [toggleLogOutPopUp, setToggleLogOutPopUp] = useState(false);
   const [profilePageTitleRef, isVisible] = useInView();
 
   const handleClickShowHowTo = () => {
@@ -29,8 +28,6 @@ const ProfilePage = ({ measurementsList, username }) => {
   };
 
   return (
-    <div className="pageBackground">
-      <div className="pageShaper">
         <div id="profile-page">
           <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
           <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
@@ -42,12 +39,8 @@ const ProfilePage = ({ measurementsList, username }) => {
             {showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}
           </button>
           <HowToTakeMeasurements isVisible={showHowToTakeMeasurements} />
-          <PatternList />
-          {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
-          {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
+          <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
         </div>
-      </div>
-    </div>
   );
 };
 
