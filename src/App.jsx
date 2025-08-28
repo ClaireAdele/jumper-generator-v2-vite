@@ -1,14 +1,10 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from './components/homepage/Homepage';
-import Profile from './components/profile/Profile';
-import DataEntry from './components/pattern-data-entry/DataEntry';
-import { Routes, Route } from "react-router-dom";
-import KnittingPattern from './components/pattern-templates/KnittingPattern';
+import Homepage from './features/homepage/Homepage';
+import Profile from './features/profile/Profile';
+import DataEntry from './features/pattern-data-entry/DataEntry';
+import KnittingPattern from './features/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
-import JumperSelectionCanvas from "./components/pattern-data-entry/data-entry-children/JumperSelectionCanvas";
-import DeleteProfilePopUp from './components/profile/profile-children/profile-page-children/DeleteProfilePopUp';
-
 
 const router = createBrowserRouter([
   {

@@ -130,3 +130,29 @@ input:focus {
   height: 2em;
   width: 2em;
 }
+
+.drop-down-container {
+  text-align: justify;
+  color: rgb(73, 67, 62);
+  margin-top: 2%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 2px #9c938890;
+  background-color: #ffffff;
+}
+
+.drop-down-content-wrapper {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 0;
+}
+
+.drop-down-content {
+  padding: 0.5rem 0;
+}
+
+.drop-down-title {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+}

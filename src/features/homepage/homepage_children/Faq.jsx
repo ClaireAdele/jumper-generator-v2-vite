@@ -1,5 +1,5 @@
 import "../Homepage.css";
-import FaqItem from "./FaqItem";
+import DropDownItem from "./DropDownItem";
 
 const faqList = [
   {
@@ -114,7 +114,7 @@ const Faq = () => {
   return (
     <div id="faq">
       {faqList.map((faqItem, index) => {
-        return <FaqItem key={index} question={faqItem.question} answer={faqItem.answer} />
+        return <DropDownItem className="drop-down-homepage" key={index} title={faqItem.question}>{faqItem.answer}</DropDownItem>
       }
       )};
     </div>

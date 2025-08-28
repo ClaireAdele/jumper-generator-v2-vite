@@ -6,6 +6,7 @@ import PatternList from "../pattern-list/PatternList";
 
 import { useState } from "react";
 import useInView from "../../../custom-hooks/useInView";
+import DropDownItem from "../../homepage/homepage_children/DropDownItem";
 
 const showHowToTakeMeasurementsButton = {
   "hide-measurements": "Hide How to Take Measurements",
@@ -25,19 +26,12 @@ const ProfilePage = ({ measurementsList, username, patternList, setPatternToDele
   };
 
   return (
-        <div id="profile-page">
-          <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
-          <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
-          <button
-            className="main-button-style button-style-green"
-            id="show-how-to-measurements"
-            onClick={handleClickShowHowTo}
-          >
-            {showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}
-          </button>
-          <HowToTakeMeasurements isVisible={showHowToTakeMeasurements} />
-          <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
-        </div>
+    <div id="profile-page">
+      <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
+      <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
+      <DropDownItem className="drop-down-profile-page" title={showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}><HowToTakeMeasurements /></DropDownItem>
+      <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
+    </div>
   );
 };
 
