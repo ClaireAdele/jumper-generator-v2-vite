@@ -1,15 +1,10 @@
 import dataCollectionSchema from "../data-entry-assets/sweater-6788998_1280.jpg";
 import { useRef, useState } from "react";
   
-const HowToTakeMeasurements = ({isVisible}) => {
-  const measurementsTakingExplanationRef = useRef()
+const HowToTakeMeasurements = ({className}) => {
 
   return (
-    <div ref={measurementsTakingExplanationRef} className="measurement-taking-explanation"
-    style={{
-          maxHeight: isVisible === "hide-measurements" ? `${measurementsTakingExplanationRef.current?.scrollHeight}px` : "0px",
-      }}
-    >
+    <div className={`measurement-taking-explanation ${className}`}>
       <div className="instructions-card-left">
         <img
           src={dataCollectionSchema}

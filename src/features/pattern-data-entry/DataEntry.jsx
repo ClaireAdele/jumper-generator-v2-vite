@@ -42,7 +42,7 @@ const DataEntry = () => {
               <JumperSelectionCanvas />
             </div>
             <h2>How to take your measurements</h2>
-            <HowToTakeMeasurements isVisible="hide-measurements" />
+            <HowToTakeMeasurements className="measurement-taking-explanation-data-entry" />
           </div>
         </div>
       </div>

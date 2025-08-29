@@ -9,16 +9,12 @@ const genericPatternTitle = {
 
 const PatternTemplate = ({ patternData, patternSections }) => {
   return (
-    <div className="pageBackground">
-      <div className="pageShaper">
         <div className="pattern-template-container">
           <h1 style={{ textAlign: "center", marginBottom: "10%" }}>{patternData?.patternName || genericPatternTitle[patternData.jumperShape]}</h1>
           {patternSections.map((patternSection) => {
             return <PatternSection id={patternSection.sectionTitle} patternSection={patternSection} patternData={patternData} />
           })}
         </div>
-      </div>
-    </div>
   );
 };
 
