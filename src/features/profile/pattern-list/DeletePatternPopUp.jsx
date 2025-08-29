@@ -2,11 +2,13 @@ import { useState } from "react";
 import BinSvgIcon from "../../profile/profile-assets/trash-svgrepo-com.svg?react";
 import useInView from "../../../custom-hooks/useInView";
 import { deletePatternById } from "../../../services-and-util-functions/patterns-services";
+import { useNavigate } from "react-router-dom";
 
 const DeletePatternPopUp = ({ patternToDeletePopUpData, setPatternToDeletePopUpData, setPatternList }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [deletePatternPopUpRef, isVisible] = useInView();
+    const navigate = useNavigate();
 
     const handleClickCancel = () => {
         setPatternToDeletePopUpData(null);
@@ -15,7 +17,11 @@ const DeletePatternPopUp = ({ patternToDeletePopUpData, setPatternToDeletePopUpD
     const handleClickDelete = async () => {
         try {
             await deletePatternById(patternToDeletePopUpData);
-            setPatternList(prev => prev.filter(p => p._id !== patternToDeletePopUpData));
+
+            if (setPatternList) {
+                setPatternList(prev => prev.filter(p => p._id !== patternToDeletePopUpData));
+            }
+            
             setSuccessMsg("Pattern successfully deleted!")
         } catch {
             setErrorMsg("Pattern deletion failed, try again later");
@@ -24,6 +30,10 @@ const DeletePatternPopUp = ({ patternToDeletePopUpData, setPatternToDeletePopUpD
 
     const handleClickBackProfile = () => {
         setPatternToDeletePopUpData(null);
+
+        if (!setPatternList) {
+            navigate("/profile");
+        }
     }
 
     console.log(patternToDeletePopUpData);
@@ -67,7 +77,7 @@ const DeletePatternPopUp = ({ patternToDeletePopUpData, setPatternToDeletePopUpD
         <div className="pop-up-overlay">
             <div ref={deletePatternPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
                 <div className="pop-up-icon button-style-red">
-                    <BinSvgIcon className="pop-up-icon-inner"  />
+                    <BinSvgIcon className="pop-up-icon-inner" />
                 </div>
                 <h3>Are you sure you want to delete this pattern?</h3>
                 <div>

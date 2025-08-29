@@ -6,7 +6,7 @@ import PatternList from "../pattern-list/PatternList";
 
 import { useState } from "react";
 import useInView from "../../../custom-hooks/useInView";
-import DropDownItem from "../../homepage/homepage_children/DropDownItem";
+import DropDownItem from "../../../components/DropDownItem";
 
 const showHowToTakeMeasurementsButton = {
   "hide-measurements": "Hide How to Take Measurements",

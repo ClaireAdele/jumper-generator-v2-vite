@@ -1,5 +1,5 @@
 import "../Homepage.css";
-import DropDownItem from "./DropDownItem";
+import DropDownItem from "../../../components/DropDownItem";
 
 const faqList = [
   {
