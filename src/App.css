@@ -118,11 +118,11 @@ input:focus {
 
 .pop-up-icon {
   height: 4em;
-    width: 4em;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 4em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
 }
 
@@ -155,4 +155,32 @@ input:focus {
   transition: color 0.3s ease;
   display: flex;
   justify-content: space-between;
+}
+
+/*Css for loaders throughout the App*/
+.loader {
+  height: 80px;
+  aspect-ratio: 1;
+  padding: 10px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+  filter: blur(12px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(#0000 0 5%, rgb(126, 70, 136), #0000 20% 50%);
+  animation: l2 1.5s linear infinite;
+}
+
+@keyframes l2 {
+  to {
+    rotate: 1turn
+  }
 }
