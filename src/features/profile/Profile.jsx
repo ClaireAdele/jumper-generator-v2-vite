@@ -1,14 +1,17 @@
 import "../../App.css"
 import "./Profile.css"
-import ProfilePage from "./profile-children/ProfilePage";
+
 import { useEffect, useState, useContext } from "react";
 import { getSignedInUserData } from "../../services-and-util-functions/user-services";
 import { getPatternsByUser } from "../../services-and-util-functions/patterns-services";
 import { SignedInUserContext } from "../../contexts/SignedInUserContext";
 import { useNavigate } from "react-router-dom";
+
 import LogOutPopUp from "./profile-children/profile-page-children/LogOutPopUp";
 import DeletePatternPopUp from "./pattern-list/DeletePatternPopUp";
 import DeleteProfilePopUp from "./profile-children/profile-page-children/DeleteProfilePopUp";
+import ProfilePage from "./profile-children/ProfilePage";
+import Loader from "../../components/Loader";
 
 
 const Profile = () => {
@@ -74,7 +77,7 @@ const Profile = () => {
     return (
       <div className="pageBackground">
         <div className="pageShaper">
-          <p>Loading</p>
+          <Loader />
         </div>
       </div>
     );

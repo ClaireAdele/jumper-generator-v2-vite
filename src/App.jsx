@@ -5,6 +5,7 @@ import Profile from './features/profile/Profile';
 import DataEntry from './features/pattern-data-entry/DataEntry';
 import KnittingPattern from './features/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
+import Loader from './components/Loader';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/knitting-pattern/:patternId",
     element:<KnittingPattern />
-  }
+  },
 ]);
 
 function App() {
