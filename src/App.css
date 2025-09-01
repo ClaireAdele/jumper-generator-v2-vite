@@ -159,7 +159,7 @@ input:focus {
 
 /*Css for loaders throughout the App*/
 .loader {
-  height: 80px;
+  height: 15vmin;
   aspect-ratio: 1;
   padding: 10px;
   border-radius: 50%;
@@ -169,6 +169,7 @@ input:focus {
   position: fixed;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .loader:before {

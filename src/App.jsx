@@ -24,10 +24,6 @@ const router = createBrowserRouter([
     path: "/knitting-pattern/:patternId",
     element:<KnittingPattern />
   },
-  {
-    path: "/loader",
-    element:<Loader />
-  }
 ]);
 
 function App() {

@@ -11,6 +11,7 @@ import BinSvgIcon from "../profile/profile-assets/trash-svgrepo-com.svg?react";
 
 import PatternTemplate from "./PatternTemplate";
 import DeletePatternPopUp from "../profile/pattern-list/DeletePatternPopUp";
+import Loader from "../../components/Loader";
 
 /*This component handles a few different scenarios: 
     1) The user is not logged in and is generating a pattern that will not be saved on the back-end:
@@ -75,7 +76,7 @@ const KnittingPattern = () => {
     if (isLoading) {
         return (<div className="pageBackground">
             <div className="pageShaper">
-                <p>Loading</p>
+                <Loader />
             </div>
         </div>)
     }
