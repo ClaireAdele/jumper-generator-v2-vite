@@ -1,10 +1,11 @@
-#data-entry-page {
+/*Page shapers and containers for the different sections of the page and form*/
+.data-entry-page {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-#data-entry-container {
+.data-entry-container {
     display: grid;
     grid-template-columns: 45% 55%;
     margin-bottom: 5%;
@@ -14,50 +15,50 @@
     margin-left: 3%;
 }
 
-#data-entry-form-and-nav-container {
+.data-entry-form-and-nav-container {
     min-height: 60vh;
 }
 
-.jumper-selection-form-section {
+
+
+/*Jumper Generator form styling*/
+.jumper-selection-form-box {
     grid-column: 1;
     grid-row: 2;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px #d6d1d1;
     margin-right: 5%;
-    display : grid;
+    display: grid;
     grid-template-rows: 1fr auto;
     min-height: 100%;
 }
 
-.jumper-selection-form-buttons-collection {
+.jumper-selection-form-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     grid-row: 1;
     height: 100%;
     margin-top: 5%;
-}
-
-.pick-jumper-button-selected {
-    text-align: left;
-    margin: 2% 5% 2% 5%;
-    padding: 2% 2% 2% 2%;
-    border-radius: 8px;
-    border: none;
-    background-color: rgb(126, 70, 136);
-    color: white;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .pick-jumper-button {
     text-align: left;
-    margin: 2% 5% 2% 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     padding: 2% 2% 2% 2%;
     border-radius: 8px;
     border: none;
     background-color: #f5f5f5;
 }
 
-#jumper-data-form-navigation-tabs {
+.pick-jumper-button.selected {
+    background-color: rgb(126, 70, 136);
+    color: white;
+}
+
+.jumper-data-form-navigation-tabs {
     grid-column: 1;
     grid-row: 1;
     overflow: auto;
@@ -68,7 +69,7 @@
     margin-bottom: 3%;
 }
 
-#jumper-data-form-navigation-tabs::-webkit-scrollbar {
+.jumper-data-form-navigation-tabs::-webkit-scrollbar {
     display: none; 
 }
 
@@ -86,7 +87,7 @@
     margin-left: 4%;
 }
 
-#jumper-selection-canvas {
+.jumper-selection-canvas {
     grid-column: 2;
     grid-row: 1 / span 2;
     width: 100%;
@@ -95,6 +96,71 @@
     height: 90vh;
 }
 
+.selected-nav-tab {
+    background-color: rgb(126, 70, 136);
+    padding: 3% 3% 3% 2%;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 0px;
+    font-size: medium;
+}
+
+.nav-tab {
+    background-color: white;
+    border: none;
+    padding: 1% 2% 1% 2%;
+    border-radius: 12px;
+    color: rgb(126, 70, 136);
+    text-decoration: none;
+    margin-bottom: 1%;
+    font-size: medium;
+}
+
+.fit-and-measurements-input {
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid #9f9a9a;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    max-width: 40%;
+    align-self: center;
+}
+
+.measurement-row {
+    display: grid;
+    grid-template-columns: 60% 25% 15%;
+    justify-items: left;
+    font-size: small;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    margin: 2% 0% 2% 0%;
+    padding-left: 5%;
+    color: black;
+}
+
+.review-row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: left;
+    align-items: center;
+    font-size: small;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    margin: 2% 0% 2% 0%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: black;
+}
+
+
+#generate-pattern-button {
+    margin-top: auto;
+    align-self: center;
+}
+
+/*How to take measurements section*/
 .data-collection-schema {
     max-width: 40%;
     border-radius: 10px
@@ -130,95 +196,4 @@
 
 .measurement-instructions-right {
     margin-right: 5%;
-}
-
-.selected-nav-tab {
-    background-color: rgb(126, 70, 136);;
-    padding: 3% 3% 3% 2%;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    border: 0px;
-    font-size: medium;
-}
-
-.nav-tab {
-    background-color: white;
-    border: none;
-    padding: 1% 2% 1% 2%;
-    border-radius: 12px;
-    color: rgb(126, 70, 136);
-    text-decoration: none;
-    margin-bottom: 1%;
-    font-size: medium;
-}
-
-.fit-and-measurements-input {
-    border-radius: 10px 10px 10px 10px;
-    border: 1px solid #9f9a9a;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    max-width: 40%;
-    align-self: center;
-}
-
-#enter-measurements-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.measurement-row {
-    display: grid;
-    grid-template-columns: 60% 25% 15%;
-    justify-items: left;
-    font-size: small;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    margin-bottom: 2%;
-    margin: 2% 0% 2% 0%;
-    padding-left: 5%;
-    color: black;
-}
-
-#pick-different-shape {
-    margin-right: 10%;
-}
-
-
-.buttons-section {
-    margin-top: 5%;
-    display: flex;
-    justify-content: center;
-}
-
-.review-row {
-    display: grid;
-        grid-template-columns: 50% 50%;
-        justify-items: left;
-        align-items: center;
-        font-size: small;
-        background-color: #f5f5f5;
-        border-radius: 10px;
-        margin-bottom: 2%;
-        margin: 2% 0% 2% 0%;
-        padding-left: 5%;
-        padding-right: 5%;
-        color: black;
-}
-
-#review-choices-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 3%;
-}
-
-#generate-pattern-button {
-margin-top: auto;
-align-self: center;
 }

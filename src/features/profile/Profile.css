@@ -6,6 +6,10 @@
 }
 
 /*Styling of the measurements list box*/
+.profile-page-measurements-list {
+ margin-top: 5%;
+ margin-bottom: 5%;
+}
 .profile-info-style {
     margin: 5% 10% 5% 10%;
     display: flex;
@@ -61,6 +65,8 @@
 .edit-profile-button-section {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
 .edit-icon {
@@ -90,8 +96,6 @@
     color: white;
     text-decoration: none;
     align-self: flex-end;
-    margin-bottom: 1%; 
-    margin-top: 1%; 
     margin-right: 2%;
 }
 

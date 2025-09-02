@@ -16,7 +16,9 @@ const SignIn = ({ setUserHasAccount }) => {
       SignedInUserContext
   );
 
-  const handleClick = async () => {
+  const handleClickSubmit = async (event) => {
+    event.preventDefault();
+
     if (!email || !password) {
       setAuthError(
         "Please make sure your e-mail and passwords are correct"
@@ -49,9 +51,10 @@ const SignIn = ({ setUserHasAccount }) => {
   };
 
   return (
-    <div className="auth-form stagger-item">
-      <div className="form-container">
-        <h2 className="form-title">Sign-In</h2>
+    <div className="auth-form-green-square">
+      <div className="auth-form-container">
+        <h2>Sign-In</h2>
+        <form className="auth-form" onSubmit={handleClickSubmit}>
         <input
           type="text"
           placeholder="E-mail"
@@ -64,9 +67,10 @@ const SignIn = ({ setUserHasAccount }) => {
           className="auth-input"
           onChange={handleInputPassword}
         ></input>
-        <button className="auth-button" onClick={handleClick}>
+        <button className="auth-button">
           Submit
-        </button>
+          </button>
+          </form>
         {authError && <p>{authError}</p>}
         <p onClick={handleClickSignUp} className="account-yes-no">
           No account yet? Register now

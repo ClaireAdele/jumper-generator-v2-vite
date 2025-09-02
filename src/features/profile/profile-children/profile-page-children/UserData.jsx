@@ -69,7 +69,6 @@ const UserData = ({ measurementsList, setToggleDeletePopUp, setToggleLogOutPopUp
             <EditSvgIcon className="edit-icon" />
             <span className="edit-label">Edit Profile</span>
           </button>
-        
           <button
             onClick={handleClickLogOut}
             className="main-button-style edit-profile-button"
@@ -86,10 +85,9 @@ const UserData = ({ measurementsList, setToggleDeletePopUp, setToggleLogOutPopUp
             <BinSvgIcon className="edit-icon" />
             <span className="edit-label">Delete Account</span>
           </button>
-
         </div>
       
-        <div style={{ marginTop: "5%" }}>
+        <div className="profile-page-measurements-list">
           {measurementsList.map((measurement) => {
             return (
               <Measurement

@@ -36,8 +36,8 @@ const EnterMeasurements = ({ setToggleComponent }) => {
   const fields = shapeFields[currentShape];
 
   return (
-    <div className="jumper-selection-form-section">
-      <div id="enter-measurements-section">
+    <div className="jumper-selection-form-box">
+      <div className="jumper-selection-form-section">
         {!currentShape}
         {fields.map((field) => (
            <InputMeasurement

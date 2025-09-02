@@ -32,10 +32,10 @@ const DataEntry = () => {
     <FinalJumperDataContextProvider value={{}}>
       <div className="pageBackground">
         <div className="pageShaper">
-          <div id="data-entry-page">
+          <div className="data-entry-page">
             <h1>Generate your pattern</h1>
-            <div id="data-entry-container">
-              <div id="data-entry-form-and-nav-container" >
+            <div className="data-entry-container">
+              <div className="data-entry-form-and-nav-container" >
                 <NavigationTabs toggleComponent={toggleComponent} setToggleComponent={setToggleComponent}/>
                 <MeasurementsEntry toggleComponent={toggleComponent} setToggleComponent={setToggleComponent} />
               </div>

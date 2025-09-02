@@ -1,7 +1,7 @@
 import "../../App.css"
 import "./Profile.css"
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { getSignedInUserData } from "../../services-and-util-functions/user-services";
 import { getPatternsByUser } from "../../services-and-util-functions/patterns-services";
 import { SignedInUserContext } from "../../contexts/SignedInUserContext";
@@ -20,11 +20,12 @@ const Profile = () => {
   const [toggleDeletePopUp, setToggleDeletePopUp] = useState(false);
   const [toggleLogOutPopUp, setToggleLogOutPopUp] = useState(false);
   const [patternToDeletePopUpData, setPatternToDeletePopUpData] = useState(null);
+  const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } =
     useContext(SignedInUserContext);
   
-  const measurementsList = [
+  const measurementsList = useMemo(() => [
     {
       label: "Chest Circumference",
       name: "chestCircumference",
@@ -45,9 +46,7 @@ const Profile = () => {
       name: "armLength",
       value: signedInUserData?.armLength || 0,
     },
-  ]
-    
-  const navigate = useNavigate();
+  ], [signedInUserData]);
 
   useEffect(() => {
     const verifyUserData = async () => {
@@ -64,7 +63,6 @@ const Profile = () => {
         setPatternList(patterns);//check user is authenticated
         setIsLoading(false);
       } catch (error) {
-        console.log(error)
         navigate("/");
       };
     };

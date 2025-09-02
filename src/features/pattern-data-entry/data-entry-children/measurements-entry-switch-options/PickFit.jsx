@@ -40,8 +40,8 @@ const PickFit = ({setToggleComponent}) => {
   }
 
   return (
-    <div className="jumper-selection-form-section">
-      <div className="jumper-selection-form-buttons-collection">
+    <div className="jumper-selection-form-box">
+      <div className="jumper-selection-form-section">
       <h4>Pick a standard amount of ease:</h4>
         {easeAmountOptions.map((easeAmountOption) => {
           return (

@@ -1,14 +1,3 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-}
 
 #root {
   height: 100%;
@@ -84,6 +73,7 @@ input:focus {
   text-align: center;
 }
 
+/*Pop-ups styling*/
 .pop-up {
   display: flex;
   color: rgb(73, 67, 62);
@@ -131,6 +121,7 @@ input:focus {
   width: 2em;
 }
 
+/*Drop-downs styling*/
 .drop-down-container {
   text-align: justify;
   color: rgb(73, 67, 62);

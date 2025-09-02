@@ -120,7 +120,7 @@ const JumperSelectionCanvas = ({ toggleComponent, parentDivCanvasRef }) => {
 
   
   return (
-    <div ref={canvasRef} id="jumper-selection-canvas">
+    <div ref={canvasRef} className="jumper-selection-canvas">
       <Stage width={dimensions.width} height={dimensions.height}>
         <Layer>{layers}</Layer>
       </Stage>

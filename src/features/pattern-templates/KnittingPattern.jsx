@@ -51,13 +51,11 @@ const KnittingPattern = () => {
                 const userData = await getSignedInUserData();
 
                 if (!userData && patternId != "unsaved-pattern") {
-                    //if the user is not logged in anymore and we're trying to view one of their pattern, 
+                    //TODO: if the user is not logged in anymore and we're trying to view one of their pattern, 
                     // tell them to go back to log-in or give them the option to log-in here. 
                 }
-                console.log(patternId)
             
                 const { pattern } = await getPatternById(patternId);
-                console.log(pattern);
 
                 if (!pattern) {
                     //TODO: can't get pattern data
