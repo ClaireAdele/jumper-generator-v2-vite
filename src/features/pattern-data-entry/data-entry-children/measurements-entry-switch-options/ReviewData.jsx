@@ -59,8 +59,8 @@ const ReviewData = ({ setToggleComponent }) => {
     const unit = finalJumperData.selectedUnit;
 
     
-    return (<div className="jumper-selection-form-section">
-        <div id="review-choices-section">
+    return (<div className="jumper-selection-form-box">
+        <div className="jumper-selection-form-section">
             <div className="review-row">
                 <p><strong>Jumper shape</strong></p>
                 <p>{selectedJumperShape}</p>

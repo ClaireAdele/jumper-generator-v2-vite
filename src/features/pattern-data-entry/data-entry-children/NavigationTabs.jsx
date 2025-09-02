@@ -56,7 +56,7 @@ const NavigationTabs = ({ toggleComponent, setToggleComponent }) => {
     }
 
     return (
-        <nav aria-label="jumper-data-form-navigation-tabs" id="jumper-data-form-navigation-tabs">
+        <nav aria-label="jumper-data-form-navigation-tabs" className="jumper-data-form-navigation-tabs">
             <div role="tablist">
                 {toggleOptions.map(({ toggleOption, buttonText }) => {
                     return <button ref={(el) => tabRefs.current[toggleOption] = el} key={toggleOption} role="tab" aria-selected={checkIfButtonIsSelected(toggleOption)} onClick={handleClickTab} name={toggleOption} className={checkIfButtonIsSelected(toggleOption) ? "selected-nav-tab" : "nav-tab"}>{buttonText}</button>

@@ -24,8 +24,8 @@ const PickNeckLineShape = ({ setToggleComponent }) => {
   };
 
   return (
-    <div className="jumper-selection-form-section">
-      <div className="jumper-selection-form-buttons-collection">
+    <div className="jumper-selection-form-box">
+      <div className="jumper-selection-form-section">
 
         {necklineShapes.map(({ value, label }) => (
           <button
@@ -33,11 +33,7 @@ const PickNeckLineShape = ({ setToggleComponent }) => {
             value={value}
             onClick={handleInput}
             name="necklineShape"
-            className={
-              finalJumperData.necklineShape === value
-                ? "pick-jumper-button-selected"
-                : "pick-jumper-button"
-            }
+            className={`pick-jumper-button ${finalJumperData.necklineShape === value ? "selected" : ""}`}
           >
             {label}
           </button>

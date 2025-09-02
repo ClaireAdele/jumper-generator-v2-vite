@@ -29,7 +29,7 @@ const PatternCreationMadeEasy = () => {
         </div>
 
         <Link
-          className="main-button-style button-style-green stagger-item try-gen-with-no-account"
+          className="main-button-style button-style-purple stagger-item try-gen-with-no-account"
          
           to="/data-entry"
         >

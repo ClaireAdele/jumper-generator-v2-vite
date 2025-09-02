@@ -49,11 +49,11 @@
 
 .stagger-item {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translatey(40px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.pattern-creation.visible +.auth-form {
+.pattern-creation +.auth-form {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.2s;
@@ -79,7 +79,6 @@
 .pattern-creation.visible :nth-child(3) {
     transition-delay: 0.9s;
 }
-
 
 .pattern-creation-card {
     display: flex;
@@ -107,19 +106,27 @@
     margin-top: 5%;
 } 
 
-.auth-form {
+.auth-form-green-square {
     width: 30%;
     background-color: #42582fdc;
-    text-align: center;
     color: white;
-}
-
-.form-container {
     display: flex;
     flex-direction: column;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 20%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    text-align: center;
+}
+
+.auth-form-container {
+    margin: 0;
+    position: static;
+    width: 80%;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
 }
 
 .auth-input {
@@ -183,7 +190,6 @@
     padding-left: 5%;
     padding-right: 5%;
 }
-
 
 
 .try-gen-with-no-account {

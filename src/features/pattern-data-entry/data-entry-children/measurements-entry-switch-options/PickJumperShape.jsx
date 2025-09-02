@@ -18,19 +18,19 @@ const PickShape = ({ setToggleComponent }) => {
   };
 
   return (
-    <div className="jumper-selection-form-section">
-      <div className="jumper-selection-form-buttons-collection">
+    <div className="jumper-selection-form-box">
+      <div className="jumper-selection-form-section">
         {jumperShapes.map(({ value, label }) => (
           <button
             key={value}
             value={value}
             onClick={handleInput}
             name="jumperShape"
-            className={
-              finalJumperData.jumperShape === value
-                ? "pick-jumper-button-selected"
-                : "pick-jumper-button"
-            }
+            className={`pick-jumper-button
+          ${finalJumperData.jumperShape === value
+                ? "selected"
+                : ""
+              }`}
           >
             {label}
           </button>

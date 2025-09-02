@@ -19,19 +19,16 @@ const PickUnit = ({ setToggleComponent }) => {
   const units = ["centimetres", "inches"];
 
   return (
-    <div className="jumper-selection-form-section">
-      <div className="jumper-selection-form-buttons-collection">
+    <div className="jumper-selection-form-box">
+      <div className="jumper-selection-form-section">
       {units.map((unit) => (
           <button
             key={unit}
             value={unit}
             onClick={handleInput}
-            name="unit"
-            className={
-              finalJumperData.selectedUnit === unit
-                ? "pick-jumper-button-selected"
-                : "pick-jumper-button"
-            }
+          name="unit"
+          className={`pick-jumper-button ${finalJumperData.selectedUnit === unit ? "selected" : ""}`}
+          
           >
             {unit.charAt(0).toUpperCase() + unit.slice(1)}
           </button>
