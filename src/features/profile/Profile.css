@@ -1,8 +1,95 @@
 /*Styling of the profile page main structure*/
-#profile-page {
+.profile-page {
+    height: 100%;
+}
+
+.profile-page-toggable-section {
+background-color: #e3d9cf;
+display: flex;
+color: rgb(73, 67, 62);
+display: flex;
+ flex-direction: column;
+}
+
+.profile-page-toggable-content h1 {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.profile-page-menu-and-toggable-section-container {
+    display: grid;
+    grid-template-columns: 20vw 80vw;
+    height: 100%;
+}
+
+.profile-menu {
+    grid-column: 1;
+    background-color: #42582fdc;
+    color: white;
+    position: relative;
+    width: 100%;
+}
+
+.profile-menu-top-buttons-section {
+    grid-column: 1;
+    display: flex;
+    position: fixed;
+    top: 2%;
+}
+
+.profile-menu-content {
+    position: fixed;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+}
+
+.profile-menu-button-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: flex-start;
+    height: 35vh;
+}
+
+.profile-menu-button {
+    background-color: transparent;
+    text-align: left;
+    font-size: large;
+}
+
+.profile-menu-row-icon {
+    height: 4vh;
+    width: 4vh;
+    margin-right: 1vw;
+    padding-left: 1vw;
+}
+
+.profile-menu-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
+
+.profile-menu-row button {
+    color: inherit;
+    /* button text uses the same row color */
+}
+
+.profile-menu-row:hover {
+    background-color: white;
+    color:#42582fdc;
+    border-radius: 10px;
+}
+
+.profile-menu-row.clicked {
+    background-color: white;
+    color: #42582fdc;
+    border-radius: 10px;
 }
 
 /*Styling of the measurements list box*/
@@ -10,12 +97,14 @@
  margin-top: 5%;
  margin-bottom: 5%;
 }
+
 .profile-info-style {
     margin: 5% 10% 5% 10%;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
     box-shadow: 0px 0px 5px 1px #d6d1d1;
+    background-color: white;
 }
 
 .profile-page-title {
@@ -84,8 +173,7 @@
 }
 
 .edit-profile-button:hover .edit-label {
-    max-width: 150px;
-    /* adjust based on text length */
+    max-width: 200px;
     opacity: 1;
     margin-left: 0.5em;
 }

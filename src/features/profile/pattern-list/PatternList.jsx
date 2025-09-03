@@ -20,7 +20,6 @@ const PatternList = ({setPatternToDeletePopUpData, patternList}) => {
   
   return (
     <div className="pattern-list">
-      <h2 style={{marginBottom: "10%", marginTop: "5%"}}>Your Patterns:</h2>
       <div className="pattern-list-container">
         {/* <div className="pattern-tile" onClick={handleClickCreateNewPattern} style={{ backgroundColor: "rgb(126, 70, 136)" }}>
           <CreateNewPatternSvg className="pattern-tile-img" />
