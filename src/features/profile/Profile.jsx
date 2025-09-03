@@ -7,9 +7,9 @@ import { getPatternsByUser } from "../../services-and-util-functions/patterns-se
 import { SignedInUserContext } from "../../contexts/SignedInUserContext";
 import { useNavigate } from "react-router-dom";
 
-import LogOutPopUp from "./profile-children/profile-page-children/LogOutPopUp";
+import LogOutPopUp from "./profile-children/LogOutPopUp";
 import DeletePatternPopUp from "./pattern-list/DeletePatternPopUp";
-import DeleteProfilePopUp from "./profile-children/profile-page-children/DeleteProfilePopUp";
+import DeleteProfilePopUp from "./profile-children/DeleteProfilePopUp";
 import ProfilePage from "./profile-children/ProfilePage";
 import Loader from "../../components/Loader";
 
@@ -82,13 +82,11 @@ const Profile = () => {
   }
 
   return (
-    <div className="pageBackground">
-      <div className="pageShaper">
+    <div className="profile-page">
         <ProfilePage measurementsList={measurementsList} username={signedInUserData.username} patternList={patternList} setToggleLogOutPopUp={setToggleLogOutPopUp} setToggleDeletePopUp={setToggleDeletePopUp} setPatternToDeletePopUpData={setPatternToDeletePopUpData} />
         {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
         {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
         {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
-      </div>
     </div>
   )
 };

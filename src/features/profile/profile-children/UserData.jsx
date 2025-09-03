@@ -1,17 +1,16 @@
 import { useState, useContext } from "react";
 import Measurement from "./Measurement";
-import EditSvgIcon from "../../profile-assets/pen-square-svgrepo-com.svg?react";
-import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
-import LogOutSvgIcon from "../../profile-assets/sign-out-svgrepo-com.svg?react";
-import { editUserDetails } from "../../../../services-and-util-functions/user-services";
-import { signOutUser } from "../../../../services-and-util-functions/auth-services";
-import { SignedInUserContext } from "../../../../contexts/SignedInUserContext";
+import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
+import BinSvgIcon from "./../profile-assets/trash-svgrepo-com.svg?react";
+import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
+import { editUserDetails } from "../../../services-and-util-functions/user-services";
+import { signOutUser } from "../../../services-and-util-functions/auth-services";
+import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
 
 const UserData = ({ measurementsList, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
   const [isUserEditing, setIsUserEditing] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState({});
-  const { signedInUserData, setSignedInUserData } =
-    useContext(SignedInUserContext);
+  const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
 
   const handleClickEditProfile = async () => {
     setIsUserEditing(true);

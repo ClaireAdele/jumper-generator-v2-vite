@@ -1,8 +1,8 @@
-import { deleteUserData } from "../../../../services-and-util-functions/user-services";
+import { deleteUserData } from "./../../../services-and-util-functions/user-services";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BinSvgIcon from "../../profile-assets/trash-svgrepo-com.svg?react";
-import useInView from "../../../../custom-hooks/useInView";
+import BinSvgIcon from "./../profile-assets/trash-svgrepo-com.svg?react";
+import useInView from "./../../../custom-hooks/useInView";
 
 const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     const [errorMsg, setErrorMsg] = useState(null);

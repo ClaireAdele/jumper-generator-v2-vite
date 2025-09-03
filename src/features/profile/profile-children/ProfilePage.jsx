@@ -1,11 +1,11 @@
 import "../../../App.css";
 import "../Profile.css";
-import UserData from "./profile-page-children/UserData";
+import UserData from "./UserData";
 import HowToTakeMeasurements from "../../pattern-data-entry/data-entry-children/HowToTakeMeasurements";
 import PatternList from "../pattern-list/PatternList";
+import ProfileMenu from "./ProfileMenu";
 
 import { useState } from "react";
-import useInView from "../../../custom-hooks/useInView";
 import DropDownItem from "../../../components/DropDownItem";
 
 const showHowToTakeMeasurementsButton = {
@@ -15,7 +15,7 @@ const showHowToTakeMeasurementsButton = {
 
 const ProfilePage = ({ measurementsList, username, patternList, setPatternToDeletePopUpData, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
   const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
-  const [profilePageTitleRef, isVisible] = useInView();
+  const [toggleDisplay, setToggleDisplay] = useState("pattern-list");
 
   const handleClickShowHowTo = () => {
     if (showHowToTakeMeasurements === "hide-measurements") {
@@ -26,11 +26,24 @@ const ProfilePage = ({ measurementsList, username, patternList, setPatternToDele
   };
 
   return (
-    <div id="profile-page">
-      <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
-      <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
-      <DropDownItem className="drop-down-profile-page" title={showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}><HowToTakeMeasurements /></DropDownItem>
-      <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
+    <div className="profile-page-menu-and-toggable-section-container">
+      <ProfileMenu />
+      <div className="profile-page-toggable-section">
+        {toggleDisplay === "pattern-list" &&
+          <div className="profile-page-toggable-content">
+            <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
+          </div>
+        }
+        {toggleDisplay === "user-measurements" &&
+          <div className="profile-page-toggable-content" >
+            <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
+            <DropDownItem className="drop-down-profile-page" title={showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}><HowToTakeMeasurements /></DropDownItem>
+          </div>
+        }
+        {toggleDisplay === "edit-account-settings" &&
+          <h1 className="profile-page-toggable-content" >TODO</h1>
+        }
+      </div>
     </div>
   );
 };

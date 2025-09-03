@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { SignedInUserContext, SignedInUserContextProvider } from "../../../../contexts/SignedInUserContext";
+import { SignedInUserContext, SignedInUserContextProvider } from "../../../contexts/SignedInUserContext";
 
 const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUserData }) => {
   const [preferredUnit, setPreferredUnit] = useState("centimetres");
