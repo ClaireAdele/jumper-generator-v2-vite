@@ -1,5 +1,6 @@
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { signOutUser } from "../../../services-and-util-functions/auth-services";
 
@@ -12,6 +13,7 @@ import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
 
 const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, setToggleLogOutPopUp  }) => {
     const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
+    const navigate = useNavigate();
 
     const handleClick = (event) => {
         const toggleString = event.target.value;
@@ -19,15 +21,19 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, se
         setToggleDisplay(toggleString);
     };
 
-    const handleClickLogOut = async () => {
+    const handleClickLogOut = () => {
         setToggleLogOutPopUp(true);
     };
+
+    const handleClickHomePage = () => {
+        navigate("/");
+    }
 
     return (
         <div className="profile-menu">
             <div className="profile-menu-top-buttons-section">
                 <button
-                    onClick={handleClickLogOut}
+                    onClick={handleClickHomePage}
                     className="main-button-style edit-profile-button"
                     style={{ backgroundColor: "transparent" }}>
                     <HomeIcon className="edit-icon" />

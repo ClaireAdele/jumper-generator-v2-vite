@@ -22,7 +22,7 @@ const UserData = ({ measurementsList }) => {
 
   if (isUserEditing) {
     return (
-      <div className="profile-info-style">
+      <div className="profile-page-measurements-block">
         <div style={{ marginTop: "5%" }}>
           {measurementsList.map((measurement) => {
             return (
@@ -47,7 +47,7 @@ const UserData = ({ measurementsList }) => {
     );
   } else {
     return (
-      <div className="profile-info-style">
+      <div className="profile-page-measurements-block">
         <div className="edit-profile-button-section">
           <button
             onClick={handleClickEditProfile}

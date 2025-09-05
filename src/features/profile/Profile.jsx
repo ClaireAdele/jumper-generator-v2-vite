@@ -54,13 +54,18 @@ const Profile = () => {
         const signedInUser = await getSignedInUserData();
 
         if (!signedInUser.username) {
-          //TODO - add more gracious error handling
           throw Error("Problem with user data - try login-in again")
         }
+
         const { patterns } = await getPatternsByUser();
 
         setSignedInUserData(signedInUser);
-        setPatternList(patterns);//check user is authenticated
+        
+        /*Session storage is used to store data from patterns generated without an account.
+        It needs clearing here as when loading a pattern I use it as a first port of call 
+        to check if we are in an unsaved pattern scenario or in the other case.*/
+        sessionStorage.clear();
+        setPatternList(patterns);
         setIsLoading(false);
       } catch (error) {
         navigate("/");

@@ -21,8 +21,8 @@ const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUs
   };
 
   return isUserEditing ? (
-    <div className="profile-row">
-      <p className="profile-label">
+    <div className="profile-page-measurements-row">
+      <p className="profile-page-measurements-row-label">
         <b>{measurement.label}</b>
       </p>
       <div className="profile-input-and-value"><input
@@ -34,11 +34,11 @@ const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUs
       <p>{preferredUnit}</p></div>
     </div>
   ) : (
-    <div className="profile-row">
-      <p className="profile-label">
+    <div className="profile-page-measurements-row">
+      <p className="profile-page-measurements-row-label">
         <b>{measurement.label}</b>
       </p>
-      <p className="profile-value">{measurement.value + " " + preferredUnit}</p>
+      <p className="profile-page-measurements-value">{measurement.value + " " + preferredUnit}</p>
     </div>
   );
 };

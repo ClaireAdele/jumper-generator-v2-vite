@@ -118,10 +118,6 @@
 }
 
 .fit-and-measurements-input {
-    border-radius: 10px 10px 10px 10px;
-    border: 1px solid #9f9a9a;
-    padding-top: 3px;
-    padding-bottom: 3px;
     max-width: 40%;
     align-self: center;
 }

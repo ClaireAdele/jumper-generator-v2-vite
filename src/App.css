@@ -66,11 +66,29 @@ a {
 
 input {
   text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px solid #9f9a9a;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 input:focus {
   outline: none;
   text-align: center;
+}
+
+select {
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  border: none;
+  padding: 3px;
+  outline: none;
+  margin-left: 1vw;
+}
+
+select:focus {
+  border: none;
+  outline: none;
 }
 
 /*Pop-ups styling*/

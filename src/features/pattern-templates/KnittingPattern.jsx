@@ -60,6 +60,7 @@ const KnittingPattern = () => {
                 if (!pattern) {
                     //TODO: can't get pattern data
                 }
+                
                 setPatternData({ ...pattern });
                 setPatternSections(patterSectionsLibrary[pattern.jumperShape]);
                 setIsLoading(false);

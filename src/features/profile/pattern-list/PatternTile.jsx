@@ -45,7 +45,8 @@ const PatternTile = ({ pattern, navigate, setPatternToDeletePopUpData }) => {
       </p>
       <div className="pattern-tile-description" onClick={handleClickTile} >
         <p className="pattern-tile-description-row"><b>{jumperShapes[jumperShape]}</b></p>
-        <p className="pattern-tile-description-row"><b>{easeAmounts[easeAmount]}</b></p></div>
+        <p className="pattern-tile-description-row"><b>{easeAmounts[easeAmount]}</b></p>
+      </div>
     </div>
   );
 };

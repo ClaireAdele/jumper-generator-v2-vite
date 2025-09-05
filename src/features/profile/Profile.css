@@ -8,13 +8,17 @@ background-color: #e3d9cf;
 display: flex;
 color: rgb(73, 67, 62);
 display: flex;
- flex-direction: column;
+flex-direction: column;
+justify-content: center;
+padding-bottom: 10vh;
 }
 
 .profile-page-toggable-content h1 {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    margin-top: min(10vh);
+    margin-bottom: min(10vh);
 }
 
 .profile-page-menu-and-toggable-section-container {
@@ -98,7 +102,7 @@ display: flex;
  margin-bottom: 5%;
 }
 
-.profile-info-style {
+.profile-page-measurements-block {
     margin: 5% 10% 5% 10%;
     display: flex;
     flex-direction: column;
@@ -107,17 +111,7 @@ display: flex;
     background-color: white;
 }
 
-.profile-page-title {
-    align-self: center;
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.profile-page-title.visible {
-    opacity: 1;
-}
-
-.profile-row {
+.profile-page-measurements-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     background-color: #f5f5f5;
@@ -138,15 +132,11 @@ display: flex;
     gap: 0.5rem;
 }
 
-.profile-label {
+.profile-page-measurements-row-label {
     grid-column: 1;
 }
 
-.profile-value {
-    grid-column: 2;
-}
-
-#profile-input {
+.profile-page-measurements-value {
     grid-column: 2;
 }
 
