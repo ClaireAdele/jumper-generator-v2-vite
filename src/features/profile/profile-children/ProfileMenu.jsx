@@ -17,7 +17,6 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, se
 
     const handleClick = (event) => {
         const toggleString = event.target.value;
-
         setToggleDisplay(toggleString);
     };
 

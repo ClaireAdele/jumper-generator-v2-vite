@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
-import Measurement from "./Measurement";
-import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
+
 import { editUserDetails } from "../../../services-and-util-functions/user-services";
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+
+import Measurement from "./Measurement";
+import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
 
 const UserData = ({ measurementsList }) => {
   const [isUserEditing, setIsUserEditing] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState({});
   const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
+
 
   const handleClickEditProfile = async () => {
     setIsUserEditing(true);
@@ -15,7 +18,7 @@ const UserData = ({ measurementsList }) => {
 
   const handleClickApplyChanges = async () => {
     const user = await editUserDetails(updatedUserData);
-    console.log("user", user);
+
     setSignedInUserData(user)
     setIsUserEditing(false);
   }

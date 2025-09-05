@@ -1,30 +1,16 @@
 import "../../../App.css";
 import "../Profile.css";
-import UserData from "./UserData";
-import HowToTakeMeasurements from "../../pattern-data-entry/data-entry-children/HowToTakeMeasurements";
 import PatternList from "../pattern-list/PatternList";
 import ProfileMenu from "./ProfileMenu";
 
 import { useState } from "react";
-import DropDownItem from "../../../components/DropDownItem";
+import useInView from "../../../custom-hooks/useInView";
+import MyMeasurementsSection from "./MyMeasurementsSection";
 
-const showHowToTakeMeasurementsButton = {
-  "hide-measurements": "Hide How to Take Measurements",
-  "show-measurements": "Show How to Take Measurements"
-}
 
 const ProfilePage = ({ measurementsList, username, patternList, setPatternToDeletePopUpData, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
-  const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
   const [toggleDisplay, setToggleDisplay] = useState("pattern-list");
-
-  const handleClickShowHowTo = () => {
-    if (showHowToTakeMeasurements === "hide-measurements") {
-      setShowHowtoTakeMeasurements("show-measurements");
-    } else {
-      setShowHowtoTakeMeasurements("hide-measurements");
-    }
-  };
-
+  
   return (
     <div className="profile-page-menu-and-toggable-section-container">
       <ProfileMenu setToggleDisplay={setToggleDisplay} toggleDisplay={toggleDisplay} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
@@ -36,10 +22,9 @@ const ProfilePage = ({ measurementsList, username, patternList, setPatternToDele
           </div>
         }
         {toggleDisplay === "user-measurements" &&
-          <div className="profile-page-toggable-content" >
+          <div className="profile-page-toggable-content">
             <h1>My Measurements</h1>
-            <UserData measurementsList={measurementsList} />
-            <DropDownItem className="drop-down-profile-page" title={showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}><HowToTakeMeasurements /></DropDownItem>
+            <MyMeasurementsSection measurementsList={measurementsList} />
           </div>
         }
         {toggleDisplay === "edit-account-settings" &&

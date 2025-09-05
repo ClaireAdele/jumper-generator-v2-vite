@@ -4,13 +4,12 @@
 }
 
 .profile-page-toggable-section {
-background-color: #e3d9cf;
-display: flex;
-color: rgb(73, 67, 62);
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding-bottom: 10vh;
+    background-color: #e3d9cf;
+    display: flex;
+    color: rgb(73, 67, 62);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10vh;
 }
 
 .profile-page-toggable-content h1 {
@@ -25,6 +24,17 @@ padding-bottom: 10vh;
     display: grid;
     grid-template-columns: 20vw 80vw;
     height: 100%;
+}
+
+.profile-page-user-data-container{
+    opacity: 0;
+    transform: translateY(40vh);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.profile-page-user-data-container.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .profile-menu {
