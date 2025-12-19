@@ -10,7 +10,7 @@ const DropDownItem = ({ className, title, children }) => {
     <div className={`drop-down-container ${className}`}>
       <div onClick={toggleOpen} className="drop-down-title">
         <h2>{title}</h2>
-        {isOpen ? <h1>-</h1> : <h2>+</h2>}
+        {isOpen ? <h2>-</h2> : <h2>+</h2>}
       </div>
       <div
         ref={contentRef}

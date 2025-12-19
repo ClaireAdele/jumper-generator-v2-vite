@@ -5,17 +5,21 @@ import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
 
 import Measurement from "./Measurement";
 import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
+import CancelEditSvg from "./../profile-assets/cancel-close-delete-svgrepo-com.svg?react";
 
 const UserData = ({ measurementsList }) => {
   const [isUserEditing, setIsUserEditing] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState({});
   const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
 
-
   const handleClickEditProfile = async () => {
     setIsUserEditing(true);
   };
 
+  const handleClickCancelEditProfile = async () => {
+    setIsUserEditing(false);
+  };
+  console.log(isUserEditing);
   const handleClickApplyChanges = async () => {
     const user = await editUserDetails(updatedUserData);
 
@@ -26,7 +30,17 @@ const UserData = ({ measurementsList }) => {
   if (isUserEditing) {
     return (
       <div className="profile-page-measurements-block">
-        <div style={{ marginTop: "5%" }}>
+        <div className="edit-profile-button-section">
+          <button
+            onClick={handleClickCancelEditProfile}
+            className="main-button-style edit-profile-button button-style-red"
+          >
+            <CancelEditSvg className="edit-icon" />
+            <span className="edit-label">Cancel Changes</span>
+          </button>
+        </div>
+
+        <div className="profile-page-measurements-list">
           {measurementsList.map((measurement) => {
             return (
               <Measurement
@@ -42,7 +56,7 @@ const UserData = ({ measurementsList }) => {
         </div>
         <button
           onClick={handleClickApplyChanges}
-          className="main-button-style edit-profile-button  button-style-purple"
+          className="main-button-style button-style-purple edit-profile-apply-changes-button"
         >
           Apply Changes
         </button>
