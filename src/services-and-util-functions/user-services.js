@@ -53,7 +53,6 @@ const deleteUserData = async () => {
   }
   
   const data = await res.json();
-  console.log(data);
 
   return true;
 };

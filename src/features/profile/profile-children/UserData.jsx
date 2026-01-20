@@ -19,7 +19,7 @@ const UserData = ({ measurementsList }) => {
   const handleClickCancelEditProfile = async () => {
     setIsUserEditing(false);
   };
-  console.log(isUserEditing);
+
   const handleClickApplyChanges = async () => {
     const user = await editUserDetails(updatedUserData);
 

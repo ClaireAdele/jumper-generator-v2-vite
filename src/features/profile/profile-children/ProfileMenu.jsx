@@ -36,7 +36,7 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, se
                     className="main-button-style edit-profile-button"
                     style={{ backgroundColor: "transparent" }}>
                     <HomeIcon className="edit-icon" />
-                    <span className="edit-label">Go back to Homepage</span>
+                    <span className="edit-label">Homepage</span>
                 </button>
                 <button
                     onClick={handleClickLogOut}
@@ -68,18 +68,3 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, se
 };
 
 export default ProfileMenu;
-
-
-/*
-                    <button
-                        onClick={handleClickDeleteProfile}
-                        className="main-button-style edit-profile-button button-style-red"
-                    >
-                        <BinSvgIcon className="edit-icon" />
-                        <span className="edit-label">Delete Account</span>
-                    </button>
-*/
-
-    // const handleClickDeleteProfile = async () => {
-    //     setToggleDeletePopUp(true);
-    // };

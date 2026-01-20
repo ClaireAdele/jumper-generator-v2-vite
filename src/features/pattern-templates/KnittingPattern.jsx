@@ -1,13 +1,15 @@
 import "../../App.css";
 import "./patternTemplates.css";
 import { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { SignedInUserContext } from "../../contexts/SignedInUserContext"
 import { getSignedInUserData } from "../../services-and-util-functions/user-services";
 import { getPatternById } from "../../services-and-util-functions/patterns-services";
 import { getPatternDataFromSessionStorage } from "../../services-and-util-functions/utils";
 import patterSectionsLibrary from "./pattern-sections-data/pattern-sections-library";
 import BinSvgIcon from "../profile/profile-assets/trash-svgrepo-com.svg?react";
+import ProfileSvgIcon from "../../assets/ProfileSvgIcon.svg?react";
+import HomepageSvgIcon from "../../assets/HomepageSvgIcon.svg?react"
 
 import PatternTemplate from "./PatternTemplate";
 import DeletePatternPopUp from "../profile/pattern-list/DeletePatternPopUp";
@@ -34,9 +36,18 @@ const KnittingPattern = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const { patternId } = useParams();
+    const navigate = useNavigate();
 
     const handleClickDeletePattern = () => {
         setToggleDeletePatternPopUp(!toggleDeletePatternPopUp);
+    }
+
+    const handleClickNavigateProfile = () => {
+        navigate("/profile");
+    }
+
+    const handleClickNavigateHomepage = () => {
+        navigate("/")
     }
 
     useEffect(() => {
@@ -95,16 +106,30 @@ const KnittingPattern = () => {
             <div className="pageShaper">
                 {
                     patternId != "unsaved-pattern" && <div className="edit-profile-button-section">
-                <button
-                    onClick={handleClickDeletePattern}
-                    className="main-button-style edit-profile-button button-style-red"
-                >
+                         <button
+                            onClick={handleClickNavigateHomepage}
+                            className="main-button-style edit-profile-button button-style-purple"
+                        >
+                            <HomepageSvgIcon className="edit-icon" style={{ color: "white" }} />
+                            <span className="edit-label">Homepage</span>
+                        </button>
+                        <button
+                            onClick={handleClickNavigateProfile}
+                            className="main-button-style edit-profile-button button-style-purple"
+                        >
+                            <ProfileSvgIcon className="edit-icon" style={{ color: "white" }} />
+                            <span className="edit-label">Profile</span>
+                        </button>
+                        <button
+                            onClick={handleClickDeletePattern}
+                            className="main-button-style edit-profile-button button-style-red"
+                        >
                     
-                    <BinSvgIcon className="edit-icon" />
-                    <span className="edit-label">Delete Pattern</span>
+                            <BinSvgIcon className="edit-icon" />
+                            <span className="edit-label">Delete Pattern</span>
 
-                    </button>
-                </div>
+                        </button>
+                    </div>
                 }
                 <PatternTemplate patternData={patternData} id={patternData.jumperShape} patternSections={patternSections} />
                 {toggleDeletePatternPopUp && <DeletePatternPopUp patternToDeletePopUpData={patternId} setPatternToDeletePopUpData={setToggleDeletePatternPopUp} />}

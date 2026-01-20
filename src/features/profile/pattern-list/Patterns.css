@@ -1,6 +1,6 @@
 .pattern-list {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 7%;
+    margin-right: 7%;
 }
 
 .pattern-list-container {
@@ -21,7 +21,6 @@
     display: grid;
     grid-template-columns: 35% 55% 9% 1%;
     grid-template-rows: 25% 20% 45% 10%;
-    height: 30vh;
     width: 100%;
     margin-bottom: 2%;
     border-radius: 12px;
