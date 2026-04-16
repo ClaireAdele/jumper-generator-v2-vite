@@ -1,5 +1,5 @@
 const getSignedInUserData = async () => {
-    const res = await fetch("/api/users/me", {
+    const res = await apiFetch("/api/users/me", {
       method: "GET",
       credentials: "include",
     });
@@ -21,7 +21,7 @@ const getSignedInUserData = async () => {
 const editUserDetails = async (updatedUserDetails) => {
   const reqBody = updatedUserDetails;
 
-    const res = await fetch("/api/users/me", {
+    const res = await apiFetch("/api/users/me", {
       method: "PUT",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -40,7 +40,7 @@ const editUserDetails = async (updatedUserDetails) => {
 };
 
 const deleteUserData = async () => {
-  const res = await fetch("/api/users/me", {
+  const res = await apiFetch("/api/users/me", {
     method: "DELETE",
     credentials: "include",
   });

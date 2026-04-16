@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { SignedInUserContext, SignedInUserContextProvider } from "../../../contexts/SignedInUserContext";
 
-const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUserData }) => {
+const Measurement = ({ measurement, isUserEditingMeasurements, updatedUserData, setUpdatedUserData }) => {
   const [preferredUnit, setPreferredUnit] = useState("centimetres");
   const { signedInUserData, setSignedInUserData } = useContext(
        SignedInUserContext
@@ -20,7 +20,9 @@ const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUs
     setUpdatedUserData(userData);
   };
 
-  return isUserEditing ? (
+  console.log(updatedUserData)
+
+  return isUserEditingMeasurements ? (
     <div className="profile-page-measurements-row">
       <p className="profile-page-measurements-row-label">
         <b>{measurement.label}</b>

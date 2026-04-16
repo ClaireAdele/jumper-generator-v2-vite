@@ -1,33 +1,34 @@
 import { useState, useContext } from "react";
 
 import { editUserDetails } from "../../../services-and-util-functions/user-services";
-import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+
 
 import Measurement from "./Measurement";
 import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
 import CancelEditSvg from "./../profile-assets/cancel-close-delete-svgrepo-com.svg?react";
 
-const UserData = ({ measurementsList }) => {
-  const [isUserEditing, setIsUserEditing] = useState(false);
-  const [updatedUserData, setUpdatedUserData] = useState({});
-  const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
+const UserData = ({
+  measurementsList,
+  setToggleValidateNewMeasurementsPopUp,
+  updatedUserData,
+  setUpdatedUserData,
+  setisUserEditingMeasurements,
+  isUserEditingMeasurements
+}) => {
 
   const handleClickEditProfile = async () => {
-    setIsUserEditing(true);
+    setisUserEditingMeasurements(true);
   };
 
   const handleClickCancelEditProfile = async () => {
-    setIsUserEditing(false);
+    setisUserEditingMeasurements(false);
   };
 
   const handleClickApplyChanges = async () => {
-    const user = await editUserDetails(updatedUserData);
-
-    setSignedInUserData(user)
-    setIsUserEditing(false);
+    setToggleValidateNewMeasurementsPopUp(true);
   }
 
-  if (isUserEditing) {
+  if (isUserEditingMeasurements) {
     return (
       <div className="profile-page-measurements-block">
         <div className="edit-profile-button-section">
@@ -46,8 +47,8 @@ const UserData = ({ measurementsList }) => {
               <Measurement
                 key={measurement.name}
                 measurement={measurement}
-                isUserEditing={isUserEditing}
-                setIsUserEditing={setIsUserEditing}
+                isUserEditingMeasurements={isUserEditingMeasurements}
+                setisUserEditingMeasurements={setisUserEditingMeasurements}
                 updatedUserData={updatedUserData}
                 setUpdatedUserData={setUpdatedUserData}
               />
@@ -82,8 +83,8 @@ const UserData = ({ measurementsList }) => {
               <Measurement
                 key={measurement.name}
                 measurement={measurement}
-                isUserEditing={isUserEditing}
-                setIsUserEditing={setIsUserEditing}
+                isUserEditingMeasurements={isUserEditingMeasurements}
+                setisUserEditingMeasurements={setisUserEditingMeasurements}
                 updatedUserData={updatedUserData}
                 setUpdatedUserData={setUpdatedUserData}
               />

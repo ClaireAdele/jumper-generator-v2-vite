@@ -8,7 +8,20 @@ import useInView from "../../../custom-hooks/useInView";
 import MyMeasurementsSection from "./MyMeasurementsSection";
 
 
-const ProfilePage = ({ measurementsList, username, patternList, setPatternToDeletePopUpData, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
+const ProfilePage = ({
+  measurementsList,
+  username,
+  patternList,
+  setPatternToDeletePopUpData,
+  setToggleDeletePopUp,
+  setToggleLogOutPopUp,
+  setToggleValidateNewMeasurementsPopUp,
+  updatedUserData,
+  setUpdatedUserData,
+  isUserEditingMeasurements,
+  setisUserEditingMeasurements  
+}) => {
+
   const [toggleDisplay, setToggleDisplay] = useState("pattern-list");
   
   return (
@@ -24,7 +37,13 @@ const ProfilePage = ({ measurementsList, username, patternList, setPatternToDele
         {toggleDisplay === "user-measurements" &&
           <div className="profile-page-toggable-content">
             <h1>My Measurements</h1>
-            <MyMeasurementsSection measurementsList={measurementsList} />
+            <MyMeasurementsSection
+              measurementsList={measurementsList}
+              setToggleValidateNewMeasurementsPopUp={setToggleValidateNewMeasurementsPopUp}
+              isUserEditingMeasurements={isUserEditingMeasurements}
+              setisUserEditingMeasurements={setisUserEditingMeasurements}
+              updatedUserData={updatedUserData }
+              setUpdatedUserData={setUpdatedUserData} />
           </div>
         }
         {toggleDisplay === "edit-account-settings" &&

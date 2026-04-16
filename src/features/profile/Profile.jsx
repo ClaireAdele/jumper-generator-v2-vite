@@ -12,6 +12,7 @@ import DeletePatternPopUp from "./pattern-list/DeletePatternPopUp";
 import DeleteProfilePopUp from "./profile-children/DeleteProfilePopUp";
 import ProfilePage from "./profile-children/ProfilePage";
 import Loader from "../../components/Loader";
+import ValidateNewMeasurementsPopUp from "./profile-children/ValidateNewMeasurementsPopUp";
 
 
 const Profile = () => {
@@ -19,7 +20,10 @@ const Profile = () => {
   const [patternList, setPatternList] = useState([]);
   const [toggleDeletePopUp, setToggleDeletePopUp] = useState(false);
   const [toggleLogOutPopUp, setToggleLogOutPopUp] = useState(false);
+  const [toggleValidateNewMeasurementsPopUp, setToggleValidateNewMeasurementsPopUp] = useState(false);
   const [patternToDeletePopUpData, setPatternToDeletePopUpData] = useState(null);
+  const [isUserEditingMeasurements, setisUserEditingMeasurements] = useState(false);
+  const [updatedUserData, setUpdatedUserData] = useState({});
   const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } =
@@ -88,10 +92,27 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
-        <ProfilePage measurementsList={measurementsList} username={signedInUserData.username} patternList={patternList} setToggleLogOutPopUp={setToggleLogOutPopUp} setToggleDeletePopUp={setToggleDeletePopUp} setPatternToDeletePopUpData={setPatternToDeletePopUpData} />
-        {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
-        {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
-        {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
+      <ProfilePage measurementsList={measurementsList}
+        username={signedInUserData.username}
+        patternList={patternList}
+        setToggleLogOutPopUp={setToggleLogOutPopUp}
+        setToggleDeletePopUp={setToggleDeletePopUp}
+        setToggleValidateNewMeasurementsPopUp={setToggleValidateNewMeasurementsPopUp}
+        setPatternToDeletePopUpData={setPatternToDeletePopUpData}
+        isUserEditingMeasurements={isUserEditingMeasurements}
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData }
+        setUpdatedUserData={setUpdatedUserData}
+      />
+      {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
+      {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
+      {toggleValidateNewMeasurementsPopUp && <ValidateNewMeasurementsPopUp
+        togglePopUp={toggleValidateNewMeasurementsPopUp}
+        setTogglePopUp={setToggleValidateNewMeasurementsPopUp}
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData}
+      />}
+      {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
     </div>
   )
 };

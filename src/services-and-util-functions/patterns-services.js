@@ -1,5 +1,5 @@
 const postPattern = async (finalJumperData) => {
-        const res = await fetch("/api/patterns", {
+        const res = await apiFetch("/api/patterns", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -17,7 +17,7 @@ const postPattern = async (finalJumperData) => {
 };
 
 const getPatternsByUser = async () => {
-    const res = await fetch("/api/patterns/my-patterns");
+    const res = await apiFetch("/api/patterns/my-patterns");
 
     if (!res.ok) {
       const errorData = await res.json();
@@ -32,7 +32,7 @@ const getPatternsByUser = async () => {
 }
 
 const getPatternById = async (patternId) => {
-  const res = await fetch(`/api/patterns/${patternId}`);
+  const res = await apiFetch(`/api/patterns/${patternId}`);
 
   if (!res.ok) {
     const errorData = await res.json();
@@ -47,7 +47,7 @@ const getPatternById = async (patternId) => {
 };
 
 const deletePatternById = async (patternId) => {
-  const res = await fetch(`/api/patterns/${patternId}`, {
+  const res = await apiFetch(`/api/patterns/${patternId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
