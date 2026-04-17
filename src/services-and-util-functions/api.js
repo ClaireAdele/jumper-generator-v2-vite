@@ -25,6 +25,8 @@ const getRefreshPromise = () => {
 };
 
 const apiFetch = async (url, options = {}) => {
+    console.log(url)
+    console.log(options)
   let res = await fetch(url, {
     credentials: "include",
     ...options,
