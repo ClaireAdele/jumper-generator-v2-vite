@@ -20,7 +20,6 @@ const Measurement = ({ measurement, isUserEditingMeasurements, updatedUserData, 
     setUpdatedUserData(userData);
   };
 
-  console.log(updatedUserData)
 
   return isUserEditingMeasurements ? (
     <div className="profile-page-measurements-row">
@@ -31,6 +30,7 @@ const Measurement = ({ measurement, isUserEditingMeasurements, updatedUserData, 
         onChange={handleChangeUserMeasurement}
         name={measurement.label}
         type="number"
+        value={measurement.value}
         className="fit-and-measurements-input"
       />
       <p>{preferredUnit}</p></div>

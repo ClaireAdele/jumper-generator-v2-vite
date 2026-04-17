@@ -58,7 +58,7 @@ const ValidateNewMeasurementsPopUp = ({
         return (
             <div className="pop-up-overlay">
                 <div ref={ValidateNewMeasurementsPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
-                    <div className="pop-up-icon button-style-purple">
+                    <div className="pop-up-icon button-style-green">
                         <EditProfileSvgIcon className="pop-up-icon-inner" />
                     </div>
                     <h3>{successMsg}</h3>

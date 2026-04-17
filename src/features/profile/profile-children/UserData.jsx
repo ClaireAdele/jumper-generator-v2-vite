@@ -69,11 +69,10 @@ const UserData = ({
         <div className="edit-profile-button-section">
           <button
             onClick={handleClickEditProfile}
-            className="main-button-style edit-profile-button"
-            style={{ backgroundColor: "rgb(126, 70, 136)" }}
+            className="main-button-style edit-profile-button button-style-purple"
           >
             <EditSvgIcon className="edit-icon" />
-            <span className="edit-label">Edit Profile</span>
+            <span className="edit-label">Edit Measurements</span>
           </button>
         </div>
       
