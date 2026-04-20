@@ -144,9 +144,6 @@ select:focus {
   text-align: justify;
   color: rgb(73, 67, 62);
   margin-top: 2%;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px 2px #9c938890;
-  background-color: #ffffff;
 }
 
 .drop-down-content-wrapper {
@@ -193,4 +190,11 @@ select:focus {
   to {
     rotate: 1turn
   }
+}
+
+.standard-box-styling {
+  box-shadow: 3px 3px 5px 2px #9c938890;
+  background-color: #ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
 }

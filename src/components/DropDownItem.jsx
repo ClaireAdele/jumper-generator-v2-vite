@@ -7,7 +7,7 @@ const DropDownItem = ({ className, title, children }) => {
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div className={`drop-down-container ${className}`}>
+    <div className={`drop-down-container ${className} standard-box-styling`}>
       <div onClick={toggleOpen} className="drop-down-title">
         <h2>{title}</h2>
         {isOpen ? <h2>-</h2> : <h2>+</h2>}

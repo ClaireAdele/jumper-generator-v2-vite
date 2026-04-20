@@ -2,10 +2,10 @@ import "../../../App.css";
 import "../Profile.css";
 import PatternList from "../pattern-list/PatternList";
 import ProfileMenu from "./ProfileMenu";
+import MyMeasurementsSection from "./MyMeasurementsSection";
+import EditAccountSettings from "./EditAccountSettings";
 
 import { useState } from "react";
-import useInView from "../../../custom-hooks/useInView";
-import MyMeasurementsSection from "./MyMeasurementsSection";
 
 
 const ProfilePage = ({
@@ -47,7 +47,10 @@ const ProfilePage = ({
           </div>
         }
         {toggleDisplay === "edit-account-settings" &&
-          <h1 className="profile-page-toggable-content" >TODO</h1>
+          <div className="profile-page-toggable-content">
+            <h1>Edit Account Settings</h1>
+            <EditAccountSettings />
+          </div>
         }
       </div>
     </div>

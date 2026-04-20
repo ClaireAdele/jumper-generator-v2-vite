@@ -30,7 +30,7 @@ const PatternTile = ({ pattern, navigate, setPatternToDeletePopUpData }) => {
   }
 
   return (
-    <div ref={patternTileRef} className={`pattern-tile ${isVisible ? "visible" : ""}`} >
+    <div ref={patternTileRef} className={`pattern-tile ${isVisible ? "visible" : ""} standard-box-styling`} >
       <img src={patternTileImg} className="pattern-tile-img"></img>
        <div className="pattern-tile-button-section">
       <button

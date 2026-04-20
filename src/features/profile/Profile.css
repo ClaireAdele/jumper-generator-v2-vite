@@ -117,9 +117,6 @@
     padding-top: 1em;
     padding-bottom: 1em;
     grid-auto-rows: auto;
-    border-radius: 12px;
-    box-shadow: 3px 3px 5px 2px #9c938890;
-    background-color: white;
 }
 
 .profile-page-measurements-row {

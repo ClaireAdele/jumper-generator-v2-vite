@@ -1,8 +1,3 @@
-import { useState, useContext } from "react";
-
-import { editUserDetails } from "../../../services-and-util-functions/user-services";
-
-
 import Measurement from "./Measurement";
 import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
 import CancelEditSvg from "./../profile-assets/cancel-close-delete-svgrepo-com.svg?react";
@@ -30,7 +25,7 @@ const UserData = ({
 
   if (isUserEditingMeasurements) {
     return (
-      <div className="profile-page-measurements-block">
+      <div className="profile-page-measurements-block standard-box-styling">
         <div className="edit-profile-button-section">
           <button
             onClick={handleClickCancelEditProfile}
@@ -65,7 +60,7 @@ const UserData = ({
     );
   } else {
     return (
-      <div className="profile-page-measurements-block">
+      <div className="profile-page-measurements-block standard-box-styling">
         <div className="edit-profile-button-section">
           <button
             onClick={handleClickEditProfile}
