@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
-import { getPatternsByUser } from "../../../services-and-util-functions/patterns-services";
 import useInView from "../../../custom-hooks/useInView";
 
 import CreateNewPatternSvg from "../profile-assets/circle-plus-svgrepo-com.svg?react";
