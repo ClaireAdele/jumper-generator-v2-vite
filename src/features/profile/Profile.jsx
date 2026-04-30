@@ -16,6 +16,7 @@ import DeleteProfilePopUp from "./profile-children/DeleteProfilePopUp";
 import ProfilePage from "./profile-children/ProfilePage";
 import Loader from "../../components/Loader";
 import ValidateNewMeasurementsPopUp from "./profile-children/ValidateNewMeasurementsPopUp";
+import EditEmailAddressPopUp from "./profile-children/EditEmailAddressPopUp";
 
 
 const Profile = () => {
@@ -24,7 +25,8 @@ const Profile = () => {
   const [isUserEditingMeasurements, setisUserEditingMeasurements] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState({});
   const [patternToDeletePopUpData, setPatternToDeletePopUpData] = useState(null);
-  
+  const [editEmailAddressForm, setEditEmailAddressForm] = useState({});
+
   const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } =
@@ -96,20 +98,25 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
-        <ProfilePage measurementsList={measurementsList}
-          username={signedInUserData.username}
-          patternList={patternList}
-          setPatternToDeletePopUpData={setPatternToDeletePopUpData}
-          isUserEditingMeasurements={isUserEditingMeasurements}
-          setisUserEditingMeasurements={setisUserEditingMeasurements}
-          updatedUserData={updatedUserData}
-          setUpdatedUserData={setUpdatedUserData}
+      <ProfilePage measurementsList={measurementsList}
+        username={signedInUserData.username}
+        patternList={patternList}
+        setPatternToDeletePopUpData={setPatternToDeletePopUpData}
+        isUserEditingMeasurements={isUserEditingMeasurements}
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData}
+        setUpdatedUserData={setUpdatedUserData}
+        editEmailAddressForm={editEmailAddressForm}
+        setEditEmailAddressForm={setEditEmailAddressForm}
         />
         {currentPopUp == popUpList.deleteProfilePopup && <DeleteProfilePopUp />}
         {currentPopUp == popUpList.logoutPopup && <LogOutPopUp />}
         {currentPopUp == popUpList.validateMeasurementsPopup && <ValidateNewMeasurementsPopUp
           setisUserEditingMeasurements={setisUserEditingMeasurements}
           updatedUserData={updatedUserData}
+      />}
+        {currentPopUp == popUpList.editEmailAddressPopup && <EditEmailAddressPopUp
+          editEmailAddressForm={editEmailAddressForm}
         />}
         {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
     </div>

@@ -52,4 +52,29 @@ const signOutUser = async () => {
   return await res.json();
 };
 
-export { signUpUser, signInUser, signOutUser };
+
+/* User needs to be able to send a request to reset the e-mail associated to the account
+*  User needs to be able to send a request to reset a password when logged-in
+*  
+*/
+
+const resetEmailUserLoggedIn = async (newEmail, password) => {
+  const requestBody = { newEmail, password };
+
+  const res = await apiFetch( "/api/authentication/email-reset-request-authenticated-user",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    },
+  );
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "E-mail reset failed - try again");
+  }
+
+  return true;
+}
+
+export { signUpUser, signInUser, signOutUser, resetEmailUserLoggedIn };

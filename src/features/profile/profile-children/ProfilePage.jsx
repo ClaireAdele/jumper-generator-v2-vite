@@ -7,10 +7,10 @@ import EditAccountSettings from "./EditAccountSettings";
 
 import { useState } from "react";
 
-
 const ProfilePage = ({
+  editEmailAddressForm,
+  setEditEmailAddressForm,
   measurementsList,
-  username,
   patternList,
   setPatternToDeletePopUpData,
   updatedUserData,
@@ -45,7 +45,10 @@ const ProfilePage = ({
         {toggleDisplay === "edit-account-settings" &&
           <div className="profile-page-toggable-content">
             <h1>Edit Account Settings</h1>
-            <EditAccountSettings />
+            <EditAccountSettings
+              editEmailAddressForm={editEmailAddressForm}
+              setEditEmailAddressForm={setEditEmailAddressForm}
+            />
           </div>
         }
       </div>

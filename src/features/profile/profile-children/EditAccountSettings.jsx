@@ -2,13 +2,15 @@ import EditEmailAddress from "./EditEmailAddress";
 import EditPassword from "./EditPassword";
 import useInView from "../../../custom-hooks/useInView";
 
-const EditAccountSettings = () => {
+const EditAccountSettings = ({editEmailAddressForm, setEditEmailAddressForm}) => {
     const [editAccountSettingsRef, isVisible] = useInView();
   
     return (
-       
         <div ref={editAccountSettingsRef} className={`edit-account-settings ${isVisible ? "visible" : ""}`}>
-            <EditEmailAddress />
+            <EditEmailAddress
+                setEditEmailAddressForm={setEditEmailAddressForm}
+                editEmailAddressForm={editEmailAddressForm}
+            />
             <EditPassword />
             <div className="edit-account-tile standard-box-styling">
                 <h3>Delete your account:</h3>
