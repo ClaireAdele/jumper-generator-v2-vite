@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { SignedInUserContext, SignedInUserContextProvider } from "../../../../contexts/SignedInUserContext";
+import { SignedInUserContext, SignedInUserContextProvider } from "../../../contexts/SignedInUserContext";
 
-const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUserData }) => {
+const Measurement = ({ measurement, isUserEditingMeasurements, updatedUserData, setUpdatedUserData }) => {
   const [preferredUnit, setPreferredUnit] = useState("centimetres");
   const { signedInUserData, setSignedInUserData } = useContext(
        SignedInUserContext
@@ -20,25 +20,27 @@ const Measurement = ({ measurement, isUserEditing, updatedUserData, setUpdatedUs
     setUpdatedUserData(userData);
   };
 
-  return isUserEditing ? (
-    <div className="profile-row">
-      <p className="profile-label">
+
+  return isUserEditingMeasurements ? (
+    <div className="profile-page-measurements-row">
+      <p className="profile-page-measurements-row-label">
         <b>{measurement.label}</b>
       </p>
       <div className="profile-input-and-value"><input
         onChange={handleChangeUserMeasurement}
         name={measurement.label}
         type="number"
+        value={measurement.value}
         className="fit-and-measurements-input"
       />
       <p>{preferredUnit}</p></div>
     </div>
   ) : (
-    <div className="profile-row">
-      <p className="profile-label">
+    <div className="profile-page-measurements-row">
+      <p className="profile-page-measurements-row-label">
         <b>{measurement.label}</b>
       </p>
-      <p className="profile-value">{measurement.value + " " + preferredUnit}</p>
+      <p className="profile-page-measurements-value">{measurement.value + " " + preferredUnit}</p>
     </div>
   );
 };

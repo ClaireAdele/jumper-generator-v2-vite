@@ -9,7 +9,7 @@ const PatternSection = ({ patternSection, patternData }) => {
     const toggleOpen = () => setIsOpen(!isOpen);
 
     return (
-        <div className="pattern-section">
+        <div className="pattern-section standard-box-styling">
             <div onClick={toggleOpen} className="pattern-section-title">
                 <h2>{sectionTitle}</h2>
                  {isOpen ? <h1>-</h1> : <h2>+</h2>}

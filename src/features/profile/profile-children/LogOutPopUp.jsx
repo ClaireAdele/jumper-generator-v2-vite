@@ -1,8 +1,8 @@
-import LogOutSvgIcon from "../../profile-assets/sign-out-svgrepo-com.svg?react";
-import { signOutUser } from "../../../../services-and-util-functions/auth-services";
+import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
+import { signOutUser } from "./../../../services-and-util-functions/auth-services";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useInView from "../../../../custom-hooks/useInView";
+import useInView from "./../../../custom-hooks/useInView";
 
 const LogOutPopUp = ({ togglePopUp, setTogglePopUp }) => {
     const [errorMsg, setErrorMsg] = useState(null);

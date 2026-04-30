@@ -1,61 +1,62 @@
+import { apiFetch } from "./api";
+
 const getSignedInUserData = async () => {
-    const res = await fetch("/api/users/me", {
-      method: "GET",
-      credentials: "include",
-    });
+  const res = await apiFetch("/api/users/me", {
+    method: "GET",
+    credentials: "include",
+  });
 
-    if (res.status === 401) {
-      return null;
-    }
+  if (res.status === 401) {
+    return null;
+  }
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Could not authenticate user");
-    }
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Could not authenticate user");
+  }
 
-    const { signedInUser } = await res.json();
+  const { signedInUser } = await res.json();
 
-    return signedInUser;
+  return signedInUser;
 };
 
 const editUserDetails = async (updatedUserDetails) => {
   const reqBody = updatedUserDetails;
 
-    const res = await fetch("/api/users/me", {
-      method: "PUT",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(reqBody),
-    });
-
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(
-        errorData.message || "Could not update user details - try again"
-      );
-    }
-
-    const data = await res.json();
-    return data.updatedUser;
-};
-
-const deleteUserData = async () => {
-  const res = await fetch("/api/users/me", {
-    method: "DELETE",
+  const res = await apiFetch("/api/users/me", {
+    method: "PUT",
     credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(reqBody),
   });
-  
+
   if (!res.ok) {
     const errorData = await res.json();
     throw new Error(
-      errorData.message || "Could not delete user - try again"
+      errorData.message || "Could not update user details - try again",
     );
   }
-  
+
   const data = await res.json();
-  console.log(data);
+  return data.updatedUser;
+};
+
+const deleteUserData = async () => {
+  const res = await apiFetch("/api/users/me", {
+    method: "DELETE",
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "Could not delete user - try again");
+  }
+
+  const data = await res.json();
 
   return true;
 };
+
+
 
 export { getSignedInUserData, editUserDetails, deleteUserData };

@@ -66,11 +66,29 @@ a {
 
 input {
   text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px solid #9f9a9a;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 input:focus {
   outline: none;
   text-align: center;
+}
+
+select {
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  border: none;
+  padding: 3px;
+  outline: none;
+  margin-left: 1vw;
+}
+
+select:focus {
+  border: none;
+  outline: none;
 }
 
 /*Pop-ups styling*/
@@ -126,9 +144,6 @@ input:focus {
   text-align: justify;
   color: rgb(73, 67, 62);
   margin-top: 2%;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px 2px #9c938890;
-  background-color: #ffffff;
 }
 
 .drop-down-content-wrapper {
@@ -175,4 +190,11 @@ input:focus {
   to {
     rotate: 1turn
   }
+}
+
+.standard-box-styling {
+  box-shadow: 3px 3px 5px 2px #9c938890;
+  background-color: #ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
 }

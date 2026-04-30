@@ -30,7 +30,7 @@ const PatternTile = ({ pattern, navigate, setPatternToDeletePopUpData }) => {
   }
 
   return (
-    <div ref={patternTileRef} className={`pattern-tile ${isVisible ? "visible" : ""}`} >
+    <div ref={patternTileRef} className={`pattern-tile ${isVisible ? "visible" : ""} standard-box-styling`} >
       <img src={patternTileImg} className="pattern-tile-img"></img>
        <div className="pattern-tile-button-section">
       <button
@@ -45,7 +45,8 @@ const PatternTile = ({ pattern, navigate, setPatternToDeletePopUpData }) => {
       </p>
       <div className="pattern-tile-description" onClick={handleClickTile} >
         <p className="pattern-tile-description-row"><b>{jumperShapes[jumperShape]}</b></p>
-        <p className="pattern-tile-description-row"><b>{easeAmounts[easeAmount]}</b></p></div>
+        <p className="pattern-tile-description-row"><b>{easeAmounts[easeAmount]}</b></p>
+      </div>
     </div>
   );
 };
