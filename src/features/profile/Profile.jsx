@@ -7,11 +7,12 @@ import { getPatternsByUser } from "../../services-and-util-functions/patterns-se
 import { SignedInUserContext } from "../../contexts/SignedInUserContext";
 import { useNavigate } from "react-router-dom";
 
-import LogOutPopUp from "./profile-children/profile-page-children/LogOutPopUp";
+import LogOutPopUp from "./profile-children/LogOutPopUp";
 import DeletePatternPopUp from "./pattern-list/DeletePatternPopUp";
-import DeleteProfilePopUp from "./profile-children/profile-page-children/DeleteProfilePopUp";
+import DeleteProfilePopUp from "./profile-children/DeleteProfilePopUp";
 import ProfilePage from "./profile-children/ProfilePage";
 import Loader from "../../components/Loader";
+import ValidateNewMeasurementsPopUp from "./profile-children/ValidateNewMeasurementsPopUp";
 
 
 const Profile = () => {
@@ -19,7 +20,10 @@ const Profile = () => {
   const [patternList, setPatternList] = useState([]);
   const [toggleDeletePopUp, setToggleDeletePopUp] = useState(false);
   const [toggleLogOutPopUp, setToggleLogOutPopUp] = useState(false);
+  const [toggleValidateNewMeasurementsPopUp, setToggleValidateNewMeasurementsPopUp] = useState(false);
   const [patternToDeletePopUpData, setPatternToDeletePopUpData] = useState(null);
+  const [isUserEditingMeasurements, setisUserEditingMeasurements] = useState(false);
+  const [updatedUserData, setUpdatedUserData] = useState({});
   const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } =
@@ -54,13 +58,18 @@ const Profile = () => {
         const signedInUser = await getSignedInUserData();
 
         if (!signedInUser.username) {
-          //TODO - add more gracious error handling
           throw Error("Problem with user data - try login-in again")
         }
+
         const { patterns } = await getPatternsByUser();
 
         setSignedInUserData(signedInUser);
-        setPatternList(patterns);//check user is authenticated
+        
+        /*Session storage is used to store data from patterns generated without an account.
+        It needs clearing here as when loading a pattern I use it as a first port of call 
+        to check if we are in an unsaved pattern scenario or in the other case.*/
+        sessionStorage.clear();
+        setPatternList(patterns);
         setIsLoading(false);
       } catch (error) {
         navigate("/");
@@ -82,13 +91,28 @@ const Profile = () => {
   }
 
   return (
-    <div className="pageBackground">
-      <div className="pageShaper">
-        <ProfilePage measurementsList={measurementsList} username={signedInUserData.username} patternList={patternList} setToggleLogOutPopUp={setToggleLogOutPopUp} setToggleDeletePopUp={setToggleDeletePopUp} setPatternToDeletePopUpData={setPatternToDeletePopUpData} />
-        {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
-        {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
-        {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
-      </div>
+    <div className="profile-page">
+      <ProfilePage measurementsList={measurementsList}
+        username={signedInUserData.username}
+        patternList={patternList}
+        setToggleLogOutPopUp={setToggleLogOutPopUp}
+        setToggleDeletePopUp={setToggleDeletePopUp}
+        setToggleValidateNewMeasurementsPopUp={setToggleValidateNewMeasurementsPopUp}
+        setPatternToDeletePopUpData={setPatternToDeletePopUpData}
+        isUserEditingMeasurements={isUserEditingMeasurements}
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData }
+        setUpdatedUserData={setUpdatedUserData}
+      />
+      {toggleDeletePopUp && <DeleteProfilePopUp togglePopUp={toggleDeletePopUp} setTogglePopUp={setToggleDeletePopUp} />}
+      {toggleLogOutPopUp && <LogOutPopUp togglePopUp={toggleLogOutPopUp} setTogglePopUp={setToggleLogOutPopUp} />}
+      {toggleValidateNewMeasurementsPopUp && <ValidateNewMeasurementsPopUp
+        togglePopUp={toggleValidateNewMeasurementsPopUp}
+        setTogglePopUp={setToggleValidateNewMeasurementsPopUp}
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData}
+      />}
+      {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
     </div>
   )
 };

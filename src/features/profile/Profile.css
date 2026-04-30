@@ -1,8 +1,107 @@
 /*Styling of the profile page main structure*/
-#profile-page {
+.profile-page {
+    height: 100%;
+}
+
+.profile-page-toggable-section {
+    background-color: #e3d9cf;
+    color: rgb(73, 67, 62);
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    padding-bottom: 10vh;
+}
+
+.profile-page-toggable-content h1 {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: min(10vh);
+    margin-bottom: min(10vh);
+}
+
+.profile-page-menu-and-toggable-section-container {
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+    height: 100%;
+}
+
+.profile-page-user-data-container{
+    opacity: 0;
+    transform: translateY(40vh);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.profile-page-user-data-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-menu {
+    grid-column: 1;
+    background-color: #42582fdc;
+    color: white;
+    position: relative;
+    width: 100%;
+}
+
+.profile-menu-top-buttons-section {
+    grid-column: 1;
+    display: flex;
+    position: sticky;
+    top: 2%;
+    margin-right: 5%;
+}
+
+.profile-menu-content {
+    position: sticky;
+    top: 25%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-menu-button-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 35vh;
+}
+
+.profile-menu-button {
+    background-color: transparent;
+    text-align: left;
+    font-size: large;
+}
+
+.profile-menu-row-icon {
+    max-height: 4vh;
+    max-width: 4vh;
+    padding-left: 1vw;
+}
+
+.profile-menu-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
+
+.profile-menu-row button {
+    color: inherit;
+    /* button text uses the same row color */
+}
+
+.profile-menu-row:hover {
+    background-color: white;
+    color:#42582fdc;
+    border-radius: 10px;
+}
+
+.profile-menu-row.clicked {
+    background-color: white;
+    color: #42582fdc;
+    border-radius: 10px;
 }
 
 /*Styling of the measurements list box*/
@@ -10,25 +109,17 @@
  margin-top: 5%;
  margin-bottom: 5%;
 }
-.profile-info-style {
+
+.profile-page-measurements-block {
     margin: 5% 10% 5% 10%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px;
-    box-shadow: 0px 0px 5px 1px #d6d1d1;
+    display: grid;
+    grid-template-rows: 2.5em auto 2.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    grid-auto-rows: auto;
 }
 
-.profile-page-title {
-    align-self: center;
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.profile-page-title.visible {
-    opacity: 1;
-}
-
-.profile-row {
+.profile-page-measurements-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     background-color: #f5f5f5;
@@ -49,20 +140,17 @@
     gap: 0.5rem;
 }
 
-.profile-label {
+.profile-page-measurements-row-label {
     grid-column: 1;
 }
 
-.profile-value {
-    grid-column: 2;
-}
-
-#profile-input {
+.profile-page-measurements-value {
     grid-column: 2;
 }
 
 /*Edit/Delete profile functionalities styling, buttons and pop-up*/
 .edit-profile-button-section {
+    grid-row: 1;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1%;
@@ -84,8 +172,7 @@
 }
 
 .edit-profile-button:hover .edit-label {
-    max-width: 150px;
-    /* adjust based on text length */
+    max-width: 200px;
     opacity: 1;
     margin-left: 0.5em;
 }
@@ -99,6 +186,11 @@
     margin-right: 2%;
 }
 
+.edit-profile-apply-changes-button {
+    grid-row: 3;
+    justify-content: center;
+}
+
 /*Drop-down show how to take measurements*/
 .drop-down-profile-page {
     margin-left: 10%;
@@ -107,3 +199,57 @@
     padding-right: 2%;
 }
 
+.edit-account-tile {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%; 
+    padding: 1% 2% 2% 2%;
+    /* transform: translateY(4em);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0; */
+}
+
+/* .edit-account-tile.visible {
+    transform: translateY(0);
+    opacity: 1;
+} */
+
+.edit-account-settings {
+    transform: translateY(40vh);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.edit-account-settings.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.edit-account-form-section {
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+}
+
+.edit-account-input {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    background-color: #f5f5f5;
+    align-items: center;
+    font-size: small;
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.edit-profile-button {
+    align-self: center;
+    margin-top: 2rem;
+}

@@ -1,36 +1,58 @@
 import "../../../App.css";
 import "../Profile.css";
-import UserData from "./profile-page-children/UserData";
-import HowToTakeMeasurements from "../../pattern-data-entry/data-entry-children/HowToTakeMeasurements";
 import PatternList from "../pattern-list/PatternList";
+import ProfileMenu from "./ProfileMenu";
+import MyMeasurementsSection from "./MyMeasurementsSection";
+import EditAccountSettings from "./EditAccountSettings";
 
 import { useState } from "react";
-import useInView from "../../../custom-hooks/useInView";
-import DropDownItem from "../../../components/DropDownItem";
 
-const showHowToTakeMeasurementsButton = {
-  "hide-measurements": "Hide How to Take Measurements",
-  "show-measurements": "Show How to Take Measurements"
-}
 
-const ProfilePage = ({ measurementsList, username, patternList, setPatternToDeletePopUpData, setToggleDeletePopUp, setToggleLogOutPopUp }) => {
-  const [showHowToTakeMeasurements, setShowHowtoTakeMeasurements] = useState("show-measurements");
-  const [profilePageTitleRef, isVisible] = useInView();
+const ProfilePage = ({
+  measurementsList,
+  username,
+  patternList,
+  setPatternToDeletePopUpData,
+  setToggleDeletePopUp,
+  setToggleLogOutPopUp,
+  setToggleValidateNewMeasurementsPopUp,
+  updatedUserData,
+  setUpdatedUserData,
+  isUserEditingMeasurements,
+  setisUserEditingMeasurements  
+}) => {
 
-  const handleClickShowHowTo = () => {
-    if (showHowToTakeMeasurements === "hide-measurements") {
-      setShowHowtoTakeMeasurements("show-measurements");
-    } else {
-      setShowHowtoTakeMeasurements("hide-measurements");
-    }
-  };
-
+  const [toggleDisplay, setToggleDisplay] = useState("pattern-list");
+  
   return (
-    <div id="profile-page">
-      <h1 ref={profilePageTitleRef} className={`profile-page-title ${isVisible ? "visible" : ""}`}>Welcome back, {username} !</h1>
-      <UserData measurementsList={measurementsList} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
-      <DropDownItem className="drop-down-profile-page" title={showHowToTakeMeasurementsButton[showHowToTakeMeasurements]}><HowToTakeMeasurements /></DropDownItem>
-      <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
+    <div className="profile-page-menu-and-toggable-section-container">
+      <ProfileMenu setToggleDisplay={setToggleDisplay} toggleDisplay={toggleDisplay} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
+      <div className="profile-page-toggable-section">
+        {toggleDisplay === "pattern-list" &&
+          <div className="profile-page-toggable-content">
+            <h1>My Patterns</h1>
+            <PatternList setPatternToDeletePopUpData={setPatternToDeletePopUpData} patternList={patternList} />
+          </div>
+        }
+        {toggleDisplay === "user-measurements" &&
+          <div className="profile-page-toggable-content">
+            <h1>My Measurements</h1>
+            <MyMeasurementsSection
+              measurementsList={measurementsList}
+              setToggleValidateNewMeasurementsPopUp={setToggleValidateNewMeasurementsPopUp}
+              isUserEditingMeasurements={isUserEditingMeasurements}
+              setisUserEditingMeasurements={setisUserEditingMeasurements}
+              updatedUserData={updatedUserData }
+              setUpdatedUserData={setUpdatedUserData} />
+          </div>
+        }
+        {toggleDisplay === "edit-account-settings" &&
+          <div className="profile-page-toggable-content">
+            <h1>Edit Account Settings</h1>
+            <EditAccountSettings />
+          </div>
+        }
+      </div>
     </div>
   );
 };
