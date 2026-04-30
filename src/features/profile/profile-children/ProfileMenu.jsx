@@ -11,7 +11,7 @@ import HomeIcon from "./../profile-assets/home-svgrepo-com.svg?react";
 import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
 
 
-const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp  }) => {
+const ProfileMenu = ({ setToggleDisplay, toggleDisplay }) => {
     const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
     const navigate = useNavigate();
 
@@ -21,8 +21,6 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp  })
         const toggleString = event.target.value;
         setToggleDisplay(toggleString);
     };
-
-    console.log(currentPopUp)
 
     const handleClickLogOut = () => {
         setCurrentPopUp(popUpList.logoutPopup);
