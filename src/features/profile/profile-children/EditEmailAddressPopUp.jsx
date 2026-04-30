@@ -5,10 +5,7 @@ import useInView from "./../../../custom-hooks/useInView";
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
 import { PopUpContext } from "../../../contexts/PopUpsContext";
 
-const ValidateNewMeasurementsPopUp = ({
-    setisUserEditingMeasurements,
-    updatedUserData,
-}) => {
+const ValidateNewMeasurementsPopUp = () => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [ValidateNewMeasurementsPopUpRef, isVisible] = useInView();
@@ -22,12 +19,11 @@ const ValidateNewMeasurementsPopUp = ({
 
     const handleClickValidateMeasurementsUpdate = async () => {
         try {
-            const user = await editUserDetails(updatedUserData);
-            setSignedInUserData(user);
-            setSuccessMsg("Measurements succesfully updated");
+            //Send reques to backend
+            setSuccessMsg("E-mail address change request successfully sent - you will now be logged out from all devices for security reasons.");
             setisUserEditingMeasurements(false);
         } catch (error) {
-            setErrorMsg("Measurements update failed - try again!");
+            setErrorMsg("E-mail address change request failed - try again!");
         }
     }
 
