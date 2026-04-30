@@ -200,6 +200,8 @@
 }
 
 .edit-account-tile {
+    display: flex;
+    flex-direction: column;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 2%; 

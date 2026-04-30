@@ -13,7 +13,7 @@ const EditAccountSettings = () => {
             <div className="edit-account-tile standard-box-styling">
                 <h3>Delete your account:</h3>
                 <p>This will permanently delete your account and all saved patterns. This cannot be undone.</p>
-                <button className="main-button-style button-style-red">Delete account</button>
+                <button className="main-button-style button-style-red edit-profile-button">Delete account</button>
             </div>
         </div>
     )
