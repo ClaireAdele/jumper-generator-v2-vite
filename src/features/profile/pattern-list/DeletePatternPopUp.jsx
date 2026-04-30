@@ -1,14 +1,16 @@
-import { useState } from "react";
 import BinSvgIcon from "../../profile/profile-assets/trash-svgrepo-com.svg?react";
 import useInView from "../../../custom-hooks/useInView";
 import { deletePatternById } from "../../../services-and-util-functions/patterns-services";
+
 import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 
 const DeletePatternPopUp = ({ patternToDeletePopUpData, setPatternToDeletePopUpData, setPatternList }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [deletePatternPopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
+
 
     const handleClickCancel = () => {
         setPatternToDeletePopUpData(null);

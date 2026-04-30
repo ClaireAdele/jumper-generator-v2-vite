@@ -1,19 +1,22 @@
 import { deleteUserData } from "./../../../services-and-util-functions/user-services";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { PopUpContext } from "../../../contexts/PopUpsContext";
 import BinSvgIcon from "./../profile-assets/trash-svgrepo-com.svg?react";
 import useInView from "./../../../custom-hooks/useInView";
 
-const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+const DeleteProfilePopUp = () => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [deleteProfilePopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
 
-    console.log(isVisible)
+    const {currentPopUp, setCurrentPopUp} = useContext(PopUpContext);
 
     const handleClickCancel = () => {
-        setTogglePopUp(false);
+        setCurrentPopUp(null);
     }
 
     const handleClickDelete = async () => {
@@ -26,10 +29,11 @@ const DeleteProfilePopUp = ({ togglePopUp, setTogglePopUp }) => {
     }
 
     const handleClickBackHomepage = () => {
+        setCurrentPopUp(null);
         navigate("/")
     }
 
-    if (!togglePopUp) return null;
+    if (!currentPopUp) return null;
 
     if (errorMsg) {
         return (

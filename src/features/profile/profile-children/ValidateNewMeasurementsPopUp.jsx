@@ -1,24 +1,23 @@
 import EditProfileSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
 import { editUserDetails } from "./../../../services-and-util-functions/user-services";
-import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import useInView from "./../../../custom-hooks/useInView";
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+import { PopUpContext } from "../../../contexts/PopUpsContext";
 
 const ValidateNewMeasurementsPopUp = ({
-    togglePopUp,
-    setTogglePopUp,
     setisUserEditingMeasurements,
     updatedUserData,
 }) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [ValidateNewMeasurementsPopUpRef, isVisible] = useInView();
-    const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
-    const navigate = useNavigate();
+
+    const { setSignedInUserData } = useContext(SignedInUserContext);
+    const {currentPopUp, setCurrentPopUp} = useContext(PopUpContext);
 
     const handleClickCancel = () => {
-        setTogglePopUp(false);
+        setCurrentPopUp(null);
     }
 
     const handleClickValidateMeasurementsUpdate = async () => {
@@ -33,10 +32,10 @@ const ValidateNewMeasurementsPopUp = ({
     }
 
     const handleClickClose = () => {
-        setTogglePopUp(false);
+        setCurrentPopUp(null);
     }
 
-    if (!togglePopUp) return null;
+    if (!currentPopUp) return null;
 
     if (errorMsg) {
         return (

@@ -13,9 +13,6 @@ const ProfilePage = ({
   username,
   patternList,
   setPatternToDeletePopUpData,
-  setToggleDeletePopUp,
-  setToggleLogOutPopUp,
-  setToggleValidateNewMeasurementsPopUp,
   updatedUserData,
   setUpdatedUserData,
   isUserEditingMeasurements,
@@ -26,7 +23,7 @@ const ProfilePage = ({
   
   return (
     <div className="profile-page-menu-and-toggable-section-container">
-      <ProfileMenu setToggleDisplay={setToggleDisplay} toggleDisplay={toggleDisplay} setToggleDeletePopUp={setToggleDeletePopUp} setToggleLogOutPopUp={setToggleLogOutPopUp} />
+      <ProfileMenu setToggleDisplay={setToggleDisplay} toggleDisplay={toggleDisplay} />
       <div className="profile-page-toggable-section">
         {toggleDisplay === "pattern-list" &&
           <div className="profile-page-toggable-content">
@@ -39,7 +36,6 @@ const ProfilePage = ({
             <h1>My Measurements</h1>
             <MyMeasurementsSection
               measurementsList={measurementsList}
-              setToggleValidateNewMeasurementsPopUp={setToggleValidateNewMeasurementsPopUp}
               isUserEditingMeasurements={isUserEditingMeasurements}
               setisUserEditingMeasurements={setisUserEditingMeasurements}
               updatedUserData={updatedUserData }

@@ -1,17 +1,21 @@
 import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
 import { signOutUser } from "./../../../services-and-util-functions/auth-services";
+import { PopUpContext } from "../../../contexts/PopUpsContext";
+
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useInView from "./../../../custom-hooks/useInView";
 
-const LogOutPopUp = ({ togglePopUp, setTogglePopUp }) => {
+const LogOutPopUp = () => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [LogOutPopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
 
+    const {currentPopUp, setCurrentPopUp} = useContext(PopUpContext);
+
     const handleClickCancel = () => {
-        setTogglePopUp(false);
+        setCurrentPopUp(null);
     }
 
     const handleClickLogOut = async () => {
@@ -24,10 +28,11 @@ const LogOutPopUp = ({ togglePopUp, setTogglePopUp }) => {
     }
 
     const handleClickBackHomepage = () => {
+        setCurrentPopUp(null);
         navigate("/")
     }
 
-    if (!togglePopUp) return null;
+    if (!currentPopUp) return null;
 
     if (errorMsg) {
         return (

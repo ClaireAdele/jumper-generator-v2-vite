@@ -3,15 +3,13 @@ import { useState } from "react";
 const EditEmailAddress = () => {
     const [formData, setFormData] = useState({});
 
-    console.log(formData);
-
     const handleSubmitEmailChangeRequest = (event) => {
         event.preventDefault();
         //open a fucking pop-up 
     };
 
     const handleInput = (event) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     } 
 
     return (
