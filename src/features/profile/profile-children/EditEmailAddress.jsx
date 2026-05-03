@@ -3,11 +3,20 @@ import { PopUpContext } from "../../../contexts/PopUpsContext";
 import { popUpList } from "../../../services-and-util-functions/utils";
 
 const EditEmailAddress = ({ editEmailAddressForm, setEditEmailAddressForm }) => {
-    const [errorMsg, setErrorMsg] = useState("");
+    const [errorMsg, setErrorMsg] = useState(null);
     const {setCurrentPopUp} = useContext(PopUpContext);
     
     const handleSubmitEmailChangeRequest = (event) => {
         event.preventDefault();
+        if (!editEmailAddressForm.newEmail || !editEmailAddressForm.confirmedNewEmail || !editEmailAddressForm.password) {
+            return setErrorMsg("All fields are required to send an e-mail change request");
+        }
+        
+        if (editEmailAddressForm.newEmail != editEmailAddressForm.confirmedNewEmail) {
+            return setErrorMsg("E-mail addresses don't match - try again");
+        }
+
+        setErrorMsg(null);
         setCurrentPopUp(popUpList.editEmailAddressPopup);
     };
 
@@ -35,8 +44,9 @@ const EditEmailAddress = ({ editEmailAddressForm, setEditEmailAddressForm }) => 
                         <label htmlFor="confirm-email"><b>Enter password:</b></label>
                         <input id="enter-password" name="password" type="password" onChange={handleInput}/>
                     </div>
+                   
                 </div>
-
+                {errorMsg && <p className="error-msg-edit-profile">{errorMsg}</p>}
                 <button type="submit" className="main-button-style button-style-purple edit-profile-button">
                     Request to change e-mail address
                 </button>
