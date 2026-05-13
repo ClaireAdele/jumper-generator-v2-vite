@@ -144,7 +144,8 @@ const popUpList = {
   deleteProfilePopup: "delete-profile-popup",
   logoutPopup: "logout-popup",
   validateMeasurementsPopup: "validate-new-measurements-popup",
-  editEmailAddressPopup: "reset-email-address-popup"
+  editEmailAddressPopup: "reset-email-address-popup",
+  editPasswordPopUp: "reset-password-popup"
 }
 
 export {

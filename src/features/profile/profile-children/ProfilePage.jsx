@@ -16,7 +16,9 @@ const ProfilePage = ({
   updatedUserData,
   setUpdatedUserData,
   isUserEditingMeasurements,
-  setisUserEditingMeasurements  
+  setisUserEditingMeasurements,
+  editPasswordForm,
+  setEditPasswordForm
 }) => {
 
   const [toggleDisplay, setToggleDisplay] = useState("pattern-list");
@@ -48,6 +50,8 @@ const ProfilePage = ({
             <EditAccountSettings
               editEmailAddressForm={editEmailAddressForm}
               setEditEmailAddressForm={setEditEmailAddressForm}
+              editPasswordForm={editPasswordForm}
+              setEditPasswordForm={setEditPasswordForm}
             />
           </div>
         }

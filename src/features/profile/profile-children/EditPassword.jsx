@@ -1,8 +1,8 @@
 const EditPassword = () => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // API call here
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
     };
 
     return (
