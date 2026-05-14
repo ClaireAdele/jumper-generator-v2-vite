@@ -1,5 +1,5 @@
 import EditProfileSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
-import { resetEmailUserresetEmailRequestUserLoggedInLoggedIn } from "./../../../services-and-util-functions/auth-services";
+import { resetEmailUserLoggedIn } from "./../../../services-and-util-functions/auth-services";
 import { PopUpContext } from "../../../contexts/PopUpsContext";
 
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
 
     const handleClickValidateMeasurementsUpdate = async () => {
         try {
-            await resetEmailRequestUserLoggedIn(editEmailAddressForm.newEmail, editEmailAddressForm.password)
+            await resetEmailUserLoggedIn(editEmailAddressForm.newEmail, editEmailAddressForm.password)
             setSuccessMsg("E-mail address change request successfully sent - you will now be logged out from all devices for security reasons.");
             navigate("/")
         } catch (error) {

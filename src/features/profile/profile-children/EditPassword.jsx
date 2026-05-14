@@ -1,8 +1,8 @@
-const EditPassword = () => {
+const EditPassword = ({ editPasswordForm, setEditPasswordForm }) => {
+    const [errorMsg, setErrorMsg] = useState(); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // API call here
     };
 
     return (
@@ -12,15 +12,15 @@ const EditPassword = () => {
                 <div className="edit-account-inputs-section">
                     <div className="edit-account-input">
                         <label htmlFor="current-password"><b>Current password:</b></label>
-                        <input id="current-password" type="password" />
+                        <input id="current-password" name="currentPassword" type="password" />
                     </div>
                     <div className="edit-account-input">
                         <label htmlFor="new-password"><b>New password:</b></label>
-                        <input id="new-password" type="password" />
+                        <input id="new-password" name="newPassword" type="password" />
                     </div>
                     <div className="edit-account-input">
                         <label htmlFor="confirm-password"><b>Confirm new password:</b></label>
-                        <input id="confirm-password" type="password" />
+                        <input id="confirm-password" name="confirmPassword" type="password" />
                     </div>
                 </div>
                 <button type="submit" className="main-button-style button-style-purple edit-profile-button">

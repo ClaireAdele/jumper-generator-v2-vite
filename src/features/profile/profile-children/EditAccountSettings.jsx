@@ -2,7 +2,7 @@ import EditEmailAddress from "./EditEmailAddress";
 import EditPassword from "./EditPassword";
 import useInView from "../../../custom-hooks/useInView";
 
-const EditAccountSettings = ({editEmailAddressForm, setEditEmailAddressForm}) => {
+const EditAccountSettings = ({editEmailAddressForm, setEditEmailAddressForm, editPasswordForm, setEditPasswordForm}) => {
     const [editAccountSettingsRef, isVisible] = useInView();
   
     return (
@@ -11,7 +11,10 @@ const EditAccountSettings = ({editEmailAddressForm, setEditEmailAddressForm}) =>
                 setEditEmailAddressForm={setEditEmailAddressForm}
                 editEmailAddressForm={editEmailAddressForm}
             />
-            <EditPassword />
+            <EditPassword
+                editPasswordForm={editPasswordForm}
+                setEditPasswordForm={editPasswordForm}
+            />
             <div className="edit-account-tile standard-box-styling">
                 <h3>Delete your account:</h3>
                 <p>This will permanently delete your account and all saved patterns. This cannot be undone.</p>

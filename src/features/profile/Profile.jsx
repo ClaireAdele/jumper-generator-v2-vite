@@ -26,6 +26,7 @@ const Profile = () => {
   const [updatedUserData, setUpdatedUserData] = useState({});
   const [patternToDeletePopUpData, setPatternToDeletePopUpData] = useState(null);
   const [editEmailAddressForm, setEditEmailAddressForm] = useState({});
+  const [editPasswordForm, setEditPasswordForm] = useState({});
 
   const navigate = useNavigate();
 
@@ -108,6 +109,8 @@ const Profile = () => {
         setUpdatedUserData={setUpdatedUserData}
         editEmailAddressForm={editEmailAddressForm}
         setEditEmailAddressForm={setEditEmailAddressForm}
+        editPasswordForm={editPasswordForm}
+        setEditPasswordForm={setEditPasswordForm}
         />
         {currentPopUp == popUpList.deleteProfilePopup && <DeleteProfilePopUp />}
         {currentPopUp == popUpList.logoutPopup && <LogOutPopUp />}
