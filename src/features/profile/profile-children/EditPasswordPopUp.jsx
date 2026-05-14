@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import useInView from "./../../../custom-hooks/useInView";
 
-const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
+const EditPasswordPopUp = ({editPasswordForm}) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
-    const [EditEmailAddressPopUpRef, isVisible] = useInView();
+    const [EditPasswordPopUpRef, isVisible] = useInView();
     const navigate = useNavigate();
 
     const {currentPopUp, setCurrentPopUp} = useContext(PopUpContext);
@@ -20,12 +20,12 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
 
     const handleClickValidateMeasurementsUpdate = async () => {
         try {
-            await resetEmailUserLoggedIn(editEmailAddressForm.newEmail, editEmailAddressForm.password)
-            setSuccessMsg("E-mail address change request successfully sent - you will now be logged out from all devices for security reasons.");
+            await resetEmailUserLoggedIn(editPasswordForm.newEmail, editPasswordForm.password)
+            setSuccessMsg("Password change successful!");
             navigate("/")
         } catch (error) {
             console.log(error)
-            setErrorMsg("E-mail address change request failed - try again!");
+            setErrorMsg("Password change request failed - try again!");
         }
     }
 
@@ -38,7 +38,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
     if (errorMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={EditEmailAddressPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`} >
+                <div ref={EditPasswordPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`} >
                     <div className="pop-up-icon button-style-red">
                         <EditProfileSvgIcon className="pop-up-icon-inner" />
                     </div>
@@ -54,7 +54,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
     if (successMsg) {
         return (
             <div className="pop-up-overlay">
-                <div ref={EditEmailAddressPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+                <div ref={EditPasswordPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
                     <div className="pop-up-icon button-style-purple">
                         <EditProfileSvgIcon className="pop-up-icon-inner" />
                     </div>
@@ -69,7 +69,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
 
     return (
         <div className="pop-up-overlay">
-            <div ref={EditEmailAddressPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
+            <div ref={EditPasswordPopUpRef} className={`pop-up ${isVisible ? "visible" : ""}`}>
                 <div className="pop-up-icon button-style-purple">
                     <EditProfileSvgIcon className="pop-up-icon-inner" />
                 </div>
@@ -83,4 +83,4 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
     );
 };
 
-export default EditEmailAddressPopUp;
+export default EditPasswordPopUp;

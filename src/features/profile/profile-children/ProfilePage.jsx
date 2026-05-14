@@ -52,6 +52,8 @@ const ProfilePage = ({
               setEditPasswordForm={setEditPasswordForm}
               editEmailAddressForm={editEmailAddressForm}
               setEditEmailAddressForm={setEditEmailAddressForm}
+              editPasswordForm={editPasswordForm}
+              setEditPasswordForm={setEditPasswordForm}
             />
           </div>
         }
