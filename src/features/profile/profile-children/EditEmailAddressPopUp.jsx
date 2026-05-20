@@ -73,7 +73,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
                 <div className="pop-up-icon button-style-purple">
                     <EditProfileSvgIcon className="pop-up-icon-inner" />
                 </div>
-                <h3>Are you sure you want request to change your e-mail address?</h3>
+                <h3>Are you sure you want to request to change your e-mail address?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>
                     <button className="main-button-style button-style-purple" onClick={handleClickSendEmailResetRequest}>Yes, send confirmation e-mail</button>
