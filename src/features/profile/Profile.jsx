@@ -126,7 +126,7 @@ const Profile = () => {
       
       {currentPopUp == popUpList.editPasswordPopUp && <EditPasswordPopUp
         editPasswordForm={editPasswordForm}
-        setEditPasswordForm/>}
+        setEditPasswordForm={setEditPasswordForm} />}
       
       {patternToDeletePopUpData && <DeletePatternPopUp
         patternToDeletePopUpData={patternToDeletePopUpData}

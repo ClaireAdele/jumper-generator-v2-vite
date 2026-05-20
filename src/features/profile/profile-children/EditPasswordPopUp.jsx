@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import useInView from "./../../../custom-hooks/useInView";
 
-const EditPasswordPopUp = ({editPasswordForm}) => {
+const EditPasswordPopUp = ({editPasswordForm, setEditPasswordForm}) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [successMsg, setSuccessMsg] = useState(null);
     const [EditPasswordPopUpRef, isVisible] = useInView();
@@ -21,6 +21,7 @@ const EditPasswordPopUp = ({editPasswordForm}) => {
     const handleClickSubmitPasswordChangeRequest = async () => {
         try {
             await resetPasswordRequestUserLoggedIn(editPasswordForm.currentPassword, editPasswordForm.newPassword)
+            setEditPasswordForm({});
             setSuccessMsg("Password change successful!");
         } catch (error) {
             console.log(error)

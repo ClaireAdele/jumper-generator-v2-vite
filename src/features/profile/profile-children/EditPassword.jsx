@@ -12,24 +12,29 @@ const EditPassword = ({ editPasswordForm, setEditPasswordForm }) => {
         event.preventDefault();
         //Needs to have the current password + the new one
         const { currentPassword, confirmedNewPassword, newPassword } = editPasswordForm; 
+        console.log(editPasswordForm)
 
         if (!currentPassword || !newPassword || !confirmedNewPassword) {
             setEditPasswordForm({});
+            event.target.reset();
             return setErrorMsg("All fields are required.");
         }
 
         if (newPassword !== confirmedNewPassword) {
             setEditPasswordForm({});
+            event.target.reset();
             return setErrorMsg("The current password and confirmed password must match.")
         }
 
         if (currentPassword === newPassword) {
             setEditPasswordForm({});
+            event.target.reset();
             return setErrorMsg("The new password must be different from the old one.")
         }
 
         setErrorMsg(null);
         setCurrentPopUp(popUpList.editPasswordPopUp);
+        event.target.reset();
         //Will need to clearn the fields of th form here or in the pop-up
     };
 
