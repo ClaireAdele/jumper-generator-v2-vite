@@ -5,6 +5,7 @@ import Profile from './features/profile/Profile';
 import DataEntry from './features/pattern-data-entry/DataEntry';
 import KnittingPattern from './features/pattern-templates/KnittingPattern';
 import { SignedInUserContextProvider } from './contexts/SignedInUserContext';
+import { PopUpContext, PopUpContextProvider } from "./contexts/PopUpsContext";
 import Loader from './components/Loader';
 
 const router = createBrowserRouter([
@@ -30,7 +31,9 @@ function App() {
   return (
     <div className="App">
       <SignedInUserContextProvider value={{}}>
-      <RouterProvider router={router} />
+        <PopUpContextProvider>
+          <RouterProvider router={router} />
+          </PopUpContextProvider>
       </SignedInUserContextProvider>
     </div>
   );

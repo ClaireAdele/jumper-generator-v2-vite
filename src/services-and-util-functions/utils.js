@@ -140,4 +140,19 @@ const getPatternDataFromSessionStorage = () => {
   return pattern;
 };
 
-export { checkAllMeasurementsEntered, checkAllFieldsSelected, selectLabel, writeToSessionData, getPatternDataFromSessionStorage };
+const popUpList = {
+  deleteProfilePopup: "delete-profile-popup",
+  logoutPopup: "logout-popup",
+  validateMeasurementsPopup: "validate-new-measurements-popup",
+  editEmailAddressPopup: "reset-email-address-popup",
+  editPasswordPopUp: "reset-password-popup"
+}
+
+export {
+  checkAllMeasurementsEntered,
+  checkAllFieldsSelected,
+  selectLabel,
+  writeToSessionData,
+  getPatternDataFromSessionStorage,
+  popUpList,
+};

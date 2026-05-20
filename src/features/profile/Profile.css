@@ -253,3 +253,8 @@
     align-self: center;
     margin-top: 2rem;
 }
+
+.error-msg-edit-profile {
+    align-self: center;
+    color: rgb(126, 70, 136);
+}

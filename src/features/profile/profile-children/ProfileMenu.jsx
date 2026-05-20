@@ -1,19 +1,21 @@
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+import { PopUpContext } from "../../../contexts/PopUpsContext";
+import { popUpList } from "../../../services-and-util-functions/utils";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { signOutUser } from "../../../services-and-util-functions/auth-services";
 
 import MyMeasurements from "../profile-assets/list-ul-alt-svgrepo-com.svg?react";
 import MyPatterns from "../profile-assets/jumper-bold.svg?react";
 import EditProfile from "../profile-assets/pen-square-svgrepo-com.svg?react";
-import BinSvgIcon from "./../profile-assets/trash-svgrepo-com.svg?react";
 import HomeIcon from "./../profile-assets/home-svgrepo-com.svg?react";
 import LogOutSvgIcon from "./../profile-assets/sign-out-svgrepo-com.svg?react";
 
-const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, setToggleLogOutPopUp  }) => {
+
+const ProfileMenu = ({ setToggleDisplay, toggleDisplay }) => {
     const { signedInUserData, setSignedInUserData } = useContext(SignedInUserContext);
     const navigate = useNavigate();
+
+    const {currentPopUp, setCurrentPopUp} = useContext(PopUpContext);
 
     const handleClick = (event) => {
         const toggleString = event.target.value;
@@ -21,7 +23,7 @@ const ProfileMenu = ({ setToggleDisplay, toggleDisplay, setToggleDeletePopUp, se
     };
 
     const handleClickLogOut = () => {
-        setToggleLogOutPopUp(true);
+        setCurrentPopUp(popUpList.logoutPopup);
     };
 
     const handleClickHomePage = () => {

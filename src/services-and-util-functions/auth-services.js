@@ -52,4 +52,46 @@ const signOutUser = async () => {
   return await res.json();
 };
 
-export { signUpUser, signInUser, signOutUser };
+const resetEmailRequestUserLoggedIn = async (newEmail, password) => {
+  const requestBody = { newEmail, password };
+
+  const res = await apiFetch( "/api/authentication/email-reset-request-authenticated-user",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    },
+  );
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "E-mail reset failed - try again");
+  }
+
+  return true;
+}
+
+const resetPasswordRequestUserLoggedIn = async (currentPassword, newPassword) => {
+  const requestBody = { currentPassword, newPassword };
+
+  const res = await apiFetch("/api/authentication/password-reset-authenticated-user", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestBody),
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.message || "E-mail reset failed - try again");
+  }
+
+  return true;
+}
+
+export {
+  signUpUser,
+  signInUser,
+  signOutUser,
+  resetEmailRequestUserLoggedIn,
+  resetPasswordRequestUserLoggedIn,
+};

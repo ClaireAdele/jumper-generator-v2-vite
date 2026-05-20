@@ -1,15 +1,19 @@
 import Measurement from "./Measurement";
 import EditSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
 import CancelEditSvg from "./../profile-assets/cancel-close-delete-svgrepo-com.svg?react";
+import { popUpList } from "../../../services-and-util-functions/utils";
+import { PopUpContext } from "../../../contexts/PopUpsContext";
+import { useContext } from "react";
 
 const UserData = ({
   measurementsList,
-  setToggleValidateNewMeasurementsPopUp,
   updatedUserData,
   setUpdatedUserData,
   setisUserEditingMeasurements,
   isUserEditingMeasurements
 }) => {
+
+  const {setCurrentPopUp} = useContext(PopUpContext);
 
   const handleClickEditProfile = async () => {
     setisUserEditingMeasurements(true);
@@ -20,7 +24,7 @@ const UserData = ({
   };
 
   const handleClickApplyChanges = async () => {
-    setToggleValidateNewMeasurementsPopUp(true);
+    setCurrentPopUp(popUpList.validateMeasurementsPopup);
   }
 
   if (isUserEditingMeasurements) {
