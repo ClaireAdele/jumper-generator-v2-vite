@@ -74,8 +74,8 @@ const resetEmailRequestUserLoggedIn = async (newEmail, password) => {
 const resetPasswordRequestUserLoggedIn = async (currentPassword, newPassword) => {
   const requestBody = { currentPassword, newPassword };
 
-  const res = await apiFetch("/password-reset-authenticated-user", {
-    method: "POST",
+  const res = await apiFetch("/api/authentication/password-reset-authenticated-user", {
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(requestBody),
   });

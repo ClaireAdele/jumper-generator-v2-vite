@@ -1,4 +1,5 @@
 import EditProfileSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
+import { resetPasswordRequestUserLoggedIn } from "../../../services-and-util-functions/auth-services";
 import { PopUpContext } from "../../../contexts/PopUpsContext";
 
 import { useNavigate } from "react-router-dom";
@@ -18,14 +19,13 @@ const EditPasswordPopUp = ({editPasswordForm}) => {
     }
 
     const handleClickSubmitPasswordChangeRequest = async () => {
-        // try {
-        //     await resetEmailUserLoggedIn(editPasswordForm.newEmail, editPasswordForm.password)
-        //     setSuccessMsg("Password change successful!");
-        //     navigate("/")
-        // } catch (error) {
-        //     console.log(error)
-        //     setErrorMsg("Password change request failed - try again!");
-        // }
+        try {
+            await resetPasswordRequestUserLoggedIn(editPasswordForm.currentPassword, editPasswordForm.newPassword)
+            setSuccessMsg("Password change successful!");
+        } catch (error) {
+            console.log(error)
+            setErrorMsg("Password change request failed - try again!");
+        }
     }
 
     const handleClickClose = () => {
