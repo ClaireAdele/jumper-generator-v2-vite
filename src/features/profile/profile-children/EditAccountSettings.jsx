@@ -13,7 +13,7 @@ const EditAccountSettings = ({editEmailAddressForm, setEditEmailAddressForm, edi
             />
             <EditPassword
                 editPasswordForm={editPasswordForm}
-                setEditPasswordForm={editPasswordForm}
+                setEditPasswordForm={setEditPasswordForm}
             />
             <div className="edit-account-tile standard-box-styling">
                 <h3>Delete your account:</h3>

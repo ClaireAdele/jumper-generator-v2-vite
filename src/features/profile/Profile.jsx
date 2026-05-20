@@ -17,6 +17,7 @@ import ProfilePage from "./profile-children/ProfilePage";
 import Loader from "../../components/Loader";
 import ValidateNewMeasurementsPopUp from "./profile-children/ValidateNewMeasurementsPopUp";
 import EditEmailAddressPopUp from "./profile-children/EditEmailAddressPopUp";
+import EditPasswordPopUp from "./profile-children/EditPasswordPopUp";
 
 
 const Profile = () => {
@@ -110,18 +111,28 @@ const Profile = () => {
         editEmailAddressForm={editEmailAddressForm}
         setEditEmailAddressForm={setEditEmailAddressForm}
         editPasswordForm={editPasswordForm}
-        setEditPasswordForm={setEditPasswordForm}
-        />
-        {currentPopUp == popUpList.deleteProfilePopup && <DeleteProfilePopUp />}
-        {currentPopUp == popUpList.logoutPopup && <LogOutPopUp />}
-        {currentPopUp == popUpList.validateMeasurementsPopup && <ValidateNewMeasurementsPopUp
-          setisUserEditingMeasurements={setisUserEditingMeasurements}
-          updatedUserData={updatedUserData}
-      />}
-        {currentPopUp == popUpList.editEmailAddressPopup && <EditEmailAddressPopUp
-          editEmailAddressForm={editEmailAddressForm}
-        />}
-        {patternToDeletePopUpData && <DeletePatternPopUp patternToDeletePopUpData={patternToDeletePopUpData} setPatternToDeletePopUpData={setPatternToDeletePopUpData} setPatternList={setPatternList} />}
+        setEditPasswordForm={setEditPasswordForm} />
+      
+      {currentPopUp == popUpList.deleteProfilePopup && <DeleteProfilePopUp />}
+      
+      {currentPopUp == popUpList.logoutPopup && <LogOutPopUp />}
+      
+      {currentPopUp == popUpList.validateMeasurementsPopup && <ValidateNewMeasurementsPopUp
+        setisUserEditingMeasurements={setisUserEditingMeasurements}
+        updatedUserData={updatedUserData} />}
+      
+      {currentPopUp == popUpList.editEmailAddressPopup && <EditEmailAddressPopUp
+        editEmailAddressForm={editEmailAddressForm} />}
+      
+      {currentPopUp == popUpList.editPasswordPopUp && <EditPasswordPopUp
+        editPasswordForm={editPasswordForm}
+        setEditPasswordForm/>}
+      
+      {patternToDeletePopUpData && <DeletePatternPopUp
+        patternToDeletePopUpData={patternToDeletePopUpData}
+        setPatternToDeletePopUpData={setPatternToDeletePopUpData}
+        setPatternList={setPatternList} />}
+      
     </div>
   )
 };

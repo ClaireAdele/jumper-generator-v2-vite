@@ -4,15 +4,29 @@ import { popUpList } from "../../../services-and-util-functions/utils";
 
 const EditEmailAddress = ({ editEmailAddressForm, setEditEmailAddressForm }) => {
     const [errorMsg, setErrorMsg] = useState(null);
-    const {setCurrentPopUp} = useContext(PopUpContext);
+    const { setCurrentPopUp } = useContext(PopUpContext);
     
     const handleSubmitEmailChangeRequest = (event) => {
         event.preventDefault();
-        if (!editEmailAddressForm.newEmail || !editEmailAddressForm.confirmedNewEmail || !editEmailAddressForm.password) {
+
+        const {
+            newEmail,
+            confirmedNewEmail,
+            password
+        } = editEmailAddressForm;
+
+        if (
+            !newEmail ||
+            !confirmedNewEmail ||
+            !password
+        ) {
             return setErrorMsg("All fields are required to send an e-mail change request");
         }
-        
-        if (editEmailAddressForm.newEmail != editEmailAddressForm.confirmedNewEmail) {
+
+        const trimmedNewEmail = newEmail.trim();
+        const trimmedConfirmedNewEmail = confirmedNewEmail.trim();
+
+        if (trimmedNewEmail !== trimmedConfirmedNewEmail) {
             return setErrorMsg("E-mail addresses don't match - try again");
         }
 
@@ -22,7 +36,7 @@ const EditEmailAddress = ({ editEmailAddressForm, setEditEmailAddressForm }) => 
 
     const handleInput = (event) => {
         setEditEmailAddressForm({ ...editEmailAddressForm, [event.target.name]: event.target.value });
-    } 
+    }
 
     return (
         <div className="edit-account-tile standard-box-styling">
@@ -37,12 +51,12 @@ const EditEmailAddress = ({ editEmailAddressForm, setEditEmailAddressForm }) => 
                 
                     <div className="edit-account-input">
                         <label htmlFor="confirm-email"><b>Confirm new e-mail:</b></label>
-                        <input id="confirm-email" name="confirmedNewEmail" type="email" onChange={handleInput}/>
+                        <input id="confirm-email" name="confirmedNewEmail" type="email" onChange={handleInput} />
                     </div>
 
                     <div className="edit-account-input">
                         <label htmlFor="confirm-email"><b>Enter password:</b></label>
-                        <input id="enter-password" name="password" type="password" onChange={handleInput}/>
+                        <input id="enter-password" name="password" type="password" onChange={handleInput} />
                     </div>
                    
                 </div>

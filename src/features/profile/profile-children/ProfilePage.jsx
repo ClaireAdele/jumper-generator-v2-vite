@@ -48,8 +48,6 @@ const ProfilePage = ({
           <div className="profile-page-toggable-content">
             <h1>Edit Account Settings</h1>
             <EditAccountSettings
-              editPasswordForm={editPasswordForm}
-              setEditPasswordForm={setEditPasswordForm}
               editEmailAddressForm={editEmailAddressForm}
               setEditEmailAddressForm={setEditEmailAddressForm}
               editPasswordForm={editPasswordForm}

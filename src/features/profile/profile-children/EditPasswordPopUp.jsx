@@ -1,5 +1,4 @@
 import EditProfileSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
-import { resetEmailUserLoggedIn } from "./../../../services-and-util-functions/auth-services";
 import { PopUpContext } from "../../../contexts/PopUpsContext";
 
 import { useNavigate } from "react-router-dom";
@@ -18,15 +17,15 @@ const EditPasswordPopUp = ({editPasswordForm}) => {
         setCurrentPopUp(null);
     }
 
-    const handleClickValidateMeasurementsUpdate = async () => {
-        try {
-            await resetEmailUserLoggedIn(editPasswordForm.newEmail, editPasswordForm.password)
-            setSuccessMsg("Password change successful!");
-            navigate("/")
-        } catch (error) {
-            console.log(error)
-            setErrorMsg("Password change request failed - try again!");
-        }
+    const handleClickSubmitPasswordChangeRequest = async () => {
+        // try {
+        //     await resetEmailUserLoggedIn(editPasswordForm.newEmail, editPasswordForm.password)
+        //     setSuccessMsg("Password change successful!");
+        //     navigate("/")
+        // } catch (error) {
+        //     console.log(error)
+        //     setErrorMsg("Password change request failed - try again!");
+        // }
     }
 
     const handleClickClose = () => {
@@ -76,7 +75,7 @@ const EditPasswordPopUp = ({editPasswordForm}) => {
                 <h3>Are you sure you want request to change your e-mail address?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>
-                    <button className="main-button-style button-style-purple" onClick={handleClickValidateMeasurementsUpdate}>Yes, send confirmation e-mail</button>
+                    <button className="main-button-style button-style-purple" onClick={handleClickSubmitPasswordChangeRequest}>Yes, send confirmation e-mail</button>
                 </div>
             </div>
         </div>

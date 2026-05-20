@@ -1,5 +1,5 @@
 import EditProfileSvgIcon from "./../profile-assets/pen-square-svgrepo-com.svg?react";
-import { resetEmailUserresetEmailRequestUserLoggedInLoggedIn } from "./../../../services-and-util-functions/auth-services";
+import { resetEmailRequestUserLoggedIn } from "./../../../services-and-util-functions/auth-services";
 import { PopUpContext } from "../../../contexts/PopUpsContext";
 
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
         setCurrentPopUp(null);
     }
 
-    const handleClickValidateMeasurementsUpdate = async () => {
+    const handleClickSendEmailResetRequest = async () => {
         try {
             await resetEmailRequestUserLoggedIn(editEmailAddressForm.newEmail, editEmailAddressForm.password)
             setSuccessMsg("E-mail address change request successfully sent - you will now be logged out from all devices for security reasons.");
@@ -76,7 +76,7 @@ const EditEmailAddressPopUp = ({editEmailAddressForm}) => {
                 <h3>Are you sure you want request to change your e-mail address?</h3>
                 <div>
                     <button className="main-button-style" style={{ marginRight: "1em" }} onClick={handleClickCancel} >No, cancel</button>
-                    <button className="main-button-style button-style-purple" onClick={handleClickValidateMeasurementsUpdate}>Yes, send confirmation e-mail</button>
+                    <button className="main-button-style button-style-purple" onClick={handleClickSendEmailResetRequest}>Yes, send confirmation e-mail</button>
                 </div>
             </div>
         </div>
