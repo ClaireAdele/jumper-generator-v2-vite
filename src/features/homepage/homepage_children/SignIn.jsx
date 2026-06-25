@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { signInUser } from "../../../services-and-util-functions/auth-services";
 import { SignedInUserContext } from "../../../contexts/SignedInUserContext";
+import EyeClosedSvgIcon from "../../../assets/EyeClosedSvgIcon.svg?react";
+import EyeOpenSvgIcon from "../../../assets/EyeOpenSvgIcon.svg?react";
+
 import useInView from "../../../custom-hooks/useInView";
 import { useNavigate } from "react-router-dom";
 import "../Homepage.css";
@@ -10,6 +13,12 @@ const SignIn = ({ setUserHasAccount }) => {
   const [email, setEmail] = useState(undefined);
   const [password, setPassword] = useState(undefined);
   const [authError, setAuthError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const handleTogglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+  
   const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } = useContext(
@@ -68,17 +77,24 @@ const SignIn = ({ setUserHasAccount }) => {
             className="auth-input"
             onChange={handleInputEmail}
           ></input>
-          <input
-            type="password"
-            placeholder="Password"
-            className="auth-input"
-            onChange={handleInputPassword}
-          ></input>
+          <div className="password-input-wrapper">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="auth-input"
+              onChange={handleInputPassword}
+            />
+            <div
+              className="password-toggle-button"
+              onClick={handleTogglePassword}
+            >
+              {showPassword ? <EyeClosedSvgIcon /> : <EyeOpenSvgIcon />}
+            </div>
+          </div>
           <button className="auth-button">
             Submit
           </button>
         </form>
-        
         {authError && <p>{authError}</p>}
         <p onClick={handleClickSignUp} className="account-yes-no">
           No account yet? Register now
