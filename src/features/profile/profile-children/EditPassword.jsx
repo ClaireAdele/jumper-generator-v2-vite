@@ -6,13 +6,11 @@ const EditPassword = ({ editPasswordForm, setEditPasswordForm }) => {
     const [errorMsg, setErrorMsg] = useState(""); 
     const { setCurrentPopUp } = useContext(PopUpContext);
 
-         console.log(editPasswordForm)
 
     const handleSubmitNewPassword = (event) => {
         event.preventDefault();
         //Needs to have the current password + the new one
         const { currentPassword, confirmedNewPassword, newPassword } = editPasswordForm; 
-        console.log(editPasswordForm)
 
         if (!currentPassword || !newPassword || !confirmedNewPassword) {
             setEditPasswordForm({});
@@ -35,7 +33,6 @@ const EditPassword = ({ editPasswordForm, setEditPasswordForm }) => {
         setErrorMsg(null);
         setCurrentPopUp(popUpList.editPasswordPopUp);
         event.target.reset();
-        //Will need to clearn the fields of th form here or in the pop-up
     };
 
 

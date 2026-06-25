@@ -23,6 +23,9 @@ const SignIn = ({ setUserHasAccount }) => {
       setAuthError(
         "Please make sure your e-mail and passwords are correct"
       );
+      event.target.reset();
+      setEmail(undefined);
+      setPassword(undefined);
       return;
     }
 
@@ -33,7 +36,10 @@ const SignIn = ({ setUserHasAccount }) => {
       setSignedInUserData(signedInUser);
 
       navigate("/profile");
-    } catch(error) {
+    } catch (error) {
+      event.target.reset();
+      setEmail(undefined);
+      setPassword(undefined);
       setAuthError(error.message);
     }
   };
