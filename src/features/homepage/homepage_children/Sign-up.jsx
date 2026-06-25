@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { signUpUser } from "../../../services-and-util-functions/auth-services";
+import EyeClosedSvgIcon from "../../../assets/EyeClosedSvgIcon.svg?react";
+import EyeOpenSvgIcon from "../../../assets/EyeOpenSvgIcon.svg?react";
 import "../Homepage.css";
 
 const SignUp = ({ setUserHasAccount }) => {
@@ -7,9 +9,14 @@ const SignUp = ({ setUserHasAccount }) => {
   const [password, setPassword] = useState(undefined);
   const [email, setEmail] = useState(undefined);
   const [authError, setAuthError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleClickSubmit = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     if (!username || !password || !email) {
       setAuthError(
@@ -22,9 +29,9 @@ const SignUp = ({ setUserHasAccount }) => {
       await signUpUser(username, email, password);
     
       setUserHasAccount(true);
-    } catch (err) { 
+    } catch (err) {
       setAuthError(err.message);
-    } 
+    }
   };
 
   const handleInputUsername = (event) => {
@@ -47,29 +54,37 @@ const SignUp = ({ setUserHasAccount }) => {
     <div className="auth-form-green-square">
       <div className="auth-form-container">
         <h2 className="auth-form-title">Register</h2>
-          <form className="auth-form" onSubmit={handleClickSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          className="auth-input"
-          onChange={handleInputUsername}
-        ></input>
-        <input
-          type="text"
-          placeholder="Email"
-          className="auth-input"
-          onChange={handleInputEmail}
-        ></input>
-        <input
-          type="password"
-          placeholder="Password"
-          className="auth-input"
-          onChange={handleInputPassword}
-        ></input>
-        <button className="auth-button">
-          Submit
+        <form className="auth-form" onSubmit={handleClickSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            className="auth-input"
+            onChange={handleInputUsername}
+          ></input>
+          <input
+            type="email"
+            placeholder="Email"
+            className="auth-input"
+            onChange={handleInputEmail}
+          ></input>
+          <div className="password-input-wrapper">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="auth-input"
+              onChange={handleInputPassword}
+            />
+            <div
+              className="password-toggle-button"
+              onClick={handleTogglePassword}
+            >
+              {showPassword ? <EyeClosedSvgIcon/> : <EyeOpenSvgIcon />}
+            </div>
+          </div>
+          <button className="auth-button">
+            Submit
           </button>
-          </form>
+        </form>
         {authError && <p>{authError}</p>}
         <p onClick={handleClickSignIn} className="account-yes-no">
           Already have an account? Sign-in now.

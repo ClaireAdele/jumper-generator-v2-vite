@@ -130,12 +130,18 @@
 }
 
 .auth-input {
+    text-align: left;
     margin-top: 7%;
     padding-top: 2%;
     border-radius: 10px;
     border-color: white;
     padding-bottom: 2%;
     border-style: none;
+    padding-left: 1rem;
+}
+
+.auth-input:focus {
+    text-align: left;
 }
 
 .auth-button {
@@ -216,4 +222,34 @@
     margin-left: 5%;
     margin-right: 10%;
     text-align: justify;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 7%;
+}
+
+.password-input-wrapper .auth-input {
+    margin-top: 0;
+    width: 100%;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
+
+.password-toggle-button {
+    position: absolute;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle-button svg {
+    width: 16px;
+    height: 16px;
 }

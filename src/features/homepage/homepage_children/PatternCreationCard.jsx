@@ -1,5 +1,3 @@
-import useInView from "../../../custom-hooks/useInView";
-
 const PatternCreationCard = ({ svgIcon, title, text }) => {
 
   return (

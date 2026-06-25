@@ -13,7 +13,7 @@ const SignIn = ({ setUserHasAccount }) => {
   const navigate = useNavigate();
 
   const { signedInUserData, setSignedInUserData } = useContext(
-      SignedInUserContext
+    SignedInUserContext
   );
 
   const handleClickSubmit = async (event) => {
@@ -48,7 +48,7 @@ const SignIn = ({ setUserHasAccount }) => {
     setEmail(event.target.value);
   };
 
-  const handleInputPassword = (event) => { 
+  const handleInputPassword = (event) => {
     setPassword(event.target.value);
   }
 
@@ -60,23 +60,25 @@ const SignIn = ({ setUserHasAccount }) => {
     <div className="auth-form-green-square">
       <div className="auth-form-container">
         <h2>Sign-In</h2>
+
         <form className="auth-form" onSubmit={handleClickSubmit}>
-        <input
-          type="text"
-          placeholder="E-mail"
-          className="auth-input"
-          onChange={handleInputEmail}
-        ></input>
-        <input
-          type="password"
-          placeholder="Password"
-          className="auth-input"
-          onChange={handleInputPassword}
-        ></input>
-        <button className="auth-button">
-          Submit
+          <input
+            type="text"
+            placeholder="E-mail"
+            className="auth-input"
+            onChange={handleInputEmail}
+          ></input>
+          <input
+            type="password"
+            placeholder="Password"
+            className="auth-input"
+            onChange={handleInputPassword}
+          ></input>
+          <button className="auth-button">
+            Submit
           </button>
-          </form>
+        </form>
+        
         {authError && <p>{authError}</p>}
         <p onClick={handleClickSignUp} className="account-yes-no">
           No account yet? Register now
